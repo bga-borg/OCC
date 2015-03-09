@@ -5,10 +5,11 @@ import org.infinispan.manager.DefaultCacheManager;
 
 class App {
     public static void main(String... args) {
-        DefaultCacheManager m = new DefaultCacheManager();
-        Cache<String, String> cache = m.getCache();
-        cache.put("name", "thsb");
+        InfinispanConfigurator infinispanConfigurator = new InfinispanConfigurator();
 
-        System.out.println("The name of the project is " + cache.get("name"));
+        Cache<String, Object> stringToObjectCache = infinispanConfigurator.getStringToObjectCache();
+        stringToObjectCache.put("name", "thsb");
+
+        System.out.println("The name of the project is " + stringToObjectCache.get("name"));
     }
 }
