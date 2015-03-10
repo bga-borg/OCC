@@ -4,10 +4,26 @@
         xsi:schemaLocation="urn:infinispan:config:7.0 http://www.infinispan.org/schemas/infinispan-config-7.0.xsd"
         xmlns="urn:infinispan:config:7.0">
 
+
     <cache-container name="default" default-cache="defaultCache">
-        <local-cache name="default" statistics="true">
-            <store-as-binary/>
+
+
+        <local-cache name="objectInMem"/>
+
+        <local-cache name="objectOnDisk">
+            <persistence passivation="false">
+                <!-- note that class is missing and is induced by the fileStore element name -->
+                <file-store
+                        shared="false" preload="true"
+                        fetch-state="true"
+                        read-only="false"
+                        purge="false"
+                        path="D:/">
+                    <!--write-behind flush-lock-timeout="15000" thread-pool-size="5"/ -->
+                </file-store>
+            </persistence>
         </local-cache>
-        <local-cache name="asyncCache" />
+
+        <local-cache name="asyncCache"/>
     </cache-container>
 </infinispan>

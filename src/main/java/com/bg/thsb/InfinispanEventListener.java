@@ -8,25 +8,28 @@ import org.infinispan.notifications.cachelistener.event.Event;
 import org.infinispan.notifications.cachemanagerlistener.annotation.CacheStarted;
 import org.infinispan.notifications.cachemanagerlistener.annotation.CacheStopped;
 import org.infinispan.notifications.cachemanagerlistener.annotation.ViewChanged;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Listen and log changes in infinispan lifecycle.
  */
 @Listener
 public class InfinispanEventListener {
-    @CacheStarted
-    public void handleStart(Event event) {
-        System.out.println("Cache started");
-    }
-
+    Logger logger = LoggerFactory.getLogger(InfinispanEventListener.class);
 
     @CacheStarted
     @CacheStopped
+    public void handleStart(Event event) {
+        logger.info(event.getCache().getName() + ": " + event.getType());
+    }
+
+
     @ViewChanged
     @CacheEntryCreated
     @CacheEntryModified
     @CacheEntryRemoved
     public void logEvent(Event event) {
-        System.out.println(event.getCache().getName() + ": " +event.getType());
+        logger.info(event.getCache().getName() + ": " +event.getType());
     }
 }

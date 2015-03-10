@@ -7,24 +7,32 @@ import java.io.IOException;
 
 public class InfinispanConfigurator {
 
-    Cache<String, Object> stringToObjectCache = null;
+    private Cache<String, Object> stringToObjectCacheOnDisk = null;
+    Cache<String, Object> stringToObjectCacheInMem = null;
     DefaultCacheManager defaultCacheManager = null;
 
-
-    public InfinispanConfigurator(){
+    public InfinispanConfigurator(Boolean log) {
 
         try {
             defaultCacheManager = new DefaultCacheManager("infinispan-configuration.xml");
-            stringToObjectCache = defaultCacheManager.getCache("default");
-            stringToObjectCache.addListener(new InfinispanEventListener());
+            stringToObjectCacheInMem = defaultCacheManager.getCache("objectInMem");
+            stringToObjectCacheOnDisk = defaultCacheManager.getCache("objectOnDisk");
 
+
+            if (log) {
+                stringToObjectCacheInMem.addListener(new InfinispanEventListener());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    Cache<String, Object> getStringToObjectCache() {
-        return stringToObjectCache;
+    Cache<String, Object> getStringToObjectCacheInMem() {
+        return stringToObjectCacheInMem;
+    }
+
+    Cache<String, Object> getStringObjectCacheOnDisk() {
+        return stringToObjectCacheOnDisk;
     }
 }
