@@ -15,7 +15,8 @@ public class InfinispanConfigurator {
 
         try {
             defaultCacheManager = new DefaultCacheManager("infinispan-configuration.xml");
-            stringToObjectCache = defaultCacheManager.getCache("writeThroughToFile");
+            stringToObjectCache = defaultCacheManager.getCache("default");
+            stringToObjectCache.addListener(new InfinispanEventListener());
 
         } catch (IOException e) {
             e.printStackTrace();

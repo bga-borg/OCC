@@ -27,6 +27,6 @@ public class InfinispanEventListener {
     @CacheEntryModified
     @CacheEntryRemoved
     public void logEvent(Event event) {
-        System.out.println(event.getType());
+        System.out.println(event.getCache().getName() + ": " +event.getType());
     }
 }
