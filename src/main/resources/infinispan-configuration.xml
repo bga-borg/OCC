@@ -14,11 +14,12 @@
             <persistence passivation="false">
                 <!-- note that class is missing and is induced by the fileStore element name -->
                 <file-store
-                        shared="false" preload="true"
+                        shared="false"
+                        preload="false"
                         fetch-state="true"
                         read-only="false"
-                        purge="false"
-                        path="D:/">
+                        purge="true"
+                        path="/home/bg/dev/">
                     <!--write-behind flush-lock-timeout="15000" thread-pool-size="5"/ -->
                 </file-store>
             </persistence>

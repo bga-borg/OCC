@@ -7,16 +7,18 @@ import org.slf4j.LoggerFactory;
 import java.util.UUID;
 
 class App {
+    private final static int NUM_RECORDS = 100000;
+
     private static Logger logger = LoggerFactory.getLogger(App.class);
     InfinispanConfigurator infinispanConfigurator = new InfinispanConfigurator(false);
 
     public static void main(String... args) {
         App app = new App();
-//        long testOneMillInMemory = app.testOneMillionInMemory();
-//        logger.info("One million in memory kv add: " + testOneMillInMemory / 1000.0 + " s");
+        long testOneMillInMemory = app.testOneMillionInMemory();
+        logger.info(NUM_RECORDS + " in-memory kv add: " + testOneMillInMemory / 1000.0 + " s");
 
         long oneMillionOnDisk = app.testOneMillionOnDisk();
-        logger.info("One million on disk kv add: " + oneMillionOnDisk / 1000.0 + " s");
+        logger.info(NUM_RECORDS + " on disk kv add: " + oneMillionOnDisk / 1000.0 + " s");
 
     }
 
@@ -29,7 +31,7 @@ class App {
         Cache<String, Object> stringToObjectCache = infinispanConfigurator.getStringObjectCacheOnDisk();
 
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < NUM_RECORDS; i++) {
             stringToObjectCache.put(UUID.randomUUID().toString(), UUID.randomUUID().toString());
         }
         long endTime = System.currentTimeMillis();
@@ -49,7 +51,7 @@ class App {
         Cache<String, Object> stringToObjectCache = infinispanConfigurator.getStringToObjectCacheInMem();
 
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < NUM_RECORDS; i++) {
             stringToObjectCache.put(UUID.randomUUID().toString(), UUID.randomUUID().toString());
         }
         long endTime = System.currentTimeMillis();
