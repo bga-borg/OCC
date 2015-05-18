@@ -1,4 +1,4 @@
-package com.bg.thsb;
+package com.bg.thsb.infinispan;
 
 import org.infinispan.notifications.Listener;
 import org.infinispan.notifications.cachelistener.annotation.CacheEntryCreated;

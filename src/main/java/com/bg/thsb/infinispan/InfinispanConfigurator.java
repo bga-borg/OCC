@@ -1,4 +1,4 @@
-package com.bg.thsb;
+package com.bg.thsb.infinispan;
 
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
@@ -28,11 +28,11 @@ public class InfinispanConfigurator {
 
     }
 
-    Cache<String, Object> getStringToObjectCacheInMem() {
+    public Cache<String, Object> getStringToObjectCacheInMem() {
         return stringToObjectCacheInMem;
     }
 
-    Cache<String, Object> getStringObjectCacheOnDisk() {
+    public Cache<String, Object> getStringObjectCacheOnDisk() {
         return stringToObjectCacheOnDisk;
     }
 }
