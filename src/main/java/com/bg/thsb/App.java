@@ -1,12 +1,8 @@
 package com.bg.thsb;
 
-import com.bg.thsb.infinispan.InfinispanConfigurator;
-import org.infinispan.Cache;
+import com.woorea.openstack.nova.model.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.UUID;
 
 class App {
 
@@ -15,7 +11,11 @@ class App {
 
 
     public static void main(String... args) {
+        logger.debug("Hello world.");
 
+
+        Server server = new Server();
+        Image
     }
 
 }

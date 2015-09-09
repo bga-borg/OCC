@@ -6,13 +6,19 @@ repositories {
 
 dependencies {
 	compile 'org.infinispan:infinispan-core:7.1.1.Final'
-    compile 'org.slf4j:slf4j-api:1.7.7'
-    compile 'org.slf4j:slf4j-simple:1.7.10'
+    compile 'org.slf4j:slf4j-api:1.7.+'
+    compile 'ch.qos.logback:logback-classic:1.+'
     compile 'com.google.guava:guava:18.0'
 
-    // jclouds/opensrtack
-    compile 'org.apache.jclouds:jclouds-all:1.9.0'
-    compile 'org.apache.jclouds.driver:jclouds-sshj:1.9.0'
+    compile 'com.woorea:openstack-java-sdk:3.2.1'
+    compile 'com.woorea:keystone-client:3.2.1'
+    compile 'com.woorea:nova-client:3.2.1'
+    compile 'com.woorea:ceilometer-client:3.2.1'
+    compile 'com.woorea:swift-client:3.2.1'
+    compile 'com.woorea:quantum-client:3.2.1'
+    compile 'com.woorea:glance-client:3.2.1'
+    compile 'com.woorea:cinder-client:3.1.1'
+    compile 'com.woorea:openstack-examples:3.2.1'
 
 
     // jpa core (for relational) - hibernate

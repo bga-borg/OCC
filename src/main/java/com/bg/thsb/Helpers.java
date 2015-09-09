@@ -2,9 +2,6 @@ package com.bg.thsb;
 
 import java.io.IOException;
 
-/**
- * Created by bg on 2015.05.17..
- */
 public class Helpers {
     /**
      * This is used to pause between sections when measuring with VisualVM
