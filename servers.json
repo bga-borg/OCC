@@ -1,0 +1,2429 @@
+[
+  {
+    "id": "c2445898-eb1a-4298-965d-6ed2c2f7b99f",
+    "name": "HCT_BDS15aab2d6-3ccf-4773-97f9-45d0c85aa97e",
+    "addresses": {
+      "addresses": {
+        "b24d6ebb-29fc-4e94-84a6-2c8e02c1cbfb": [
+          {
+            "version": 4,
+            "addr": "192.168.0.127",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:09:65:0b",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/c2445898-eb1a-4298-965d-6ed2c2f7b99f",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/c2445898-eb1a-4298-965d-6ed2c2f7b99f",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "9d75a6b8-c0f2-40bf-90a7-5daa4aa15845",
+      "status": "ACTIVE",
+      "name": "tools_77ef3f9f-998f-4d3d-ad31-a9e82bf3b1db",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 1,
+      "created": 1441981655000,
+      "updated": 1441981655000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/9d75a6b8-c0f2-40bf-90a7-5daa4aa15845",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/9d75a6b8-c0f2-40bf-90a7-5daa4aa15845",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/9d75a6b8-c0f2-40bf-90a7-5daa4aa15845",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 1048576,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "29843bf2-86f0-4129-bfce-16246fa16834",
+      "name": "fa24e2d1-85c2-48aa-b78d-88ead440d9bc",
+      "ram": 128,
+      "vcpus": 1,
+      "disk": 0,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/29843bf2-86f0-4129-bfce-16246fa16834",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/29843bf2-86f0-4129-bfce-16246fa16834",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441981722000,
+    "created": 1441981715000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": null,
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441981722000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "59d980b3-1dfc-407c-91ca-b5b70afb3dcd",
+    "name": "HCT_BDSd63ebea6-5262-4a10-ada6-7dd6e62ddd1d",
+    "addresses": {
+      "addresses": {}
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/59d980b3-1dfc-407c-91ca-b5b70afb3dcd",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/59d980b3-1dfc-407c-91ca-b5b70afb3dcd",
+        "type": null
+      }
+    ],
+    "image": null,
+    "flavor": {
+      "id": "adbdc597-a44c-44b0-8dca-f232a963a45a",
+      "name": "2dff53ba-9c1e-4aec-ad07-6691dcfc4eec",
+      "ram": 128,
+      "vcpus": 1,
+      "disk": 0,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/adbdc597-a44c-44b0-8dca-f232a963a45a",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/adbdc597-a44c-44b0-8dca-f232a963a45a",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "error",
+    "progress": 0,
+    "fault": {
+      "code": 500,
+      "message": "Build of instance 59d980b3-1dfc-407c-91ca-b5b70afb3dcd aborted: Failure prepping block device.",
+      "details": null,
+      "created": 1441981312000
+    },
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441981312000,
+    "created": 1441981311000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": null,
+    "OS-EXT-STS:task_state": "networking",
+    "OS-EXT-STS:power_state": "0",
+    "OS-EXT-STS:vm_state": "error",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": null,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": [
+      {
+        "id": "2c29e643-5416-4016-b974-c13290db3f7f"
+      }
+    ]
+  },
+  {
+    "id": "a9ab9cb3-e6c2-4c78-bef5-24179eb4146c",
+    "name": "MYSQL_MGMT",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.104",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:f9:16:46",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.105",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:f9:16:46",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/a9ab9cb3-e6c2-4c78-bef5-24179eb4146c",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/a9ab9cb3-e6c2-4c78-bef5-24179eb4146c",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441978026000,
+    "created": 1441978017000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441978026000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "c06a3103-d3c4-4551-80ba-1a0802f5e4e1",
+    "name": "MYSQL_DATA_A",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.102",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:50:fd:fb",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.103",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:50:fd:fb",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/c06a3103-d3c4-4551-80ba-1a0802f5e4e1",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/c06a3103-d3c4-4551-80ba-1a0802f5e4e1",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441978026000,
+    "created": 1441978016000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441978026000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "911ed91b-744b-4002-9621-a9a34c4f9eeb",
+    "name": "MYSQL_DATA_B",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.103",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:07:86:f4",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.104",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:07:86:f4",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/911ed91b-744b-4002-9621-a9a34c4f9eeb",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/911ed91b-744b-4002-9621-a9a34c4f9eeb",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441978024000,
+    "created": 1441978016000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441978024000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "71b72a2a-702e-42a0-9056-627b223387e1",
+    "name": "MYSQL_SQL",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.101",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:43:d0:f7",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.106",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:43:d0:f7",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/71b72a2a-702e-42a0-9056-627b223387e1",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/71b72a2a-702e-42a0-9056-627b223387e1",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441978022000,
+    "created": 1441978015000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441978022000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "8840a389-467e-451b-880d-33183f7a2009",
+    "name": "HCT_BDSea0312e4-176f-439a-84d3-d59788688625",
+    "addresses": {
+      "addresses": {}
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/8840a389-467e-451b-880d-33183f7a2009",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/8840a389-467e-451b-880d-33183f7a2009",
+        "type": null
+      }
+    ],
+    "image": null,
+    "flavor": {
+      "id": "20b9c378-9415-45cb-8fb9-c213b276ef00",
+      "name": "f176450d-fc59-4496-b5cb-e0d0471761e8",
+      "ram": 128,
+      "vcpus": 1,
+      "disk": 0,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/20b9c378-9415-45cb-8fb9-c213b276ef00",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/20b9c378-9415-45cb-8fb9-c213b276ef00",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "error",
+    "progress": 0,
+    "fault": {
+      "code": 500,
+      "message": "Build of instance 8840a389-467e-451b-880d-33183f7a2009 aborted: Failure prepping block device.",
+      "details": null,
+      "created": 1441973381000
+    },
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441973381000,
+    "created": 1441973379000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": null,
+    "OS-EXT-STS:task_state": "networking",
+    "OS-EXT-STS:power_state": "0",
+    "OS-EXT-STS:vm_state": "error",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": null,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": [
+      {
+        "id": "51e9ff4f-ba29-4879-8113-7d35890e084f"
+      }
+    ]
+  },
+  {
+    "id": "990acf2f-782d-4707-888f-0acb07bc4b48",
+    "name": "45-gradle-e2e-br-test-suite-on-deployed-cam-icehouse-trunk-23-2015-09-11-13-33-39",
+    "addresses": {
+      "addresses": {
+        "preservedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.133",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:90:47:3a",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.162",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:90:47:3a",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/990acf2f-782d-4707-888f-0acb07bc4b48",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/990acf2f-782d-4707-888f-0acb07bc4b48",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+      "status": "ACTIVE",
+      "name": "rhel-7.1-64bit-103-camdev",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1438875828000,
+      "updated": 1438875833000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 539509248,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441971232000,
+    "created": 1441971222000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "develkey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441971232000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "de5639c4-754b-41eb-9fc0-3360add1f113",
+    "name": "45-gradle-e2e-br-test-suite-on-deployed-cam-icehouse-trunk-23-2015-09-11-13-27-29",
+    "addresses": {
+      "addresses": {
+        "preservedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.129",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:f8:a7:37",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.160",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:f8:a7:37",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/de5639c4-754b-41eb-9fc0-3360add1f113",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/de5639c4-754b-41eb-9fc0-3360add1f113",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+      "status": "ACTIVE",
+      "name": "rhel-7.1-64bit-103-camdev",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1438875828000,
+      "updated": 1438875833000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 539509248,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441970866000,
+    "created": 1441970855000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "develkey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441970866000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "3ebee7ec-02ce-4e1b-b06f-b2053285607e",
+    "name": "HCT_BDSb9ea657f-ebbd-47dc-b2ef-f209df4535c7",
+    "addresses": {
+      "addresses": {}
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/3ebee7ec-02ce-4e1b-b06f-b2053285607e",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/3ebee7ec-02ce-4e1b-b06f-b2053285607e",
+        "type": null
+      }
+    ],
+    "image": null,
+    "flavor": {
+      "id": "1afff186-4122-4811-9b36-6195a295df70",
+      "name": "59cfd2d4-0700-4820-b057-04e501c05ab6",
+      "ram": 128,
+      "vcpus": 1,
+      "disk": 0,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/1afff186-4122-4811-9b36-6195a295df70",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/1afff186-4122-4811-9b36-6195a295df70",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "error",
+    "progress": 0,
+    "fault": {
+      "code": 500,
+      "message": "Build of instance 3ebee7ec-02ce-4e1b-b06f-b2053285607e aborted: Failure prepping block device.",
+      "details": null,
+      "created": 1441968350000
+    },
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441968350000,
+    "created": 1441968348000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": null,
+    "OS-EXT-STS:task_state": "networking",
+    "OS-EXT-STS:power_state": "0",
+    "OS-EXT-STS:vm_state": "error",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": null,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": [
+      {
+        "id": "3b6ce9a8-c24d-49f9-802d-113567175f2d"
+      }
+    ]
+  },
+  {
+    "id": "9b1445bb-739e-451b-9aa9-be45acd89d06",
+    "name": "MYSQL_MGMT",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.102",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:48:e2:43",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.119",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:48:e2:43",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/9b1445bb-739e-451b-9aa9-be45acd89d06",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/9b1445bb-739e-451b-9aa9-be45acd89d06",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441963803000,
+    "created": 1441963794000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441963803000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "978985ef-4c3f-42e7-8ff4-c0460d4c830f",
+    "name": "MYSQL_SQL1_1",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.101",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:88:2a:38",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.118",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:88:2a:38",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/978985ef-4c3f-42e7-8ff4-c0460d4c830f",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/978985ef-4c3f-42e7-8ff4-c0460d4c830f",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441963804000,
+    "created": 1441963794000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441963804000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "5066c218-97cb-4077-922b-3fc186dc8d17",
+    "name": "MYSQL_DATA_B",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.104",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:7e:f8:69",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.120",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:7e:f8:69",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/5066c218-97cb-4077-922b-3fc186dc8d17",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/5066c218-97cb-4077-922b-3fc186dc8d17",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441963801000,
+    "created": 1441963793000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441963801000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "d352417d-cd0d-4f40-adce-b0fb397ad4a5",
+    "name": "MYSQL_DATA_A",
+    "addresses": {
+      "addresses": {
+        "mysql-internal-network": [
+          {
+            "version": 4,
+            "addr": "192.168.100.103",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:7a:5b:31",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.117",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:7a:5b:31",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/d352417d-cd0d-4f40-adce-b0fb397ad4a5",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/d352417d-cd0d-4f40-adce-b0fb397ad4a5",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "4ecb72c2-cdac-4709-94f3-25919135caf0",
+      "status": "ACTIVE",
+      "name": "cfw-image-centos-6-4-64bit",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434772000,
+      "updated": 1436434779000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/4ecb72c2-cdac-4709-94f3-25919135caf0",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 627414016,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441963800000,
+    "created": 1441963793000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441963800000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "d2caab92-9f86-454f-ad74-61f4f27d34b0",
+    "name": "HCT_BDS4e2c9891-f544-49b2-8511-02be336eae55",
+    "addresses": {
+      "addresses": {}
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/d2caab92-9f86-454f-ad74-61f4f27d34b0",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/d2caab92-9f86-454f-ad74-61f4f27d34b0",
+        "type": null
+      }
+    ],
+    "image": null,
+    "flavor": {
+      "id": "4af4db7a-cf05-4750-ac32-40746fda8457",
+      "name": "0fcbe730-831b-47a7-a5a6-3f16f63f7aa6",
+      "ram": 128,
+      "vcpus": 1,
+      "disk": 0,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/4af4db7a-cf05-4750-ac32-40746fda8457",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/4af4db7a-cf05-4750-ac32-40746fda8457",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "error",
+    "progress": 0,
+    "fault": {
+      "code": 500,
+      "message": "Build of instance d2caab92-9f86-454f-ad74-61f4f27d34b0 aborted: Failure prepping block device.",
+      "details": null,
+      "created": 1441961483000
+    },
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441961483000,
+    "created": 1441961481000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": null,
+    "OS-EXT-STS:task_state": "networking",
+    "OS-EXT-STS:power_state": "0",
+    "OS-EXT-STS:vm_state": "error",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": null,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": [
+      {
+        "id": "7fe191dc-5a1a-4ea1-ac5b-9f746ad25642"
+      }
+    ]
+  },
+  {
+    "id": "7a09f20c-a0cd-41c4-a3de-26ecf9983903",
+    "name": "vnf_app-test_LBS_0_VM",
+    "addresses": {
+      "addresses": {
+        "vnf_app-test_internalProvidedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.3",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:4a:29:fa",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ],
+        "vnf_app-test_externalNetworkForL3": [
+          {
+            "version": 4,
+            "addr": "192.168.0.33",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:e2:e0:58",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ],
+        "vnf_app-test_externalNetworkForL2": [
+          {
+            "version": 4,
+            "addr": "192.168.0.2",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:21:5e:dd",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ],
+        "vnf_app-test_INTERNAL_CREATED_VL_ID": [
+          {
+            "version": 4,
+            "addr": "192.168.0.2",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:3c:50:f9",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ],
+        "vnf_app-test_INTERNAL_NET_FOR_FLOATING_IP": [
+          {
+            "version": 4,
+            "addr": "192.168.0.3",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:e4:fd:e6",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.248",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:e4:fd:e6",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/7a09f20c-a0cd-41c4-a3de-26ecf9983903",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/7a09f20c-a0cd-41c4-a3de-26ecf9983903",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "63531530-34da-45dd-b014-f5d57a64cc74",
+      "status": "ACTIVE",
+      "name": "cirros",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434742000,
+      "updated": 1436434742000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/63531530-34da-45dd-b014-f5d57a64cc74",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/63531530-34da-45dd-b014-f5d57a64cc74",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/63531530-34da-45dd-b014-f5d57a64cc74",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 13147648,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "2",
+      "name": "m1.small",
+      "ram": 2048,
+      "vcpus": 1,
+      "disk": 20,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/2",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/2",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441959766000,
+    "created": 1441959755000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441959766000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "5305d31b-4545-4ab4-8f09-84ec23fd0f1e",
+    "name": "vnf_app-test_SERVICE_0_VM",
+    "addresses": {
+      "addresses": {
+        "vnf_app-test_internalProvidedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.2",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:21:7d:4c",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ],
+        "vnf_app-test_INTERNAL_CREATED_VL_ID": [
+          {
+            "version": 4,
+            "addr": "192.168.0.3",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:74:5d:47",
+            "OS-EXT-IPS:type": "fixed"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/5305d31b-4545-4ab4-8f09-84ec23fd0f1e",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/5305d31b-4545-4ab4-8f09-84ec23fd0f1e",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "815327c5-3788-414e-87fd-2f9ee30cf0f4",
+      "status": "ACTIVE",
+      "name": "ubuntu.12.04",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1436434766000,
+      "updated": 1436434769000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/815327c5-3788-414e-87fd-2f9ee30cf0f4",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/815327c5-3788-414e-87fd-2f9ee30cf0f4",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/815327c5-3788-414e-87fd-2f9ee30cf0f4",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 254935040,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441959773000,
+    "created": 1441959754000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "preservedSshKey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441959773000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "00b255d7-9bc1-45cf-b9b6-8fe1033e45f1",
+    "name": "launcher-2015-09-11-10-00-08",
+    "addresses": {
+      "addresses": {
+        "preservedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.5",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:2b:4a:9f",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.50",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:2b:4a:9f",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/00b255d7-9bc1-45cf-b9b6-8fe1033e45f1",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/00b255d7-9bc1-45cf-b9b6-8fe1033e45f1",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+      "status": "ACTIVE",
+      "name": "rhel-7.1-64bit-103-camdev",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1438875828000,
+      "updated": 1438875833000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 539509248,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441958421000,
+    "created": 1441958412000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "develkey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441958421000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "195ad968-4a13-42b3-a441-dbdc0a140592",
+    "name": "launcher-2015-09-11-09-27-25",
+    "addresses": {
+      "addresses": {
+        "preservedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.253",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:20:38:9a",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.54",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:20:38:9a",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/195ad968-4a13-42b3-a441-dbdc0a140592",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/195ad968-4a13-42b3-a441-dbdc0a140592",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+      "status": "ACTIVE",
+      "name": "rhel-7.1-64bit-103-camdev",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1438875828000,
+      "updated": 1438875833000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 539509248,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441956458000,
+    "created": 1441956450000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "develkey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441956458000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "0d2957bb-0de6-4345-ad38-d2b4e92f6f71",
+    "name": "HCT_BDS61f55f80-b31e-4b77-bb9c-6cecc9ac856a",
+    "addresses": {
+      "addresses": {}
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/0d2957bb-0de6-4345-ad38-d2b4e92f6f71",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/0d2957bb-0de6-4345-ad38-d2b4e92f6f71",
+        "type": null
+      }
+    ],
+    "image": null,
+    "flavor": {
+      "id": "8d73769a-1182-41d4-a97a-b36e46b29dd6",
+      "name": "c691b06a-6f3d-48d1-b4a1-222923f9e8dd",
+      "ram": 128,
+      "vcpus": 1,
+      "disk": 0,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/8d73769a-1182-41d4-a97a-b36e46b29dd6",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/8d73769a-1182-41d4-a97a-b36e46b29dd6",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "error",
+    "progress": 0,
+    "fault": {
+      "code": 500,
+      "message": "Build of instance 0d2957bb-0de6-4345-ad38-d2b4e92f6f71 aborted: Failure prepping block device.",
+      "details": null,
+      "created": 1441956372000
+    },
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441956372000,
+    "created": 1441956370000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "6433d468360a4cdcb30ab5b46b81a306",
+    "key_name": null,
+    "OS-EXT-STS:task_state": "networking",
+    "OS-EXT-STS:power_state": "0",
+    "OS-EXT-STS:vm_state": "error",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": null,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": [
+      {
+        "id": "59f3b7b1-33b1-41f2-a7d0-59f2ba8b208e"
+      }
+    ]
+  },
+  {
+    "id": "86843fb7-1818-44bc-983e-741c5de33a3b",
+    "name": "45-gradle-e2e-br-test-suite-on-deployed-cam-icehouse-trunk-22-2015-09-11-09-16-02",
+    "addresses": {
+      "addresses": {
+        "preservedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.242",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:ef:f8:c8",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.243",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:ef:f8:c8",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/86843fb7-1818-44bc-983e-741c5de33a3b",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/86843fb7-1818-44bc-983e-741c5de33a3b",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+      "status": "ACTIVE",
+      "name": "rhel-7.1-64bit-103-camdev",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1438875828000,
+      "updated": 1438875833000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 539509248,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "f7f6a566a9259721e5fb1e45f3c88803e3b1c02bdc8bea58567ef93f",
+    "updated": 1441955775000,
+    "created": 1441955766000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "develkey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441955774000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  },
+  {
+    "id": "e7d89e95-9c9e-4c8a-96bd-795b76efee36",
+    "name": "45-gradle-e2e-br-test-suite-on-deployed-cam-icehouse-trunk-22-2015-09-11-09-11-16",
+    "addresses": {
+      "addresses": {
+        "preservedNetwork": [
+          {
+            "version": 4,
+            "addr": "192.168.0.239",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:10:d6:02",
+            "OS-EXT-IPS:type": "fixed"
+          },
+          {
+            "version": 4,
+            "addr": "10.41.59.238",
+            "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:10:d6:02",
+            "OS-EXT-IPS:type": "floating"
+          }
+        ]
+      }
+    },
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/servers/e7d89e95-9c9e-4c8a-96bd-795b76efee36",
+        "type": null
+      },
+      {
+        "rel": "bookmark",
+        "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/servers/e7d89e95-9c9e-4c8a-96bd-795b76efee36",
+        "type": null
+      }
+    ],
+    "image": {
+      "id": "35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+      "status": "ACTIVE",
+      "name": "rhel-7.1-64bit-103-camdev",
+      "progress": 100,
+      "minRam": 0,
+      "minDisk": 0,
+      "created": 1438875828000,
+      "updated": 1438875833000,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": null
+        },
+        {
+          "rel": "alternate",
+          "href": "http://10.41.49.175:9292/dbf02241385a4f4991bdda6f85daf130/images/35f1a05a-54f8-4f3e-8cc0-b301659f9421",
+          "type": "application/vnd.openstack.image"
+        }
+      ],
+      "metaData": {},
+      "OS-EXT-IMG-SIZE:size": 539509248,
+      "metadata": {}
+    },
+    "flavor": {
+      "id": "3",
+      "name": "m1.medium",
+      "ram": 4096,
+      "vcpus": 2,
+      "disk": 40,
+      "swap": 0,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://10.41.49.175:8774/v2/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        },
+        {
+          "rel": "bookmark",
+          "href": "http://10.41.49.175:8774/dbf02241385a4f4991bdda6f85daf130/flavors/3",
+          "type": null
+        }
+      ],
+      "public": true,
+      "OS-FLV-EXT-DATA:ephemeral": 0,
+      "rxtx_factor": 1.0,
+      "OS-FLV-DISABLED:disabled": false,
+      "rxtx_quota": null,
+      "rxtx_cap": null,
+      "os-flavor-access:is_public": true
+    },
+    "accessIPv4": "",
+    "accessIPv6": "",
+    "status": "active",
+    "progress": 0,
+    "fault": null,
+    "hostId": "957707ddc31ae127cf7a44576eca1dff70fd39ddf9533cd742dfe5ac",
+    "updated": 1441955489000,
+    "created": 1441955481000,
+    "metadata": {},
+    "uuid": null,
+    "adminPass": null,
+    "config_drive": "True",
+    "tenant_id": "dbf02241385a4f4991bdda6f85daf130",
+    "user_id": "2e82e5ef1b9e4e0f88dd29c358f9b6a4",
+    "key_name": "develkey",
+    "OS-EXT-STS:task_state": null,
+    "OS-EXT-STS:power_state": "1",
+    "OS-EXT-STS:vm_state": "active",
+    "OS-EXT-SRV-ATTR:host": null,
+    "OS-EXT-SRV-ATTR:instance_name": null,
+    "OS-EXT-SRV-ATTR:hypervisor_hostname": null,
+    "OS-DCF:diskConfig": "MANUAL",
+    "OS-EXT-AZ:availability_zone": "compute-a",
+    "OS-SRV-USG:launched_at": 1441955489000,
+    "OS-SRV-USG:terminated_at": null,
+    "os-extended-volumes:volumes_attached": []
+  }
+]
