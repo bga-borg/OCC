@@ -1,6 +1,5 @@
 package com.bg.thsb;
 
-import com.woorea.openstack.nova.model.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +13,6 @@ class App {
         logger.debug("Hello world.");
 
 
-        Server server = new Server();
-        Image
     }
 
 }
