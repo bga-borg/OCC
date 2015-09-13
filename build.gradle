@@ -21,9 +21,9 @@ dependencies {
     // embedded dbs
     compile 'org.infinispan:infinispan-core:7.1.1.Final'
 
-    // db connectors
-    compile 'org.mongodb:mongodb-driver-async:3.0.2'
-
+    // mogodb
+    compile 'org.mongodb:mongodb-driver:3.1.0-SNAPSHOT'
+    compile 'org.mongodb:bson:3.0.2'
 
     // OGM - infinispan
     compile 'org.hibernate.ogm:hibernate-ogm-infinispan:4.1.3.Final'

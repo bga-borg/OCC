@@ -2,6 +2,5 @@ package com.bg.thsb.testdrive;
 
 public interface Configuration {
 
-    public static String MongoDbIP = "";
-    public static String MongoDbPort = "";
+    String MONGO_CLIENT_URI = "mongodb://192.168.1.187";
 }
