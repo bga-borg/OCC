@@ -11,19 +11,17 @@ import java.util.concurrent.*;
 import static java.util.Arrays.asList;
 
 
-public class TestThemAll implements Runnable {
-
-    Logger logger = LoggerFactory.getLogger(TestThemAll.class);
-    ExecutorService executor = Executors.newFixedThreadPool(3);
+public class TestDriveRunner implements Runnable {
 
     public static List<Class> testClasses = asList(
             TestDriveMongoDb.class
     );
-
+    Logger logger = LoggerFactory.getLogger(TestDriveRunner.class);
+    ExecutorService executor = Executors.newFixedThreadPool(3);
     private List<TestDrive> testDrives;
 
     public static void main(String[] args) {
-        new TestThemAll().run();
+        new TestDriveRunner().run();
     }
 
     @Override
@@ -39,8 +37,14 @@ public class TestThemAll implements Runnable {
             }
         }
 
+        ForAllTest:
         for (TestDrive testDrive : testDrives) {
-            testDrive.connect();
+            TestDrive.ConnectionStatus connectionStatus = testDrive.connect();
+            if (connectionStatus != TestDrive.ConnectionStatus.CONNECTED) {
+                logger.error(testDrive.getName() + " failed to connect!!!");
+                continue ForAllTest;
+            }
+            logger.info(testDrive.getName() + " connected succesfully.");
 
             List<FutureTask<TestResult>> tests = testDrive.getTests();
 
@@ -49,7 +53,7 @@ public class TestThemAll implements Runnable {
                 futureTestResults.add((Future<TestResult>) executor.submit(task));
             }
 
-            for(Future<TestResult> testResultFuture : futureTestResults){
+            for (Future<TestResult> testResultFuture : futureTestResults) {
                 TestResult testResult = null;
                 try {
                     testResult = testResultFuture.get();
@@ -59,20 +63,21 @@ public class TestThemAll implements Runnable {
                     e.printStackTrace();
                 }
 
-                if(testResult != null){
-                    System.out.println("+---------------------------------------------------------------------+");
-                    System.out.println(testResult.testName);
-                    System.out.println(testResult.log);
-                    System.out.println("Finished in: " + testResult.timeInMs + "ms");
-                    System.out.println("+---------------------------------------------------------------------+");
-                    System.out.println();
-                    System.out.println();
+                if (testResult != null) {
+                    logger.info("\n+---------------------------------------------------------------------+ " +
+                            testResult.testName + "\n" + testResult.log + "\n" +
+                            "Finished in: " + testResult.timeInMs + "ms\n " +
+                            "+---------------------------------------------------------------------+\n\n\n");
+                } else {
+                    logger.error("TestResult was null in " + testDrive.getName());
                 }
             }
 
-            testDrive.disconnect();
+            TestDrive.ConnectionStatus disconnectStatus = testDrive.disconnect();
+            if (disconnectStatus != TestDrive.ConnectionStatus.DISCONNECTED) {
+                logger.error(testDrive.getName() + " failed to disconnect!!!");
+                continue ForAllTest;
+            }
         }
-
-
     }
 }

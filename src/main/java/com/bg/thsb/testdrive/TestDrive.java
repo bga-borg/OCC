@@ -7,13 +7,14 @@ import java.util.concurrent.FutureTask;
 public interface TestDrive {
 
     ConnectionStatus connect();
+
     ConnectionStatus disconnect();
 
     String getName();
 
     List<FutureTask<TestResult>> getTests();
 
-    public static enum ConnectionStatus {
+    enum ConnectionStatus {
         DISCONNECTED,
         CONNECTED,
         ERROR

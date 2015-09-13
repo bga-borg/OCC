@@ -20,20 +20,24 @@ public class TestDriveMongoDb implements TestDrive {
 
     @Override
     public ConnectionStatus connect() {
-        // Use a Connection String
-        mongoClient = new MongoClient(Configuration.MONGO_CLIENT_URI);
-
-        /* provide custom MongoClientSettings
-        ClusterSettings clusterSettings = ClusterSettings.builder().hosts(asList(new ServerAddress("localhost"))).build();
-        MongoClientSettings settings = MongoClientSettings.builder().clusterSettings(clusterSettings).build();
-        MongoClient mongoClient = MongoClients.create(settings);
-        */
+        try {
+            mongoClient = new MongoClient(Configuration.MONGO_CLIENT_URI);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ConnectionStatus.ERROR;
+        }
 
         return ConnectionStatus.CONNECTED;
     }
 
     @Override
     public ConnectionStatus disconnect() {
+        try {
+            mongoClient.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ConnectionStatus.ERROR;
+        }
         return ConnectionStatus.DISCONNECTED;
     }
 
@@ -54,9 +58,8 @@ public class TestDriveMongoDb implements TestDrive {
 
         @Override
         public TestResult call() throws Exception {
-
             // get handle to "mydb" database
-            MongoDatabase database = mongoClient.getDatabase("mydb");
+            MongoDatabase database = mongoClient.getDatabase("test");
 
 
             // get a handle to the "test" collection
@@ -74,6 +77,9 @@ public class TestDriveMongoDb implements TestDrive {
 
             collection.insertOne(doc);
 
+            // get it (since it's the only one in there since we dropped the rest earlier on)
+            Document myDoc = collection.find().first();
+            System.out.println(myDoc.toJson());
 
             return new TestResult.Builder()
                     .setTestName("Test1")
