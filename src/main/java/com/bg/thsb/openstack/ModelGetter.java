@@ -14,9 +14,9 @@ public class ModelGetter {
 
 	public static void main(String[] args) {
 		OSClient os = OSFactory.builder()
-			.endpoint("http://10.41.49.175:5000/v2.0/")
-			.credentials("devel", "develpass")
-			.tenantName("devel")
+			.endpoint(Configuration.ENDPOINT)
+			.credentials(Configuration.USER, Configuration.PASS)
+			.tenantName(Configuration.TENANAT)
 			.authenticate();
 
 		List<? extends Server> servers = os.compute().servers().list();

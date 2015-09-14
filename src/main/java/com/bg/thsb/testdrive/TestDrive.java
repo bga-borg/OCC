@@ -2,7 +2,7 @@ package com.bg.thsb.testdrive;
 
 
 import java.util.List;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.Callable;
 
 public interface TestDrive {
 
@@ -12,7 +12,7 @@ public interface TestDrive {
 
     String getName();
 
-    List<FutureTask<TestResult>> getTests();
+    List<Callable<TestResult>> getTests();
 
     enum ConnectionStatus {
         DISCONNECTED,

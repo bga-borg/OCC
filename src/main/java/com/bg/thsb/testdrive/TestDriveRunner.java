@@ -13,8 +13,8 @@ import static java.util.Arrays.asList;
 
 public class TestDriveRunner implements Runnable {
 
-    public static List<Class> testClasses = asList(
-            TestDriveMongoDb.class
+    public static List<Class<TestDriveMongoDb>> testClasses = asList(
+        TestDriveMongoDb.class
     );
     Logger logger = LoggerFactory.getLogger(TestDriveRunner.class);
     ExecutorService executor = Executors.newFixedThreadPool(3);
@@ -46,11 +46,11 @@ public class TestDriveRunner implements Runnable {
             }
             logger.info(testDrive.getName() + " connected succesfully.");
 
-            List<FutureTask<TestResult>> tests = testDrive.getTests();
+            List<Callable<TestResult>> tests = testDrive.getTests();
 
-            List<Future<TestResult>> futureTestResults = Lists.newArrayList();
-            for (FutureTask<TestResult> task : tests) {
-                futureTestResults.add((Future<TestResult>) executor.submit(task));
+            List<Future> futureTestResults = Lists.newArrayList();
+            for (Callable<TestResult> task : tests) {
+                futureTestResults.add(executor.submit(task));
             }
 
             for (Future<TestResult> testResultFuture : futureTestResults) {
@@ -64,7 +64,7 @@ public class TestDriveRunner implements Runnable {
                 }
 
                 if (testResult != null) {
-                    logger.info("\n+---------------------------------------------------------------------+ " +
+                    logger.info("\n\n+---------------------------------------------------------------------+\n" +
                             testResult.testName + "\n" + testResult.log + "\n" +
                             "Finished in: " + testResult.timeInMs + "ms\n " +
                             "+---------------------------------------------------------------------+\n\n\n");
@@ -79,5 +79,6 @@ public class TestDriveRunner implements Runnable {
                 continue ForAllTest;
             }
         }
+
     }
 }
