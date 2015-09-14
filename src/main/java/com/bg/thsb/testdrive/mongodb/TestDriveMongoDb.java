@@ -78,18 +78,11 @@ public class TestDriveMongoDb implements TestDrive {
 
 	@Override
 	public String getName() {
-		return this.getClass().getName();
+		return this.getClass().getSimpleName();
 	}
 
 	@Override
 	public List<Callable<TestResult>> getTests() {
-
-		List<Callable<TestResult>> futureTasks = Arrays.asList(
-			test1
-		);
-
-		return futureTasks;
+		return Arrays.asList(test1);
 	}
-
-
 }
