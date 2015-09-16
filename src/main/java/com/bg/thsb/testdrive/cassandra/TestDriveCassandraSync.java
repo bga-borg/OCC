@@ -1,6 +1,7 @@
 package com.bg.thsb.testdrive.cassandra;
 
 import com.bg.thsb.testdrive.TestDrive;
+import com.bg.thsb.testdrive.TestDriveConfig;
 import com.bg.thsb.testdrive.TestResult;
 import com.datastax.driver.core.*;
 import org.slf4j.Logger;
@@ -88,7 +89,7 @@ public class TestDriveCassandraSync implements TestDrive {
 	public void connect() throws Exception {
 		// Connect to the cluster and keyspace "KEYSPACE_NAME"
 		try {
-			cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
+			cluster = Cluster.builder().addContactPoint(TestDriveConfig.CASSANDRA_SERVER_URI).build();
 			session = cluster.connect();
 
 			logger.debug("Trying to create '" + KEYSPACE_NAME + "' keyspace");

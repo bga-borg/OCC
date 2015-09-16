@@ -53,32 +53,30 @@ public class TestDriveRunner implements Runnable {
 			logger.info(testDrive.getName() + " connected succesfully.");
 
 			List<Callable<TestResult>> tests = testDrive.getTests();
+			List<Future<TestResult>> testResultFutures = Lists.newArrayList();
+			try {
+				testResultFutures = executor.invokeAll(tests);
 
-			List<Future> futureTestResults = Lists.newArrayList();
-			for (Callable<TestResult> task : tests) {
-				futureTestResults.add(executor.submit(task));
-			}
+				for (Future<TestResult> testResultFuture : testResultFutures) {
+					TestResult testResult = null;
 
-			for (Future<TestResult> testResultFuture : futureTestResults) {
-				TestResult testResult = null;
-				try {
 					testResult = testResultFuture.get();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} catch (ExecutionException e) {
-					e.printStackTrace();
-				}
 
-				if (testResult != null) {
-					logger.info("\n\n+---------------------------------------------------------------------+\n" +
-						testResult.testName + "\n\n" + testResult.log + "\n" +
-						"Finished in: " + testResult.timeInMs + "ms\n " +
-						"+---------------------------------------------------------------------+\n\n\n");
-				} else {
-					logger.error("TestResult was null in " + testDrive.getName());
+
+					if (testResult != null) {
+						logger.info("\n\n+---------------------------------------------------------------------+\n" +
+							testResult.testName + "\n\n" + testResult.log + "\n" +
+							"Finished in: " + testResult.timeInMs + "ms\n " +
+							"+---------------------------------------------------------------------+\n\n\n");
+					} else {
+						logger.error("TestResult was null in " + testDrive.getName());
+					}
 				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
 			}
-
 
 			try {
 				testDrive.disconnect();
@@ -87,7 +85,6 @@ public class TestDriveRunner implements Runnable {
 				e.printStackTrace();
 				return;
 			}
-
 		}
 
 	}
