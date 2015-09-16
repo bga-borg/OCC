@@ -1,10 +1,21 @@
 package com.bg.thsb.testdrive;
 
 public class TestResult {
+    String testName;
+    String log;
+    long timeInMs;
+
+    private TestResult(String testName, String log, long timeInMs) {
+        this.testName = testName;
+        this.log = log;
+        this.timeInMs = timeInMs;
+    }
+
+
     public static class Builder {
         private String testName;
         private String log;
-        private int timeInMs;
+        private long timeInMs;
 
         public Builder setTestName(String testName) {
             this.testName = testName;
@@ -16,7 +27,7 @@ public class TestResult {
             return this;
         }
 
-        public Builder setTimeInMs(int timeInMs) {
+        public Builder setTimeInMs(long timeInMs) {
             this.timeInMs = timeInMs;
             return this;
         }
@@ -25,14 +36,4 @@ public class TestResult {
             return new TestResult(testName, log, timeInMs);
         }
     }
-
-    private TestResult(String testName, String log, int timeInMs) {
-        this.testName = testName;
-        this.log = log;
-        this.timeInMs = timeInMs;
-    }
-
-    String testName;
-    String log;
-    int timeInMs;
 }

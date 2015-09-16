@@ -1,6 +1,6 @@
 package com.bg.thsb.testdrive;
 
-import com.bg.thsb.testdrive.redis.TestDriveRedis;
+import com.bg.thsb.testdrive.cassandra.TestDriveCassandraSync;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +13,10 @@ import static java.util.Arrays.asList;
 
 
 public class TestDriveRunner implements Runnable {
-	final static List<Class<TestDriveRedis>> testClasses = asList(
+	final static List<Class<TestDriveCassandraSync>> testClasses = asList(
 		//		TestDriveMongoDb.class,
-		TestDriveRedis.class
+		//		TestDriveRedis.class
+		TestDriveCassandraSync.class
 	);
 
 	Logger logger = LoggerFactory.getLogger(TestDriveRunner.class);
@@ -40,13 +41,15 @@ public class TestDriveRunner implements Runnable {
 			}
 		}
 
-		ForAllTest:
 		for (TestDrive testDrive : testDrives) {
-			TestDrive.ConnectionStatus connectionStatus = testDrive.connect();
-			if (connectionStatus != TestDrive.ConnectionStatus.CONNECTED) {
+			try {
+				testDrive.connect();
+			} catch (Exception e) {
 				logger.error(testDrive.getName() + " failed to connect!!!");
-				continue ForAllTest;
+				e.printStackTrace();
+				return;
 			}
+
 			logger.info(testDrive.getName() + " connected succesfully.");
 
 			List<Callable<TestResult>> tests = testDrive.getTests();
@@ -68,7 +71,7 @@ public class TestDriveRunner implements Runnable {
 
 				if (testResult != null) {
 					logger.info("\n\n+---------------------------------------------------------------------+\n" +
-						testResult.testName + "\n" + testResult.log + "\n" +
+						testResult.testName + "\n\n" + testResult.log + "\n" +
 						"Finished in: " + testResult.timeInMs + "ms\n " +
 						"+---------------------------------------------------------------------+\n\n\n");
 				} else {
@@ -76,11 +79,15 @@ public class TestDriveRunner implements Runnable {
 				}
 			}
 
-			TestDrive.ConnectionStatus disconnectStatus = testDrive.disconnect();
-			if (disconnectStatus != TestDrive.ConnectionStatus.DISCONNECTED) {
+
+			try {
+				testDrive.disconnect();
+			} catch (Exception e) {
 				logger.error(testDrive.getName() + " failed to disconnect!!!");
-				continue ForAllTest;
+				e.printStackTrace();
+				return;
 			}
+
 		}
 
 	}

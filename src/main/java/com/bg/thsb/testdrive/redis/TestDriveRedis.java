@@ -1,6 +1,7 @@
 package com.bg.thsb.testdrive.redis;
 
 import com.bg.thsb.testdrive.TestDrive;
+import com.bg.thsb.testdrive.TestDriveConfig;
 import com.bg.thsb.testdrive.TestResult;
 import redis.clients.jedis.Jedis;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 public class TestDriveRedis implements TestDrive {
+	ConnectionStatus connectionStatus = ConnectionStatus.DISCONNECTED;
 
 	private Jedis jedis;
 	Callable<TestResult> simpleSetTest = new Callable<TestResult>() {
@@ -26,30 +28,35 @@ public class TestDriveRedis implements TestDrive {
 	};
 
 	@Override
-	public ConnectionStatus connect() {
+	public void connect() {
 		try {
-			jedis = new Jedis("localhost");
+			jedis = new Jedis(TestDriveConfig.REDIS_SERVER_URI);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ConnectionStatus.ERROR;
+			this.connectionStatus = ConnectionStatus.ERROR;
 		}
-		return ConnectionStatus.CONNECTED;
+		this.connectionStatus = ConnectionStatus.CONNECTED;
 	}
 
 	@Override
-	public ConnectionStatus disconnect() {
+	public void disconnect() {
 		try {
 			jedis.disconnect();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ConnectionStatus.ERROR;
+			this.connectionStatus = ConnectionStatus.ERROR;
 		}
-		return ConnectionStatus.CONNECTED;
+		this.connectionStatus = ConnectionStatus.CONNECTED;
 	}
 
 	@Override
 	public String getName() {
 		return this.getClass().getSimpleName();
+	}
+
+	@Override
+	public ConnectionStatus getConnectionStatus() {
+		return null;
 	}
 
 	@Override

@@ -6,11 +6,13 @@ import java.util.concurrent.Callable;
 
 public interface TestDrive {
 
-    ConnectionStatus connect();
+    void connect() throws Exception;
 
-    ConnectionStatus disconnect();
+    void disconnect() throws Exception;
 
     String getName();
+
+    ConnectionStatus getConnectionStatus();
 
     List<Callable<TestResult>> getTests();
 
