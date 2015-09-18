@@ -11,7 +11,7 @@ public class SerializedServerListLoader {
 
 
 	public static void main(String[] args) throws Exception {
-		FileInputStream fileInputStream = new FileInputStream(Configuration.SERVERS_JSON_FILE);
+		FileInputStream fileInputStream = new FileInputStream(Configuration.SERVERS_FILE);
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		List<? extends Server> servers = (List<? extends Server>) objectInputStream.readObject();
 

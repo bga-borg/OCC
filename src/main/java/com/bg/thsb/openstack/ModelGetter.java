@@ -23,7 +23,7 @@ public class ModelGetter {
 		System.out.println(servers);
 
 		try {
-			FileOutputStream fileOutputStream = new FileOutputStream(Configuration.SERVERS_JSON_FILE);
+			FileOutputStream fileOutputStream = new FileOutputStream(Configuration.SERVERS_FILE);
 			ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
 			oos.writeObject(servers);
 		} catch (IOException e) {

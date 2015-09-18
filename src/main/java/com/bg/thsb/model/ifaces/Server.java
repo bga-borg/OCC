@@ -190,6 +190,17 @@ public interface Server extends ModelEntity {
 	 */
 	String getAdminPass();
 
+	enum DiskConfig {
+		MANUAL, AUTO;
+
+		@JsonCreator
+		public static DiskConfig forValue(String value) {
+			if (value != null && value.equalsIgnoreCase("auto"))
+				return DiskConfig.AUTO;
+			return DiskConfig.MANUAL;
+		}
+	}
+
 	/**
 	 * Servers contain a status attribute that can be used as an indication of the current server
 	 * state. Servers with an ACTIVE status are available for use.
@@ -254,18 +265,6 @@ public interface Server extends ModelEntity {
 		@JsonValue
 		public String value() {
 			return name().toLowerCase();
-		}
-	}
-
-
-	enum DiskConfig {
-		MANUAL, AUTO;
-
-		@JsonCreator
-		public static DiskConfig forValue(String value) {
-			if (value != null && value.equalsIgnoreCase("auto"))
-				return DiskConfig.AUTO;
-			return DiskConfig.MANUAL;
 		}
 	}
 
