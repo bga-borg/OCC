@@ -1,13 +1,13 @@
 package com.bg.thsb.openstack;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openstack4j.api.OSClient;
 import org.openstack4j.model.compute.Server;
 import org.openstack4j.openstack.OSFactory;
 
-import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 public class ModelGetter {
@@ -22,11 +22,10 @@ public class ModelGetter {
 		List<? extends Server> servers = os.compute().servers().list();
 		System.out.println(servers);
 
-		// save to json with jackson
-		ObjectMapper mapper = new ObjectMapper();
-
 		try {
-			mapper.writerWithDefaultPrettyPrinter().writeValue(new File(Configuration.SERVERS_JSON_FILE), servers);
+			FileOutputStream fileOutputStream = new FileOutputStream(Configuration.SERVERS_JSON_FILE);
+			ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+			oos.writeObject(servers);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

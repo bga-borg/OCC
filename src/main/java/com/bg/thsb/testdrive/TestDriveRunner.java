@@ -1,35 +1,33 @@
 package com.bg.thsb.testdrive;
 
-import com.bg.thsb.testdrive.cassandra.TestDriveCassandraSync;
+import com.bg.thsb.testdrive.couchdb.TestDriveCouchDb;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static java.util.Arrays.asList;
 
 
 
 public class TestDriveRunner implements Runnable {
-	final static List<Class<TestDriveCassandraSync>> testClasses = asList(
+	final static List<Class<TestDriveCouchDb>> testClasses = asList(
 		//		TestDriveMongoDb.class,
 		//		TestDriveRedis.class
-		TestDriveCassandraSync.class
+		//		TestDriveCassandraSync.class
+		TestDriveCouchDb.class
 	);
 
 	Logger logger = LoggerFactory.getLogger(TestDriveRunner.class);
 	ExecutorService executor = Executors.newFixedThreadPool(3);
 	private List<TestDrive> testDrives;
 
-	public static void main(String[] args) {
-		new TestDriveRunner().run();
-		System.exit(0);
-	}
-
-	@Override
-	public void run() {
+	TestDriveRunner() {
 		testDrives = Lists.newArrayList();
 		for (Class testClass : testClasses) {
 			try {
@@ -40,7 +38,15 @@ public class TestDriveRunner implements Runnable {
 				e.printStackTrace();
 			}
 		}
+	}
 
+	public static void main(String[] args) {
+		new TestDriveRunner().run();
+		System.exit(0);
+	}
+
+	@Override
+	public void run() {
 		for (TestDrive testDrive : testDrives) {
 			try {
 				testDrive.connect();
@@ -52,40 +58,36 @@ public class TestDriveRunner implements Runnable {
 
 			logger.info(testDrive.getName() + " connected succesfully.");
 
-			List<Callable<TestResult>> tests = testDrive.getTests();
-			List<Future<TestResult>> testResultFutures = Lists.newArrayList();
 			try {
-				testResultFutures = executor.invokeAll(tests);
+				List<Future<TestResult>> testResultFutures = executor.invokeAll(testDrive.getTests());
 
 				for (Future<TestResult> testResultFuture : testResultFutures) {
-					TestResult testResult = null;
-
-					testResult = testResultFuture.get();
-
-
+					TestResult testResult = testResultFuture.get();
 					if (testResult != null) {
 						logger.info("\n\n+---------------------------------------------------------------------+\n" +
 							testResult.testName + "\n\n" + testResult.log + "\n" +
 							"Finished in: " + testResult.timeInMs + "ms\n " +
 							"+---------------------------------------------------------------------+\n\n\n");
 					} else {
-						logger.error("TestResult was null in " + testDrive.getName());
+						throw new NullPointerException("TestResult was null in " + testDrive.getName());
 					}
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} catch (ExecutionException e) {
 				e.printStackTrace();
-			}
-
-			try {
-				testDrive.disconnect();
 			} catch (Exception e) {
-				logger.error(testDrive.getName() + " failed to disconnect!!!");
 				e.printStackTrace();
-				return;
+			} finally {
+				// try to disconnect
+				try {
+					testDrive.disconnect();
+				} catch (Exception e) {
+					logger.error(testDrive.getName() + " failed to disconnect!!!");
+					e.printStackTrace();
+					return;
+				}
 			}
 		}
-
 	}
 }
