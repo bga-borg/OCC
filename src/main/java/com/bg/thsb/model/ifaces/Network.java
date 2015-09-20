@@ -2,9 +2,6 @@ package com.bg.thsb.model.ifaces;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import org.openstack4j.common.Buildable;
-import org.openstack4j.model.common.Resource;
-import org.openstack4j.model.network.builder.NetworkBuilder;
 
 import java.util.List;
 
@@ -13,8 +10,7 @@ import java.util.List;
  *
  * @author Jeremy Unruh
  */
-public interface Network extends Resource, Buildable<NetworkBuilder> {
-
+public interface Network extends ResourceEntity {
 	/**
 	 * @return the status of the network
 	 */

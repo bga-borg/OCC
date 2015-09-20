@@ -1,23 +1,12 @@
 package com.bg.thsb.model.ifaces;
 
-import org.openstack4j.common.Buildable;
-import org.openstack4j.model.ModelEntity;
-import org.openstack4j.model.compute.builder.FloatingIPBuilder;
-
 /**
  * The Interface FloatingIP.
  *
  *
  * @author nanderson
  */
-public interface FloatingIP extends ModelEntity, Buildable<FloatingIPBuilder> {
-
-	/**
-	 * Gets the id.
-	 *
-	 * @return the id
-	 */
-	String getId();
+public interface FloatingIP extends ResourceEntity {
 
 	/**
 	 * Gets the instance id.

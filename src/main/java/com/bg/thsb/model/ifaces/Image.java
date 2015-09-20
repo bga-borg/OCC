@@ -1,11 +1,8 @@
 package com.bg.thsb.model.ifaces;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openstack4j.model.ModelEntity;
-import org.openstack4j.model.common.Link;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,17 +11,7 @@ import java.util.Map;
  *
  * @author Jeremy Unruh
  */
-public interface Image extends ModelEntity {
-
-	/**
-	 * @return the identifier of this image
-	 */
-	String getId();
-
-	/**
-	 * @return the descriptive name of the image
-	 */
-	String getName();
+public interface Image extends ResourceEntity {
 
 	/**
 	 * @return the size in bytes
@@ -42,11 +29,6 @@ public interface Image extends ModelEntity {
 	int getMinRam();
 
 	/**
-	 * @return the progress of the image during upload or setup
-	 */
-	int getProgress();
-
-	/**
 	 * @return the status of this image
 	 */
 	Status getStatus();
@@ -55,16 +37,6 @@ public interface Image extends ModelEntity {
 	 * @return the date the image was created
 	 */
 	Date getCreated();
-
-	/**
-	 * @return the date the image was last updated
-	 */
-	Date getUpdated();
-
-	/**
-	 * @return external reference links for the image
-	 */
-	List<? extends Link> getLinks();
 
 	/**
 	 * @return extra metadata/specs associated with the image

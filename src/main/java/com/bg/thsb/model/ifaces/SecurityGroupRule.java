@@ -1,16 +1,12 @@
 package com.bg.thsb.model.ifaces;
 
-import org.openstack4j.common.Buildable;
-import org.openstack4j.model.ModelEntity;
-import org.openstack4j.model.network.builder.NetSecurityGroupRuleBuilder;
-
 /**
  * The Interface SecurityGroupRule.
  *
  *
  * @author Nathan Anderson
  */
-public interface SecurityGroupRule extends ModelEntity, Buildable<NetSecurityGroupRuleBuilder> {
+public interface SecurityGroupRule extends ResourceEntity {
 
 	/**
 	 * Gets the direction.
@@ -25,13 +21,6 @@ public interface SecurityGroupRule extends ModelEntity, Buildable<NetSecurityGro
 	 * @return the ether type
 	 */
 	String getEtherType();
-
-	/**
-	 * Gets the id.
-	 *
-	 * @return the id
-	 */
-	String getId();
 
 	/**
 	 * Gets the port range max.

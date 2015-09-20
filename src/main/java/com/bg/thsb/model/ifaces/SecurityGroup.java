@@ -1,9 +1,5 @@
 package com.bg.thsb.model.ifaces;
 
-import org.openstack4j.common.Buildable;
-import org.openstack4j.model.common.Resource;
-import org.openstack4j.model.network.builder.NetSecurityGroupBuilder;
-
 import java.util.List;
 
 /**
@@ -11,7 +7,7 @@ import java.util.List;
  *
  * @author Nathan Anderson
  */
-public interface SecurityGroup extends Resource, Buildable<NetSecurityGroupBuilder> {
+public interface SecurityGroup extends ResourceEntity {
 
 	/**
 	 * Gets the description.

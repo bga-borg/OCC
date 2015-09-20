@@ -3,12 +3,8 @@ package com.bg.thsb.model.ifaces;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.CaseFormat;
-import org.openstack4j.common.Buildable;
-import org.openstack4j.model.ModelEntity;
-import org.openstack4j.model.storage.block.builder.VolumeBuilder;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -18,22 +14,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  *
  * @author Jeremy Unruh
  */
-public interface Volume extends ModelEntity, Buildable<VolumeBuilder> {
-
-	/**
-	 * @return the identifier for the volume
-	 */
-	String getId();
-
-	/**
-	 * @return the name of the volume
-	 */
-	String getName();
-
-	/**
-	 * @return the description of the volume
-	 */
-	String getDescription();
+public interface Volume extends ResourceEntity {
 
 	/**
 	 * @return the status of the volume
@@ -46,19 +27,9 @@ public interface Volume extends ModelEntity, Buildable<VolumeBuilder> {
 	int getSize();
 
 	/**
-	 * @return the zone of availability to use
-	 */
-	String getZone();
-
-	/**
 	 * @return the created date of the volume
 	 */
 	Date getCreated();
-
-	/**
-	 * @return the type of volume
-	 */
-	String getVolumeType();
 
 	/**
 	 * @return the snapshot identifier
@@ -80,15 +51,6 @@ public interface Volume extends ModelEntity, Buildable<VolumeBuilder> {
 	 */
 	Map<String, String> getMetaData();
 
-	/**
-	 * @return volume attachment data information.
-	 */
-	List<? extends VolumeAttachment> getAttachments();
-
-	/**
-	 * @return the status of volume migrate status, default null
-	 */
-	MigrationStatus getMigrateStatus();
 
 	/**
 	 * The current Volume Status
@@ -117,30 +79,4 @@ public interface Volume extends ModelEntity, Buildable<VolumeBuilder> {
 		}
 	}
 
-
-	enum MigrationStatus {
-		NONE, MIGRATING;
-
-		@JsonCreator
-		public static MigrationStatus fromValue(String migrationStatus) {
-			if (migrationStatus != null) {
-				try {
-					return valueOf(CaseFormat.LOWER_HYPHEN.to(CaseFormat.UPPER_UNDERSCORE, checkNotNull(migrationStatus, "migrationStatus")));
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				}
-			}
-			return NONE;
-		}
-
-		@JsonValue
-		public String value() {
-			return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_HYPHEN, name());
-		}
-
-		@Override
-		public String toString() {
-			return value();
-		}
-	}
 }

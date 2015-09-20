@@ -1,9 +1,6 @@
 package com.bg.thsb.model.ifaces;
 
-import org.openstack4j.common.Buildable;
-import org.openstack4j.model.ModelEntity;
 import org.openstack4j.model.storage.block.Volume.Status;
-import org.openstack4j.model.storage.block.builder.VolumeSnapshotBuilder;
 
 import java.util.Date;
 import java.util.Map;
@@ -13,22 +10,7 @@ import java.util.Map;
  *
  * @author Jeremy Unruh
  */
-public interface VolumeSnapshot extends ModelEntity, Buildable<VolumeSnapshotBuilder> {
-
-	/**
-	 * @return the snapshot identifier
-	 */
-	String getId();
-
-	/**
-	 * @return the name of the snapshot
-	 */
-	String getName();
-
-	/**
-	 * @return the description of the snapshot
-	 */
-	String getDescription();
+public interface VolumeSnapshot extends ResourceEntity {
 
 	/**
 	 * The volume identifier of an existing volume
