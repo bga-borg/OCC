@@ -11,10 +11,9 @@ public class VolumeImpl implements Volume {
 	private Status status;
 	private int size;
 	private Date created;
-	private String snapshotId;
 	private String imageRef;
-	private String sourceVolId;
 	private Map<String, String> metaData;
+	private String sourceVolid;
 
 	@Override
 	public String getId() {
@@ -22,8 +21,18 @@ public class VolumeImpl implements Volume {
 	}
 
 	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
@@ -42,18 +51,13 @@ public class VolumeImpl implements Volume {
 	}
 
 	@Override
-	public String getSnapshotId() {
-		return snapshotId;
-	}
-
-	@Override
 	public String getImageRef() {
 		return imageRef;
 	}
 
 	@Override
 	public String getSourceVolid() {
-		return sourceVolId;
+		return sourceVolid;
 	}
 
 	@Override

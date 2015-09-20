@@ -32,11 +32,6 @@ public interface Volume extends ResourceEntity {
 	Date getCreated();
 
 	/**
-	 * @return the snapshot identifier
-	 */
-	String getSnapshotId();
-
-	/**
 	 * @return the image reference identifier (if an image was associated) otherwise null
 	 */
 	String getImageRef();

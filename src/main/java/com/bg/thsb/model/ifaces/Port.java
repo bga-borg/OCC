@@ -20,12 +20,12 @@ public interface Port extends ResourceEntity {
 	/**
 	 * @return the id of the network where this port is associated with
 	 */
-	String getNetworkId();
+	Network getNetwork();
 
 	/**
 	 * @return the id of the device (e.g. server) using this port.
 	 */
-	String getDeviceId();
+	ResourceEntity getDevice();
 
 	/**
 	 * @return the set of fixed IPs this port has been assigned
@@ -42,7 +42,7 @@ public interface Port extends ResourceEntity {
 	/**
 	 * @return the security group identifiers assigned to this port
 	 */
-	List<String> getSecurityGroups();
+	List<SecurityGroup> getSecurityGroups();
 
 
 }

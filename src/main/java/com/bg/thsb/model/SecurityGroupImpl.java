@@ -8,7 +8,6 @@ import java.util.List;
 public class SecurityGroupImpl implements SecurityGroup {
 	private String description;
 	private List<? extends SecurityGroupRule> rules;
-	private String tenantId;
 	private String name;
 	private String id;
 
@@ -20,16 +19,6 @@ public class SecurityGroupImpl implements SecurityGroup {
 	@Override
 	public List<? extends SecurityGroupRule> getRules() {
 		return rules;
-	}
-
-	@Override
-	public String getTenantId() {
-		return tenantId;
-	}
-
-	@Override
-	public void setTenantId(String tenantId) {
-		this.tenantId = tenantId;
 	}
 
 	@Override

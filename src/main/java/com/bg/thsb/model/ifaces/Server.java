@@ -14,19 +14,19 @@ import java.util.Map;
  */
 public interface Server extends ResourceEntity {
 
-	String getPortId();
+	Port getPort();
 
-	String getVolumeId();
+	Volume getVolume();
 
 	/**
 	 * @return the image identifier
 	 */
-	String getImageId();
+	Image getImage();
 
 	/**
 	 * @return the flavor identifier
 	 */
-	String getFlavorId();
+	Flavor getFlavor();
 
 	/**
 	 * @return the status
@@ -42,7 +42,7 @@ public interface Server extends ResourceEntity {
 	/**
 	 * @return the securitygroups
 	 */
-	List<String> getSecurityGroupIds();
+	List<SecurityGroup> getSecurityGroups();
 
 	/**
 	 * @return the last time the server was launched

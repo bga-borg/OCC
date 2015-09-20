@@ -12,6 +12,8 @@ public class NetworkImpl implements Network {
 	private NetworkType networkType;
 	private boolean isRouterExternal;
 	private boolean isShared;
+	private String id;
+	private String name;
 
 	@Override
 	public State getStatus() {
@@ -46,5 +48,25 @@ public class NetworkImpl implements Network {
 	@Override
 	public boolean isShared() {
 		return isShared;
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
 	}
 }

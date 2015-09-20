@@ -1,6 +1,6 @@
 package com.bg.thsb.model;
 
-import com.bg.thsb.model.ifaces.Server;
+import com.bg.thsb.model.ifaces.*;
 
 import java.util.Date;
 import java.util.List;
@@ -10,19 +10,23 @@ public class ServerImpl implements Server {
 	private String id;
 	private String name;
 	private List<String> addresses;
-	private String imageId;
-	private String flavourId;
 	private Status status;
 	private Map<String, String> metaData;
-	private List<String> securityGroups;
+	private List<SecurityGroup> securityGroups;
 	private Date launchedAt;
 	private Date terminatedAt;
-	private String portId;
-	private String volumeId;
+	private Port port;
+	private Volume volume;
+	private Image image;
 
 	@Override
 	public String getId() {
 		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override
@@ -31,23 +35,28 @@ public class ServerImpl implements Server {
 	}
 
 	@Override
-	public String getPortId() {
-		return portId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
-	public String getVolumeId() {
-		return volumeId;
+	public Port getPort() {
+		return port;
 	}
 
 	@Override
-	public String getImageId() {
-		return imageId;
+	public Volume getVolume() {
+		return volume;
 	}
 
 	@Override
-	public String getFlavorId() {
-		return flavourId;
+	public Image getImage() {
+		return image;
+	}
+
+	@Override
+	public Flavor getFlavor() {
+		return null;
 	}
 
 	@Override
@@ -61,8 +70,8 @@ public class ServerImpl implements Server {
 	}
 
 	@Override
-	public List<String> getSecurityGroupIds() {
-		return securityGroups;
+	public List<SecurityGroup> getSecurityGroups() {
+		return this.securityGroups;
 	}
 
 	@Override
