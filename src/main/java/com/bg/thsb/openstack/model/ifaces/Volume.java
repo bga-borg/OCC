@@ -1,4 +1,4 @@
-package com.bg.thsb.model.ifaces;
+package com.bg.thsb.openstack.model.ifaces;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

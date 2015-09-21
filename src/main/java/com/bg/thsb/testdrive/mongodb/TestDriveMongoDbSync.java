@@ -12,7 +12,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-
+/**
+ * The Java Object Document Mapper for MongoDB: Morphia
+ *
+ */
 public class TestDriveMongoDbSync implements TestDrive {
 	ConnectionStatus connectionStatus = ConnectionStatus.DISCONNECTED;
 
@@ -24,7 +27,6 @@ public class TestDriveMongoDbSync implements TestDrive {
 		public TestResult call() throws Exception {
 			// get handle to "mydb" database
 			MongoDatabase database = mongoClient.getDatabase("test");
-
 
 			// get a handle to the "test" collection
 			MongoCollection<Document> collection = database.getCollection("test");

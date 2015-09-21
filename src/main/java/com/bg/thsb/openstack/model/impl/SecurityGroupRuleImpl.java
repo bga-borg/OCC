@@ -1,6 +1,6 @@
-package com.bg.thsb.model;
+package com.bg.thsb.openstack.model.impl;
 
-import com.bg.thsb.model.ifaces.SecurityGroupRule;
+import com.bg.thsb.openstack.model.ifaces.SecurityGroupRule;
 
 public class SecurityGroupRuleImpl implements SecurityGroupRule {
 	private Integer portRangeMax;

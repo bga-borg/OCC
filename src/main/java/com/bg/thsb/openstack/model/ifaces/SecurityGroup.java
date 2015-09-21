@@ -1,4 +1,4 @@
-package com.bg.thsb.model.ifaces;
+package com.bg.thsb.openstack.model.ifaces;
 
 import java.util.List;
 

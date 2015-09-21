@@ -1,6 +1,6 @@
-package com.bg.thsb.model;
+package com.bg.thsb.openstack.model.impl;
 
-import com.bg.thsb.model.ifaces.Image;
+import com.bg.thsb.openstack.model.ifaces.Image;
 
 import java.util.Date;
 import java.util.Map;

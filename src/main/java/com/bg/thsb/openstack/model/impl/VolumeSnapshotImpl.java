@@ -1,6 +1,6 @@
-package com.bg.thsb.model;
+package com.bg.thsb.openstack.model.impl;
 
-import com.bg.thsb.model.ifaces.VolumeSnapshot;
+import com.bg.thsb.openstack.model.ifaces.VolumeSnapshot;
 import org.openstack4j.model.storage.block.Volume;
 
 import java.util.Date;

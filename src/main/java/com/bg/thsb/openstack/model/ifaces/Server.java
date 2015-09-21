@@ -1,4 +1,4 @@
-package com.bg.thsb.model.ifaces;
+package com.bg.thsb.openstack.model.ifaces;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -16,22 +16,32 @@ public interface Server extends ResourceEntity {
 
 	Port getPort();
 
+	void setPort(Port p);
+
 	Volume getVolume();
+
+	void setVolume(Volume v);
 
 	/**
 	 * @return the image identifier
 	 */
 	Image getImage();
 
+	void setImage(Image i);
+
 	/**
 	 * @return the flavor identifier
 	 */
 	Flavor getFlavor();
 
+	void setFlavor(Flavor f);
+
 	/**
 	 * @return the status
 	 */
 	Status getStatus();
+
+	void setStatus(Status s);
 
 
 	/**
@@ -49,10 +59,14 @@ public interface Server extends ResourceEntity {
 	 */
 	Date getLaunchedAt();
 
+	void setLauchedAt(Date lA);
+
 	/**
 	 * @return the last termination date
 	 */
 	Date getTerminatedAt();
+
+	void setTerminatedAt(Date tA);
 
 	/**
 	 * Servers contain a status attribute that can be used as an indication of the current server

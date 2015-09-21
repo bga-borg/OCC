@@ -1,9 +1,9 @@
-package com.bg.thsb.model;
+package com.bg.thsb.openstack.model.impl;
 
-import com.bg.thsb.model.ifaces.Network;
-import com.bg.thsb.model.ifaces.Port;
-import com.bg.thsb.model.ifaces.ResourceEntity;
-import com.bg.thsb.model.ifaces.SecurityGroup;
+import com.bg.thsb.openstack.model.ifaces.Network;
+import com.bg.thsb.openstack.model.ifaces.Port;
+import com.bg.thsb.openstack.model.ifaces.ResourceEntity;
+import com.bg.thsb.openstack.model.ifaces.SecurityGroup;
 
 import java.util.List;
 import java.util.Map;

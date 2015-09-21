@@ -1,6 +1,6 @@
-package com.bg.thsb.model;
+package com.bg.thsb.openstack.model.impl;
 
-import com.bg.thsb.model.ifaces.Network;
+import com.bg.thsb.openstack.model.ifaces.Network;
 
 import java.util.List;
 

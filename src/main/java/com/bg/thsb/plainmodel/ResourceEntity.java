@@ -1,4 +1,4 @@
-package com.bg.thsb.model.ifaces;
+package com.bg.thsb.plainmodel;
 
 import java.io.Serializable;
 

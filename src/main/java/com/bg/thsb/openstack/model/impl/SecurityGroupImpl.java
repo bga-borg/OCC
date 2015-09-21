@@ -1,7 +1,7 @@
-package com.bg.thsb.model;
+package com.bg.thsb.openstack.model.impl;
 
-import com.bg.thsb.model.ifaces.SecurityGroup;
-import com.bg.thsb.model.ifaces.SecurityGroupRule;
+import com.bg.thsb.openstack.model.ifaces.SecurityGroup;
+import com.bg.thsb.openstack.model.ifaces.SecurityGroupRule;
 
 import java.util.List;
 
