@@ -1,6 +1,6 @@
 package com.bg.thsb.testdrive;
 
-import com.bg.thsb.testdrive.couchdb.TestDriveCouchDb;
+import com.bg.thsb.testdrive.infinispan.TestDriveInfinispanEmbedded;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +16,11 @@ import static java.util.Arrays.asList;
 
 
 public class TestDriveRunner implements Runnable {
-	final static List<Class<TestDriveCouchDb>> testClasses = asList(
+	final static List<Class<TestDriveInfinispanEmbedded>> testClasses = asList(
 		//		TestDriveMongoDb.class,
 		//		TestDriveRedis.class
 		//		TestDriveCassandraSync.class
-		TestDriveCouchDb.class
+		TestDriveInfinispanEmbedded.class
 	);
 
 	Logger logger = LoggerFactory.getLogger(TestDriveRunner.class);

@@ -8,7 +8,9 @@
     <cache-container name="default" default-cache="defaultCache">
 
 
-        <local-cache name="objectInMem"/>
+        <local-cache name="objectInMem">
+            <expiration lifespan="100000" max-idle="1500" interval="1000"/>
+        </local-cache>
 
         <local-cache name="objectOnDisk">
             <persistence passivation="false">
@@ -23,6 +25,8 @@
                     <!--write-behind flush-lock-timeout="15000" thread-pool-size="5"/ -->
                 </file-store>
             </persistence>
+
+
         </local-cache>
 
         <local-cache name="asyncCache"/>
