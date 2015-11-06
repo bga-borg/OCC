@@ -1,4 +1,4 @@
-package com.bg.thsb;
+package com.bg.thsb.config;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 

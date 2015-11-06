@@ -1,4 +1,4 @@
-package com.bg.thsb;
+package com.bg.thsb.helper;
 
 import java.io.IOException;
 

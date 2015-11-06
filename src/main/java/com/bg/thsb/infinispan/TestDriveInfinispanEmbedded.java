@@ -1,4 +1,4 @@
-package com.bg.thsb.testdrive.infinispan;
+package com.bg.thsb.infinispan;
 
 import com.bg.thsb.testdrive.TestDrive;
 import com.bg.thsb.testdrive.TestResult;

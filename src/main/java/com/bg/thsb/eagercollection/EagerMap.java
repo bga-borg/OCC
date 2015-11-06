@@ -1,4 +1,4 @@
-package com.bg.thsb.openstack.eagercollection;
+package com.bg.thsb.eagercollection;
 
 import java.util.Collection;
 import java.util.Map;

@@ -1,9 +1,10 @@
 package com.bg.thsb.testdrive;
 
-import com.bg.thsb.testdrive.infinispan.TestDriveInfinispanEmbedded;
+import com.bg.thsb.infinispan.TestDriveInfinispanEmbedded;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -13,13 +14,9 @@ import java.util.concurrent.Future;
 
 import static java.util.Arrays.asList;
 
-
-
+@Component
 public class TestDriveRunner implements Runnable {
 	final static List<Class<TestDriveInfinispanEmbedded>> testClasses = asList(
-		//		TestDriveMongoDb.class,
-		//		TestDriveRedis.class
-		//		TestDriveCassandraSync.class
 		TestDriveInfinispanEmbedded.class
 	);
 
@@ -27,7 +24,7 @@ public class TestDriveRunner implements Runnable {
 	ExecutorService executor = Executors.newFixedThreadPool(3);
 	private List<TestDrive> testDrives;
 
-	TestDriveRunner() {
+	public TestDriveRunner() {
 		testDrives = Lists.newArrayList();
 		for (Class testClass : testClasses) {
 			try {
