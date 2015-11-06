@@ -4,7 +4,7 @@ package com.bg.thsb.plainmodel;
  * Volume
  *
  */
-public class Volume implements ResourceEntity {
+public class Volume extends CachedResource {
 	private String id;
 	private String name;
 

@@ -1,9 +1,10 @@
 package com.bg.thsb.testdrive.infinispan;
 
+import com.bg.thsb.plainmodel.PlainModelFactory;
+import com.bg.thsb.plainmodel.Server;
 import com.bg.thsb.testdrive.TestResult;
 import org.infinispan.Cache;
 
-import java.util.Random;
 import java.util.concurrent.Callable;
 
 /**
@@ -20,13 +21,11 @@ public class LifeSpanTest implements Callable<TestResult> {
 	@Override
 	public TestResult call() throws Exception {
 
-		for (int i = 0; i < 100; i++) {
-			final int nextInt = new Random(i).nextInt(500);
-			cache.put(i, nextInt);
-			Thread.sleep(nextInt);
-			System.out.print("Added " + i + ". " + cache.get(i) + "; ");
-			System.out.println("Size: " + cache.size());
-		}
+		Server s = PlainModelFactory.getPlainServerWithVolumes("Server1");
+
+		cache.put("Server1", s);
+
+		Server server1 = (Server) cache.get("Server1");
 
 		return new TestResult.Builder()
 			.setLog("")

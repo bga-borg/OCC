@@ -8,9 +8,14 @@ import java.util.List;
  * PlainModelFactory
  */
 public class PlainModelFactory {
-	public static Server getPlainServer() {
-		Image image = new Image();
-		image.setName("MyImage1");
+
+	/**
+	 * Returns a Server with 10 attached volumes as list
+	 *
+	 * @param nameOfServer
+	 * @return
+	 */
+	public static Server getPlainServerWithVolumes(String nameOfServer) {
 
 		List<Volume> volumes = Lists.newArrayList();
 		for (int i = 0; i < 100; i++) {
@@ -18,8 +23,7 @@ public class PlainModelFactory {
 		}
 
 		Server server = new Server.ServerBuilder()
-			.setName("MyServer1")
-			.setImage(image)
+				.setName(nameOfServer)
 			.setVolumes(volumes)
 			.build();
 

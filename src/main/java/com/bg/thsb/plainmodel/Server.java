@@ -8,7 +8,7 @@ import java.util.List;
  * Server
  *
  */
-public class Server implements ResourceEntity {
+public class Server extends CachedResource {
 	private String id;
 	private String name;
 

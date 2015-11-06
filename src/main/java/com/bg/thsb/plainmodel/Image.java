@@ -4,7 +4,7 @@ package com.bg.thsb.plainmodel;
  * Image
  *
  */
-public class Image implements ResourceEntity {
+public class Image extends CachedResource {
 	private String id;
 	private String name;
 
