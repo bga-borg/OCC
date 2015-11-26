@@ -1,124 +1,153 @@
 package com.bg.thsb.eagercollection;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import com.bg.thsb.plainmodel.ResourceEntity;
+import com.google.common.base.Function;
+import com.google.common.collect.FluentIterable;
+import org.infinispan.Cache;
+import org.springframework.beans.factory.annotation.Autowired;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import javax.annotation.Nullable;
+import java.util.*;
 
 public class EagerList<E> implements List<E> {
 
+    @Autowired
+    Cache<String, Object> infinispanCache;
+
+    List<String> storedKeys = new ArrayList<>();
+
     @Override
     public int size() {
-        return 0;
+        return storedKeys.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return storedKeys.isEmpty();
     }
 
     @Override
-    public boolean contains(Object o) {
-        return false;
+    public boolean contains(final Object o) {
+        // todo optimize
+        return FluentIterable.from(storedKeys).filter(key -> {
+            return infinispanCache.get(key).equals(o);
+        }).first().isPresent();
     }
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return FluentIterable.from(storedKeys).transform(new Function<String, Object>() {
+            @Nullable
+            @Override
+            public Object apply(String key) {
+                return infinispanCache.get(key);
+            }
+        }).toArray(Object.class);
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+        T[] arr = a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), storedKeys.size());
+
+        // todo not that easy
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean add(E e) {
-        return false;
+        String key = ((ResourceEntity) e).getId();
+        infinispanCache.put(key, e);
+        // todo what to return
+        return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        String key = ((ResourceEntity) o).getId();
+        // here comes the interesting part
+        // remove the item id from the list but not from the cache
+        // todo when to remove from the cache?
+        return storedKeys.remove(key);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public void clear() {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public E get(int index) {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public E set(int index, E element) {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public void add(int index, E element) {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public E remove(int index) {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        throw new NotImplementedException();
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        throw new NotImplementedException();
     }
 
     @Override
     public ListIterator<E> listIterator() {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+        throw new NotImplementedException();
     }
 
     @Override
     public List<E> subList(int fromIndex, int toIndex) {
-        return null;
+        throw new NotImplementedException();
     }
 }
