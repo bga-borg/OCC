@@ -4,6 +4,8 @@ import com.bg.thsb.plainmodel.ResourceEntity;
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import org.infinispan.Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -14,6 +16,8 @@ public class EagerList<E> implements List<E> {
 
     @Autowired
     Cache<String, Object> infinispanCache;
+
+    Logger logger = LoggerFactory.getLogger(EagerList.class);
 
     List<String> storedKeys = new ArrayList<>();
 
@@ -29,7 +33,6 @@ public class EagerList<E> implements List<E> {
 
     @Override
     public boolean contains(final Object o) {
-        // todo optimize
         return FluentIterable.from(storedKeys).filter(key -> {
             return infinispanCache.get(key).equals(o);
         }).first().isPresent();
@@ -53,32 +56,36 @@ public class EagerList<E> implements List<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        T[] arr = a = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), storedKeys.size());
-
-        // todo not that easy
-        throw new NotImplementedException();
+        T[] arr = (T[]) java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), storedKeys.size());
+        for (int i = 0; i < storedKeys.size(); i++) {
+            arr[i] = (T) infinispanCache.get(storedKeys.get(i));
+        }
+        return arr;
     }
 
     @Override
     public boolean add(E e) {
         String key = ((ResourceEntity) e).getId();
         infinispanCache.put(key, e);
-        // todo what to return
         return true;
     }
 
     @Override
     public boolean remove(Object o) {
         String key = ((ResourceEntity) o).getId();
-        // here comes the interesting part
-        // remove the item id from the list but not from the cache
-        // todo when to remove from the cache?
         return storedKeys.remove(key);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        throw new NotImplementedException();
+        storedKeys.containsAll(FluentIterable.from(c).transform(new Function<Object, String>() {
+            @Nullable
+            @Override
+            public String apply(@Nullable Object input) {
+                return ((ResourceEntity) input).getId();
+            }
+        }).toList());
+        return false;
     }
 
     @Override
@@ -103,37 +110,49 @@ public class EagerList<E> implements List<E> {
 
     @Override
     public void clear() {
-        throw new NotImplementedException();
+        storedKeys.clear();
     }
 
     @Override
     public E get(int index) {
-        throw new NotImplementedException();
+        String id = storedKeys.get(index);
+        E element = (E) infinispanCache.get(id);
+        return element;
     }
 
     @Override
     public E set(int index, E element) {
-        throw new NotImplementedException();
+        String oldEntityId = storedKeys.get(index);
+        ResourceEntity resourceEntity = (ResourceEntity) element;
+        storedKeys.set(index, resourceEntity.getId());
+        infinispanCache.put(resourceEntity.getId(), resourceEntity);
+        return (E) infinispanCache.get(oldEntityId);
     }
 
     @Override
     public void add(int index, E element) {
-        throw new NotImplementedException();
+        ResourceEntity resourceEntity = (ResourceEntity) element;
+        infinispanCache.put(resourceEntity.getId(), element);
+        storedKeys.add(index, resourceEntity.getId());
     }
 
     @Override
     public E remove(int index) {
-        throw new NotImplementedException();
+        E toReturn = (E) infinispanCache.get(storedKeys.get(index));
+        storedKeys.remove(index);
+        return toReturn;
     }
 
     @Override
     public int indexOf(Object o) {
-        throw new NotImplementedException();
+        ResourceEntity resourceEntity = (ResourceEntity) o;
+        return storedKeys.indexOf(resourceEntity.getId());
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        throw new NotImplementedException();
+        ResourceEntity resourceEntity = (ResourceEntity) o;
+        return storedKeys.lastIndexOf(resourceEntity.getId());
     }
 
     @Override
