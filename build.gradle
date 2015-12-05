@@ -1,11 +1,30 @@
 apply plugin: 'java'
 
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.8.RELEASE")
+    }
+}
+
 repositories {
     maven {
         url 'https://oss.sonatype.org/content/repositories/snapshots'
     }
     jcenter()
+
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://lightadmin.org/nexus/content/repositories/releases" }
+    maven { url "http://lightadmin.org/nexus/content/repositories/snapshots" }
 }
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.+'
     compile 'ch.qos.logback:logback-classic:1.+'
@@ -22,11 +41,20 @@ dependencies {
     compile 'org.infinispan:infinispan-core:7.1.1.Final'
 
     // Spring
-    compile 'org.springframework:spring-context:4.2.2.RELEASE'
-    compile 'org.springframework:spring-core:4.2.2.RELEASE'
-    compile 'org.springframework:spring-beans:4.2.2.RELEASE'
+//    compile 'org.springframework:spring-context:4.2.2.RELEASE'
+//    compile 'org.springframework:spring-core:4.2.2.RELEASE'
+//    compile 'org.springframework:spring-beans:4.2.2.RELEASE'
 
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+//    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.springframework.boot:spring-boot-starter-logging"
 
     testCompile 'junit:junit:4.11'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        exclude(module: 'commons-logging')
+    }
 }
 

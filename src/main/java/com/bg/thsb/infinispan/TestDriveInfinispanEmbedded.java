@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-/*
-	TODO Complete Infinispan connect/disconnect
-	TODO Basic tests
-  */
 public class TestDriveInfinispanEmbedded implements TestDrive {
 
 	private Cache<Object, Object> cache;

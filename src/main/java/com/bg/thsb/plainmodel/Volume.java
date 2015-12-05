@@ -37,6 +37,14 @@ public class Volume extends CachedResource {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Volume{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public static class VolumeBuilder {
 
         private String id;

@@ -1,12 +1,13 @@
 package com.bg.thsb.eagercollection;
 
+import com.bg.thsb.config.CacheWrapper;
 import com.bg.thsb.plainmodel.ResourceEntity;
 import com.google.common.base.Function;
+import com.google.common.base.Optional;
 import com.google.common.collect.FluentIterable;
 import org.infinispan.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.Nullable;
@@ -14,28 +15,35 @@ import java.util.*;
 
 public class EagerList<E> implements List<E> {
 
-    @Autowired
-    Cache<String, Object> infinispanCache;
-
     Logger logger = LoggerFactory.getLogger(EagerList.class);
-
     List<String> storedKeys = new ArrayList<>();
+    private Cache<String, Object> infinispanCache = CacheWrapper.getCache();
 
     @Override
     public int size() {
+        cleanup();
         return storedKeys.size();
     }
 
     @Override
     public boolean isEmpty() {
+        cleanup();
         return storedKeys.isEmpty();
     }
 
     @Override
     public boolean contains(final Object o) {
-        return FluentIterable.from(storedKeys).filter(key -> {
+        Optional<String> id = FluentIterable.from(storedKeys).filter(key -> {
             return infinispanCache.get(key).equals(o);
-        }).first().isPresent();
+        }).first();
+
+        if (id.isPresent()) {
+            if (infinispanCache.get(id.get()) != null) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
@@ -66,6 +74,7 @@ public class EagerList<E> implements List<E> {
     @Override
     public boolean add(E e) {
         String key = ((ResourceEntity) e).getId();
+        storedKeys.add(key);
         infinispanCache.put(key, e);
         return true;
     }
@@ -168,5 +177,36 @@ public class EagerList<E> implements List<E> {
     @Override
     public List<E> subList(int fromIndex, int toIndex) {
         throw new NotImplementedException();
+    }
+
+    @Override
+    public String toString() {
+        return currentState();
+    }
+
+    public String currentState() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("Stored keys: " + storedKeys.toString());
+        stringBuffer.append("\n");
+        stringBuffer.append("Objects in list: " + storedKeys.size());
+        stringBuffer.append("\n");
+        stringBuffer.append("Objects alive: " + getAliveObjectCount());
+        return stringBuffer.toString();
+    }
+
+    int getAliveObjectCount() {
+        int aliveObjectsCount = 0;
+        for (String storedKey : storedKeys) {
+            if (infinispanCache.get(storedKey) != null) aliveObjectsCount++;
+        }
+        return aliveObjectsCount;
+    }
+
+    void cleanup() {
+        for (ListIterator<String> it = storedKeys.listIterator(); it.hasNext(); ) {
+            if (infinispanCache.get(it.next()) == null) {
+                it.remove();
+            }
+        }
     }
 }

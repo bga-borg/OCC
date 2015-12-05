@@ -1,8 +1,7 @@
 package com.bg.thsb.plainmodel;
 
-import com.google.common.collect.Lists;
+import com.bg.thsb.eagercollection.EagerList;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,13 +13,13 @@ public class Server extends CachedResource {
     private String name;
 
     private Image image;
-    private List<Volume> volumes;
+    private EagerList<Volume> volumes;
 
     public Server() {
-        volumes = Lists.newArrayList();
+        volumes = new EagerList<>();
     }
 
-    public Server(String id, String name, Image image, List<Volume> volumes) {
+    public Server(String id, String name, Image image, EagerList<Volume> volumes) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -31,7 +30,7 @@ public class Server extends CachedResource {
         return volumes;
     }
 
-    public void setVolumes(List<Volume> volumes) {
+    public void setVolumes(EagerList<Volume> volumes) {
         this.volumes = volumes;
     }
 
@@ -68,7 +67,7 @@ public class Server extends CachedResource {
         private String id;
         private String name;
         private Image image;
-        private List<Volume> volumes = new ArrayList<>();
+        private EagerList<Volume> volumes;
 
         public ServerBuilder setName(String name) {
             this.name = name;
@@ -85,8 +84,17 @@ public class Server extends CachedResource {
             return this;
         }
 
-        public ServerBuilder setVolumes(List<Volume> volumes) {
+        public ServerBuilder setVolumes(EagerList<Volume> volumes) {
             this.volumes = volumes;
+            return this;
+        }
+
+        public ServerBuilder setVolumes(List<Volume> volumes) {
+            EagerList<Volume> eagerList = new EagerList<>();
+            for (Volume volume : volumes) {
+                eagerList.add(volume);
+            }
+            this.setVolumes(eagerList);
             return this;
         }
 
@@ -95,7 +103,7 @@ public class Server extends CachedResource {
                 id = UUID.randomUUID().toString();
 
             if (volumes == null) {
-                volumes = Lists.newArrayList();
+                volumes = new EagerList<>();
             }
             return new Server(id, name, image, volumes);
         }
