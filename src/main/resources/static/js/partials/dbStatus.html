@@ -1,0 +1,26 @@
+<h3 class="sub-header">Database Status</h3>
+<div ng-controller="dbStatus as dS">
+    <div class="btn btn-primary" ng-click="dS.getStatus()">Get db status</div>
+    <div class="btn btn-primary" ng-click="dS.runSimpleTest()">runSimpleTest</div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, value) in dS.dbStatus.content">
+                <td>{{key}}</td>
+                <td class="api-key">{{value}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button ng-click="dS.displayDebug = !dS.displayDebug">Debug</button>
+    <pre ng-show="dS.displayDebug" class="ng-hide">{{dS.dbStatus | json}}</pre>
+
+</div>

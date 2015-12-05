@@ -9,7 +9,7 @@
 
 
         <local-cache name="objectInMem">
-            <expiration lifespan="-1" max-idle="8000" interval="1000"/>
+            <expiration lifespan="7000" max-idle="8000" interval="1000"/>
         </local-cache>
 
         <local-cache name="objectOnDisk">

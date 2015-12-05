@@ -1,4 +1,4 @@
-package com.bg.thsb.config;
+package com.bg.thsb.infinispan;
 
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;

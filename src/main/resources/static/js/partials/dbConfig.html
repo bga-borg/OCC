@@ -1,0 +1,6 @@
+<h3 class="sub-header">Infinispan Configuration</h3>
+<div ng-controller="dbConfig as dC">
+    <div class="btn btn-primary" ng-click="dC.getConfig()">Refresh</div>
+
+    <pre>{{dC.dbConfig | json}}</pre>
+</div>

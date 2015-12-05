@@ -1,6 +1,6 @@
 package com.bg.thsb.eagercollection;
 
-import com.bg.thsb.config.CacheWrapper;
+import com.bg.thsb.infinispan.CacheWrapper;
 import com.bg.thsb.plainmodel.ResourceEntity;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
