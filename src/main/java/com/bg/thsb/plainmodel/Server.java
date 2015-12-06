@@ -1,6 +1,10 @@
 package com.bg.thsb.plainmodel;
 
 import com.bg.thsb.eagercollection.EagerList;
+import com.bg.thsb.eagercollection.EagerListSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +17,8 @@ public class Server extends CachedResource {
     private String name;
 
     private Image image;
+
+    @JsonSerialize(using = EagerListSerializer.class)
     private EagerList<Volume> volumes;
 
     public Server() {
@@ -107,5 +113,10 @@ public class Server extends CachedResource {
             }
             return new Server(id, name, image, volumes);
         }
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -16,13 +16,11 @@ public class DashboardController {
     @Autowired
     EagerListTrials eagerListTrials;
 
+    Thread testThread = new Thread();
+
     @RequestMapping("/")
     public ModelAndView index() {
         ModelAndView mV = new ModelAndView();
-
-        Cache<String, Object> stringObjectCache = CacheWrapper.getCache();
-        stringObjectCache.getStatus();
-
         mV.setViewName("index");
         return mV;
     }
@@ -30,13 +28,25 @@ public class DashboardController {
     @RequestMapping("/runSimpleTest")
     @ResponseBody
     public void runSimpleTest() {
-        new Thread(() -> {
+        if (testThread != null && testThread.isAlive()) {
+            return;
+        }
+
+        testThread = new Thread(() -> {
             try {
                 eagerListTrials.testCacheMiss();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }).run();
+        });
+
+        testThread.run();
+    }
+
+    @RequestMapping("/cleanupServers")
+    @ResponseBody
+    public void cleanupServers(){
+        eagerListTrials.cleanupServers();
     }
 
     @RequestMapping("/dbstatus")
@@ -45,10 +55,13 @@ public class DashboardController {
         DbStatus dbStatus = new DbStatus();
 
         Cache<String, Object> stringObjectCache = CacheWrapper.getCache();
-        dbStatus.status = stringObjectCache.getStatus();
+        dbStatus.infinispanStatus = stringObjectCache.getStatus();
         dbStatus.listeners = stringObjectCache.getListeners();
         dbStatus.keySet = stringObjectCache.keySet();
         dbStatus.numOfElems = stringObjectCache.size();
+        dbStatus.serverList.add(eagerListTrials.server1);
+        dbStatus.serverList.add(eagerListTrials.server2);
+        dbStatus.testThreadIsAlive = testThread.isAlive();
         for (String key : dbStatus.keySet) {
             dbStatus.content.put(key, stringObjectCache.get(key).toString());
         }
@@ -64,7 +77,6 @@ public class DashboardController {
 
     public static class StringWrapper {
         public String content;
-
         public StringWrapper(String c) {
             content = c;
         }

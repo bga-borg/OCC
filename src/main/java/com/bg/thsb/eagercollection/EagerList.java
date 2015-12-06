@@ -1,6 +1,7 @@
 package com.bg.thsb.eagercollection;
 
 import com.bg.thsb.infinispan.CacheWrapper;
+import com.bg.thsb.plainmodel.CachedResource;
 import com.bg.thsb.plainmodel.ResourceEntity;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
@@ -12,10 +13,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class EagerList<E> implements List<E> {
 
-    Logger logger = LoggerFactory.getLogger(EagerList.class);
+    private Logger logger = LoggerFactory.getLogger(EagerList.class);
     List<String> storedKeys = new ArrayList<>();
     private Cache<String, Object> infinispanCache = CacheWrapper.getCache();
 
@@ -75,7 +77,11 @@ public class EagerList<E> implements List<E> {
     public boolean add(E e) {
         String key = ((ResourceEntity) e).getId();
         storedKeys.add(key);
-        infinispanCache.put(key, e);
+        if (e instanceof CachedResource && ((CachedResource) e).isOnlyReference()) {
+            infinispanCache.put(key, e);
+        } else {
+            infinispanCache.put(key, e, -1, TimeUnit.DAYS);
+        }
         return true;
     }
 
@@ -188,19 +194,11 @@ public class EagerList<E> implements List<E> {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("Stored keys: " + storedKeys.toString());
         stringBuffer.append("\n");
-        stringBuffer.append("Objects in list: " + storedKeys.size());
+        stringBuffer.append("Keys in list: " + storedKeys.size());
         stringBuffer.append("\n");
-        stringBuffer.append("Objects alive: " + getAliveObjectCount());
         return stringBuffer.toString();
     }
 
-    int getAliveObjectCount() {
-        int aliveObjectsCount = 0;
-        for (String storedKey : storedKeys) {
-            if (infinispanCache.get(storedKey) != null) aliveObjectsCount++;
-        }
-        return aliveObjectsCount;
-    }
 
     void cleanup() {
         for (ListIterator<String> it = storedKeys.listIterator(); it.hasNext(); ) {
@@ -208,5 +206,19 @@ public class EagerList<E> implements List<E> {
                 it.remove();
             }
         }
+    }
+
+    public String toJson() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("[");
+        for (String storedKey : storedKeys) {
+            ResourceEntity resourceEntity = (ResourceEntity) infinispanCache.get(storedKey);
+            if (resourceEntity == null) continue;
+            stringBuffer.append("{ ");
+            stringBuffer.append("\"id\": \"" + resourceEntity.getId() + "\", \"name\": \"" + resourceEntity.getName() + "\"");
+            stringBuffer.append(" }, ");
+        }
+        stringBuffer.append("]");
+        return stringBuffer.toString();
     }
 }

@@ -11,7 +11,9 @@ requirejs.config({
         'lodash': 'lib/lodash.min',
         'async': 'lib/require-plugins/async',
         'goog': 'lib/require-plugins/goog',
-        'propertyParser': 'lib/require-plugins/propertyParser'
+        'propertyParser': 'lib/require-plugins/propertyParser',
+        'gojsDirective': 'directives/gojs',
+        'gojs': 'lib/go'
     },
 
     shim: {
@@ -26,6 +28,9 @@ requirejs.config({
         'angularRoute': ['angular'],
         bootstrap: {
             deps: ["less!../css/dashboard.less", "css!../css/bootstrap.min"]
+        },
+        gojsDirective: {
+            deps: ["gojs"]
         }
     },
 

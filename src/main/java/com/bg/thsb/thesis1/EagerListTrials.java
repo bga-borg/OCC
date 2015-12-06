@@ -1,45 +1,52 @@
 package com.bg.thsb.thesis1;
 
+import com.bg.thsb.infinispan.CacheWrapper;
 import com.bg.thsb.plainmodel.Server;
 import com.bg.thsb.plainmodel.Volume;
 import com.google.common.collect.Lists;
+import org.infinispan.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-/**
- * Created by bg on 2015. 12. 04..
- */
 @Component
 public class EagerListTrials {
     public static final Logger logger = LoggerFactory.getLogger(EagerListTrials.class);
+    Cache<String, Object> cache = CacheWrapper.getCache();
 
+    public Server server1 = null;
+    public Server server2 = null;
 
     public void testCacheMiss() throws InterruptedException {
-        Server server = new Server.ServerBuilder().setName("Dizzy").build();
+        if (server1 == null)
+            server1 = new Server.ServerBuilder().setName("Server 1").build();
+        if (server2 == null)
+            server2 = new Server.ServerBuilder().setName("Server 2").build();
 
-        // create 100 volumes
+        cache.put(server1.getId(), server1, -1, TimeUnit.SECONDS);
+        cache.put(server2.getId(), server2, -1, TimeUnit.SECONDS);
+
         List<Volume> volumes = Lists.newArrayList();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 8; i++) {
             volumes.add(new Volume.VolumeBuilder().setName("Volume " + i).build());
         }
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                server.getVolumes().add(volumes.get(10 * i + j));
-                logger.info("Volumes added: " + (10 * i + j));
+        for (int i = 0; i < volumes.size(); i++) {
+            if ((i % 2) == 1) {
+                server1.getVolumes().add(volumes.get(i));
+                Thread.sleep(1100);
+            } else {
+                server2.getVolumes().add((volumes.get(i)));
+                Thread.sleep(1150);
             }
-            Thread.sleep(1000);
         }
-
-        // list all volumes from server
-        logger.info(server.getVolumes().toString());
-
-        logger.info("cache miss: " + server.getVolumes().get(1));
-        server.getVolumes().size();
-        logger.info("after cleanup: " + server.getVolumes().get(1));
     }
 
+    public void cleanupServers() {
+        cache.clear();
+        server1 = server2 = null;
+    }
 }
