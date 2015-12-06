@@ -20,7 +20,9 @@ public class EagerListTrials {
     public Server server1 = null;
     public Server server2 = null;
 
-    public void testCacheMiss() throws InterruptedException {
+
+
+    public void trial2Server8Volume() throws InterruptedException {
         if (server1 == null)
             server1 = new Server.ServerBuilder().setName("Server 1").build();
         if (server2 == null)
@@ -42,6 +44,19 @@ public class EagerListTrials {
                 server2.getVolumes().add((volumes.get(i)));
                 Thread.sleep(1150);
             }
+        }
+    }
+
+    public void trial1Server4Volume() throws InterruptedException {
+        if (server1 == null)
+            server1 = new Server.ServerBuilder().setName("Server 1").build();
+        cache.put(server1.getId(), server1, -1, TimeUnit.SECONDS);
+
+        List<Volume> volumes = Lists.newArrayList();
+        for (int i = 0; i < 4; i++) {
+            volumes.add(new Volume.VolumeBuilder().setName("Volume " + (i + 1)).build());
+            server1.getVolumes().add(volumes.get(i));
+            Thread.sleep(1500);
         }
     }
 

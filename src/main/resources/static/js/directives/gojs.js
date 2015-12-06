@@ -12,7 +12,7 @@ angular.module('gojs-directives', [])
                         {
                             layout: $(go.TreeLayout, { nodeSpacing: 5 }),
                             nodeTemplate: $(go.Node, "Auto",
-                                {locationSpot: go.Spot.Center},
+                                //{locationSpot: go.Spot.Center},
                                 new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
                                 $(go.Shape, "RoundedRectangle", new go.Binding("fill", "color"),
                                     {
@@ -21,7 +21,7 @@ angular.module('gojs-directives', [])
                                         fromLinkableSelfNode: true, toLinkableSelfNode: true,
                                         fromLinkableDuplicates: true, toLinkableDuplicates: true
                                     }),
-                                $(go.TextBlock, {margin: 3, editable: true},
+                                $(go.TextBlock, {margin: 3, editable: false},
                                     new go.Binding("text", "name").makeTwoWay())
                             ),
                             linkTemplate: $(go.Link,
@@ -34,6 +34,7 @@ angular.module('gojs-directives', [])
                 // whenever a GoJS transaction has finished modifying the model, update all Angular bindings
                 function updateAngular(e) {
                     if (e.isTransactionFinished) scope.$apply();
+
                 }
 
                 // notice when the value of "model" changes: update the Diagram.model

@@ -35,6 +35,17 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                 });
             };
 
+            dS.trialRunner = function (trialName) {
+                console.log(trialName);
+                $http({
+                    url: '/trialRunner',
+                    method: "POST",
+                    params: {testName: trialName}
+                }).success(function (data) {
+                    console.log("Thread started");
+                });
+            };
+
             dS.cleanupServers = function () {
                 $http.get('/cleanupServers');
             };
@@ -51,6 +62,8 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                 var serverList = dS.dbStatus.serverList,
                     nodes = [], edges = [];
                 for (var i = 0; i < serverList.length; i++) {
+                    if (serverList[i] === undefined || serverList[i] === null) continue;
+
                     nodes.push({
                         key: serverList[i].id,
                         name: serverList[i].name,
@@ -61,7 +74,7 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                     for (var j = 0; j < volumes.length; j++) {
                         nodes.push({
                             key: volumes[j].id,
-                            name: volumes[j].name,
+                            name: volumes[j].name === undefined ? volumes[j].id : volumes[j].name,
                             color: "yellow"
                         });
                         edges.push({
@@ -81,7 +94,7 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                 }
             };
 
-            dS.startRefresh = function(){
+            dS.startRefresh = function () {
                 if (dS.refreshChartDataInterval === undefined) {
                     dS.refreshChartDataInterval = $interval(dS.getStatus, dS.refreshInterval);
                 }
@@ -104,7 +117,6 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                 console.log("here we get config");
                 $http.get('/dbconfig').success(function (data) {
                     dC.dbConfig = data;
-                    console.log(data);
                 });
             };
             dC.getConfig();

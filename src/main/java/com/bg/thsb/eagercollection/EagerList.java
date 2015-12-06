@@ -23,7 +23,6 @@ public class EagerList<E> implements List<E> {
 
     @Override
     public int size() {
-        cleanup();
         return storedKeys.size();
     }
 
@@ -208,17 +207,7 @@ public class EagerList<E> implements List<E> {
         }
     }
 
-    public String toJson() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("[");
-        for (String storedKey : storedKeys) {
-            ResourceEntity resourceEntity = (ResourceEntity) infinispanCache.get(storedKey);
-            if (resourceEntity == null) continue;
-            stringBuffer.append("{ ");
-            stringBuffer.append("\"id\": \"" + resourceEntity.getId() + "\", \"name\": \"" + resourceEntity.getName() + "\"");
-            stringBuffer.append(" }, ");
-        }
-        stringBuffer.append("]");
-        return stringBuffer.toString();
+    public List<String> getStoredKeys() {
+        return storedKeys;
     }
 }

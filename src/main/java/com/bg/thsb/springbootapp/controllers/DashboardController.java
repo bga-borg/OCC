@@ -8,8 +8,13 @@ import org.infinispan.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 @Controller
 public class DashboardController {
@@ -25,17 +30,18 @@ public class DashboardController {
         return mV;
     }
 
-    @RequestMapping("/runSimpleTest")
+    @RequestMapping(value = "/trialRunner", params = "testName", method = RequestMethod.POST)
     @ResponseBody
-    public void runSimpleTest() {
+    public void trialRunner(@RequestParam("testName") String testName) {
         if (testThread != null && testThread.isAlive()) {
             return;
         }
 
         testThread = new Thread(() -> {
             try {
-                eagerListTrials.testCacheMiss();
-            } catch (InterruptedException e) {
+                Method testMethod = eagerListTrials.getClass().getMethod(testName);
+                testMethod.invoke(eagerListTrials);
+            } catch (Exception e) { // !!!!!!POKEMON!!!!!!!!! xD
                 e.printStackTrace();
             }
         });
@@ -45,7 +51,7 @@ public class DashboardController {
 
     @RequestMapping("/cleanupServers")
     @ResponseBody
-    public void cleanupServers(){
+    public void cleanupServers() {
         eagerListTrials.cleanupServers();
     }
 
@@ -77,6 +83,7 @@ public class DashboardController {
 
     public static class StringWrapper {
         public String content;
+
         public StringWrapper(String c) {
             content = c;
         }
