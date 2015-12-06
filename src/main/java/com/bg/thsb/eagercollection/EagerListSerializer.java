@@ -24,9 +24,6 @@ public class EagerListSerializer extends JsonSerializer<EagerList> {
         }
     }
 
-    /**
-     * OnlyID marshaller
-     **/
     public void lazyIdSerializer(EagerList eagerList, JsonGenerator jgen, SerializerProvider provider) throws IOException {
         jgen.writeStartArray();
         for (int i = 0; i < eagerList.getStoredKeys().size(); i++) {

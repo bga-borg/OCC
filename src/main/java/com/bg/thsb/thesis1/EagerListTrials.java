@@ -1,5 +1,6 @@
 package com.bg.thsb.thesis1;
 
+import com.bg.thsb.eagercollection.TrialMethod;
 import com.bg.thsb.infinispan.CacheWrapper;
 import com.bg.thsb.plainmodel.Server;
 import com.bg.thsb.plainmodel.Volume;
@@ -20,8 +21,7 @@ public class EagerListTrials {
     public Server server1 = null;
     public Server server2 = null;
 
-
-
+    @TrialMethod
     public void trial2Server8Volume() throws InterruptedException {
         if (server1 == null)
             server1 = new Server.ServerBuilder().setName("Server 1").build();
@@ -47,6 +47,7 @@ public class EagerListTrials {
         }
     }
 
+    @TrialMethod
     public void trial1Server4Volume() throws InterruptedException {
         if (server1 == null)
             server1 = new Server.ServerBuilder().setName("Server 1").build();

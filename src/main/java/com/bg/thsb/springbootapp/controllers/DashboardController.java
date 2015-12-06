@@ -1,9 +1,11 @@
 package com.bg.thsb.springbootapp.controllers;
 
+import com.bg.thsb.eagercollection.TrialMethod;
 import com.bg.thsb.infinispan.CacheWrapper;
 import com.bg.thsb.springbootapp.models.DbStatus;
 import com.bg.thsb.springbootapp.models.ServerInfo;
 import com.bg.thsb.thesis1.EagerListTrials;
+import com.google.common.collect.Lists;
 import org.infinispan.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class DashboardController {
@@ -95,4 +100,16 @@ public class DashboardController {
         return new ServerInfo();
     }
 
+    @RequestMapping("/getTrials")
+    @ResponseBody
+    List<String> getTrials() {
+        List<String> methodStringList = Lists.newArrayList();
+        Method[] methods = eagerListTrials.getClass().getMethods();
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(TrialMethod.class)) {
+                methodStringList.add(method.getName());
+            }
+        }
+        return methodStringList;
+    }
 }

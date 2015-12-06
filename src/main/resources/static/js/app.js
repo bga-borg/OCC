@@ -28,7 +28,6 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             dS.displayDebug = false;
 
             dS.getStatus = function () {
-                console.log("here we get status");
                 $http.get('/dbstatus').success(function (data) {
                     dS.dbStatus = data;
                     console.log(data);
@@ -36,7 +35,6 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             };
 
             dS.trialRunner = function (trialName) {
-                console.log(trialName);
                 $http({
                     url: '/trialRunner',
                     method: "POST",
@@ -114,7 +112,6 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             var dC = this;
 
             dC.getConfig = function () {
-                console.log("here we get config");
                 $http.get('/dbconfig').success(function (data) {
                     dC.dbConfig = data;
                 });
