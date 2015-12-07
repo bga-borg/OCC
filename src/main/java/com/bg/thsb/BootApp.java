@@ -13,12 +13,6 @@ public class BootApp extends SpringBootServletInitializer {
 
     public static void main(String[] args) throws Exception {
         SpringApplicationBuilder sAB = new SpringApplicationBuilder(BootApp.class);
-
-//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-//        context.scan("com.bg.thsb");
-//        context.refresh();
-//
-//        System.out.println("Context: " + Lists.newArrayList(context.getBeanDefinitionNames()));
         sAB.run(args);
     }
 
