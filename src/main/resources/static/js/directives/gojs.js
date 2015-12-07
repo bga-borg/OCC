@@ -30,6 +30,7 @@ angular.module('gojs-directives', [])
                                 $(go.Shape, {toArrow: "OpenTriangle"})
                             ),
                             initialContentAlignment: go.Spot.Center,
+                            "animationManager.isEnabled": false
                         });
                 // whenever a GoJS transaction has finished modifying the model, update all Angular bindings
                 function updateAngular(e) {
