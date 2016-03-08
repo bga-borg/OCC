@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 
 public class EagerListSerializer extends JsonSerializer<EagerList> {
-    public static SerializerType serializerType = SerializerType.EAGER;
+    public static SerializerType serializerType = SerializerType.LAZY;
 
     @Override
     public void serialize(EagerList eagerList, JsonGenerator jgen, SerializerProvider provider) throws IOException {
@@ -35,8 +35,8 @@ public class EagerListSerializer extends JsonSerializer<EagerList> {
     }
 
     /**
-     * Ha rosszul kezeled a writeStartEntity/writeEndEntity implementációkat
-     * akkor igen egzotikus hibákat dobál ez a cuccos
+     * Ha rosszul kezeled a writeStartEntity/writeEndEntity implementï¿½ciï¿½kat
+     * akkor igen egzotikus hibï¿½kat dobï¿½l ez a cuccos
      *
      * @param eagerList
      * @param jgen
