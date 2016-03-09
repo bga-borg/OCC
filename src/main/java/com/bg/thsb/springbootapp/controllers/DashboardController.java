@@ -1,7 +1,7 @@
 package com.bg.thsb.springbootapp.controllers;
 
 import com.bg.thsb.eagercollection.TrialMethod;
-import com.bg.thsb.infinispan.CacheWrapper;
+import com.bg.thsb.infinispan.InfinispanCacheWrapper;
 import com.bg.thsb.springbootapp.models.DbStatus;
 import com.bg.thsb.springbootapp.models.ServerInfo;
 import com.bg.thsb.thesis1.EagerListTrials;
@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
+import javax.annotation.PostConstruct;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,6 +33,13 @@ public class DashboardController {
         return mV;
     }
 
+    Cache<String, Object> stringObjectCache;
+
+    @PostConstruct
+    public void init(){
+        stringObjectCache = InfinispanCacheWrapper.getCache();
+    }
+
     @RequestMapping(value = "/trialRunner", params = "testName", method = RequestMethod.POST)
     @ResponseBody
     public void trialRunner(@RequestParam("testName") String testName) {
@@ -46,7 +51,7 @@ public class DashboardController {
             try {
                 Method testMethod = eagerListTrials.getClass().getMethod(testName);
                 testMethod.invoke(eagerListTrials);
-            } catch (Exception e) { // !!!!!!POKEMON!!!!!!!!! xD
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
@@ -65,7 +70,6 @@ public class DashboardController {
     public DbStatus getDbStatus() {
         DbStatus dbStatus = new DbStatus();
 
-        Cache<String, Object> stringObjectCache = CacheWrapper.getCache();
         dbStatus.infinispanStatus = stringObjectCache.getStatus();
         dbStatus.listeners = stringObjectCache.getListeners();
         dbStatus.keySet = stringObjectCache.keySet();
@@ -83,7 +87,7 @@ public class DashboardController {
     @RequestMapping("/dbconfig")
     @ResponseBody
     public StringWrapper getDbConfig() {
-        return new StringWrapper(CacheWrapper.getCache().getCacheConfiguration().toString());
+        return new StringWrapper(stringObjectCache.getCacheConfiguration().toString());
     }
 
     public static class StringWrapper {

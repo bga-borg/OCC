@@ -1,6 +1,6 @@
 package com.bg.thsb.eagercollection;
 
-import com.bg.thsb.infinispan.CacheWrapper;
+import com.bg.thsb.infinispan.InfinispanCacheWrapper;
 import com.bg.thsb.plainmodel.CachedResource;
 import com.bg.thsb.plainmodel.ResourceEntity;
 import com.google.common.base.Function;
@@ -9,6 +9,7 @@ import com.google.common.collect.FluentIterable;
 import org.infinispan.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.Nullable;
@@ -17,9 +18,12 @@ import java.util.concurrent.TimeUnit;
 
 public class EagerList<E> implements List<E> {
 
+    @Autowired
+    InfinispanCacheWrapper cacheWrapper;
+
     private Logger logger = LoggerFactory.getLogger(EagerList.class);
     List<String> storedKeys = new ArrayList<>();
-    private Cache<String, Object> infinispanCache = CacheWrapper.getCache();
+    private Cache<String, Object> infinispanCache = cacheWrapper.getCache();
 
     @Override
     public int size() {

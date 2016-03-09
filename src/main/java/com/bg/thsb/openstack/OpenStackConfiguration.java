@@ -1,45 +1,46 @@
 package com.bg.thsb.openstack;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
-@Configuration
-@PropertySource("classpath:openstack.properties")
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class OpenStackConfiguration {
 
-	@Value("${openstack.endpoint}")
-	String endpoint;
+	InputStream inputStream = null;
+	Properties properties = new Properties();
 
-	@Value("${openstack.user}")
-	String user;
-
-	@Value("${openstack.useradmin}")
-	String userAdmin;
-
-	@Value("${openstack.pass}")
-	String userPass;
-
-	@Value("${openstack.tenant}")
-	String tenant;
+	OpenStackConfiguration() {
+		try {
+			inputStream = this.getClass().getClassLoader().getResourceAsStream("openstack.properties");
+			properties.load(inputStream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public String getEndpoint() {
-		return endpoint;
+		return properties.getProperty("openstack.endpoint");
 	}
 
 	public String getUser() {
-		return user;
+		return properties.getProperty("openstack.user");
 	}
 
 	public String getUserAdmin() {
-		return userAdmin;
+		return properties.getProperty("openstack.useradmin");
 	}
 
 	public String getUserPass() {
-		return userPass;
+		return properties.getProperty("openstack.pass");
 	}
 
 	public String getTenant() {
-		return tenant;
+		return properties.getProperty("openstack.tenant");
 	}
+
+
 }

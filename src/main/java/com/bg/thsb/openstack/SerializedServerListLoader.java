@@ -9,6 +9,16 @@ import java.util.List;
 
 public class SerializedServerListLoader {
 
+	//		List<? extends Server> servers = os.compute().servers().list();
+	//		System.out.println(servers);
+		/*try {
+			FileOutputStream fileOutputStream = new FileOutputStream(OpenStackConfiguration.SERVERS_FILE);
+			ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+			oos.writeObject(servers);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
+
 
 	public static void main(String[] args) throws Exception {
 		/*FileInputStream fileInputStream = new FileInputStream(OpenStackConfiguration.SERVERS_FILE);

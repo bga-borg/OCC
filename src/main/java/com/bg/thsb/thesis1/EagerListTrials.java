@@ -1,25 +1,33 @@
 package com.bg.thsb.thesis1;
 
 import com.bg.thsb.eagercollection.TrialMethod;
-import com.bg.thsb.infinispan.CacheWrapper;
+import com.bg.thsb.infinispan.InfinispanCacheWrapper;
 import com.bg.thsb.plainmodel.Server;
 import com.bg.thsb.plainmodel.Volume;
 import com.google.common.collect.Lists;
 import org.infinispan.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Component
 public class EagerListTrials {
+
 	public static final Logger logger = LoggerFactory.getLogger(EagerListTrials.class);
-	Cache<String, Object> cache = CacheWrapper.getCache();
+	Cache<String, Object> cache;
 
 	public Server server1 = null;
 	public Server server2 = null;
+
+	@PostConstruct
+	public void init() {
+		cache = InfinispanCacheWrapper.getCache();
+	}
 
 	@TrialMethod
 	public void trial2Server8Volume() throws InterruptedException {

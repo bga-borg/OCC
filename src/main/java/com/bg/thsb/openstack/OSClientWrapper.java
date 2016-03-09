@@ -14,22 +14,26 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 @Component
-public class ModelGetter implements CommandLineRunner {
+public class OSClientWrapper {
 
-	@Autowired
-	OpenStackConfiguration openStackConfiguration;
+	private static OSClient os = null;
 
-	@Override
-	public void run(String... args) throws Exception {
-		OSClient os = OSFactory.builder()
+	private OSClientWrapper() {
+	}
+
+	public synchronized static OSClient getOs() {
+		OpenStackConfiguration openStackConfiguration = new OpenStackConfiguration();
+		os = OSFactory.builder()
 			.endpoint(openStackConfiguration.getEndpoint())
 			.credentials(openStackConfiguration.getUser(), openStackConfiguration.getUserPass())
 			.tenantName(openStackConfiguration.getTenant())
 			.authenticate();
+		return os;
+	}
+}
 
-		List<? extends Server> servers = os.compute().servers().list();
-		System.out.println(servers);
-
+//		List<? extends Server> servers = os.compute().servers().list();
+//		System.out.println(servers);
 		/*try {
 			FileOutputStream fileOutputStream = new FileOutputStream(OpenStackConfiguration.SERVERS_FILE);
 			ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
@@ -37,5 +41,3 @@ public class ModelGetter implements CommandLineRunner {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}*/
-	}
-}
