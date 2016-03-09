@@ -42,8 +42,6 @@ public class CacheUpdaterExecutor implements CommandLineRunner {
 		scheduledThreadPoolExecutor.scheduleWithFixedDelay(
 			volumeCacheUpdater, 5, 10, TimeUnit.SECONDS);
 		scheduledThreadPoolExecutor.scheduleWithFixedDelay(
-			new ConsoleUpdater(), 4, 18, TimeUnit.SECONDS);
-		scheduledThreadPoolExecutor.scheduleWithFixedDelay(
-			() -> System.out.println("Threadpool working 5s"), 0, 5, TimeUnit.SECONDS);
+			new ExportCacheStatusToFile(), 10, 60, TimeUnit.SECONDS);
 	}
 }
