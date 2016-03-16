@@ -1,11 +1,11 @@
-package com.bg.thsb.openstack.model.impl;
+package com.bg.thsb.openstack.model.entities;
 
-import com.bg.thsb.openstack.model.ifaces.Image;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.util.Date;
 import java.util.Map;
 
-public class ImageImpl implements Image {
+public class Image implements ResourceEntity {
 	private String id;
 	private String name;
 	private long size;
@@ -16,58 +16,66 @@ public class ImageImpl implements Image {
 	private Map<String, Object> metaData;
 	private boolean isSnapsot;
 
-	@Override
 	public String getId() {
 		return id;
 	}
 
-	@Override
 	public void setId(String id) {
 		this.id = id;
 	}
 
-	@Override
 	public String getName() {
 		return name;
 	}
 
-	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	@Override
 	public long getSize() {
 		return size;
 	}
 
-	@Override
 	public int getMinDisk() {
 		return minDisk;
 	}
 
-	@Override
 	public int getMinRam() {
 		return minRam;
 	}
 
-	@Override
 	public Status getStatus() {
 		return status;
 	}
 
-	@Override
 	public Date getCreated() {
 		return created;
 	}
 
-	@Override
 	public Map<String, Object> getMetaData() {
 		return metaData;
 	}
 
-	@Override
 	public boolean isSnapshot() {
 		return isSnapsot;
+	}
+
+	/**
+	 * Status can be used while an image is being saved.  It provides state of the progress indicator.  Images with ACTIVE status
+	 * are available for install.
+	 */
+	enum Status {
+		UNRECOGNIZED, UNKNOWN, ACTIVE, SAVING, ERROR, DELETED;
+
+		@JsonCreator
+		public static Status forValue(String value) {
+			if (value != null) {
+				for (Status s : Status.values()) {
+					if (s.name().equalsIgnoreCase(value))
+						return s;
+				}
+			}
+			return Status.UNKNOWN;
+		}
 	}
 }

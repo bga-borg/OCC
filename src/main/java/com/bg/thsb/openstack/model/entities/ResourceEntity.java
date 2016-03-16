@@ -1,4 +1,5 @@
-package com.bg.thsb.openstack.model.ifaces;
+package com.bg.thsb.openstack.model.entities;
+
 
 import java.io.Serializable;
 

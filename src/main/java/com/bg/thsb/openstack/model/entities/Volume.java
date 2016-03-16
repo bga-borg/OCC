@@ -1,4 +1,4 @@
-package com.bg.thsb.openstack.model.ifaces;
+package com.bg.thsb.openstack.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -9,42 +9,55 @@ import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-/**
- * An OpenStack Volume
- *
- * @author Jeremy Unruh
- */
-public interface Volume extends ResourceEntity {
+public class Volume implements ResourceEntity {
+	private String id;
+	private String name;
+	private Status status;
+	private int size;
+	private Date created;
+	private String imageRef;
+	private Map<String, String> metaData;
+	private String sourceVolid;
 
-	/**
-	 * @return the status of the volume
-	 */
-	Status getStatus();
+	public String getId() {
+		return id;
+	}
 
-	/**
-	 * @return the size in GB of the volume
-	 */
-	int getSize();
+	public void setId(String id) {
+		this.id = id;
+	}
 
-	/**
-	 * @return the created date of the volume
-	 */
-	Date getCreated();
+	public String getName() {
+		return name;
+	}
 
-	/**
-	 * @return the image reference identifier (if an image was associated) otherwise null
-	 */
-	String getImageRef();
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	/**
-	 * @return ID of source volume to clone from
-	 */
-	String getSourceVolid();
+	public Status getStatus() {
+		return status;
+	}
 
-	/**
-	 * @return extended meta data information. key value pair of String key, String value
-	 */
-	Map<String, String> getMetaData();
+	public int getSize() {
+		return size;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public String getImageRef() {
+		return imageRef;
+	}
+
+	public String getSourceVolid() {
+		return sourceVolid;
+	}
+
+	public Map<String, String> getMetaData() {
+		return metaData;
+	}
 
 
 	/**
@@ -73,5 +86,4 @@ public interface Volume extends ResourceEntity {
 			return value();
 		}
 	}
-
 }

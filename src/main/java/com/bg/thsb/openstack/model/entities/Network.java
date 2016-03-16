@@ -1,50 +1,64 @@
-package com.bg.thsb.openstack.model.ifaces;
+package com.bg.thsb.openstack.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.List;
 
-/**
- * An OpenStack (Neutron) network
- *
- * @author Jeremy Unruh
- */
-public interface Network extends ResourceEntity {
-	/**
-	 * @return the status of the network
-	 */
-	State getStatus();
+public class Network implements ResourceEntity {
+	private State status;
+	private List<String> subnets;
+	private String providerPhyNet;
+	private boolean isAdminStateUp;
+	private NetworkType networkType;
+	private boolean isRouterExternal;
+	private boolean isShared;
+	private String id;
+	private String name;
 
-	/**
-	 * @return list of subnet identifiers associated with the network
-	 */
-	List<String> getSubnets();
+	public State getStatus() {
+		return status;
+	}
 
-	/**
-	 * @return the physical network provider or null
-	 */
-	String getProviderPhyNet();
+	public List<String> getSubnets() {
+		return subnets;
+	}
 
-	/**
-	 * @return true if the administrative state is up
-	 */
-	boolean isAdminStateUp();
+	public String getProviderPhyNet() {
+		return providerPhyNet;
+	}
 
-	/**
-	 * @return the network type
-	 */
-	NetworkType getNetworkType();
+	public boolean isAdminStateUp() {
+		return isAdminStateUp;
+	}
 
-	/**
-	 * @return true if the router is external
-	 */
-	boolean isRouterExternal();
+	public NetworkType getNetworkType() {
+		return networkType;
+	}
 
-	/**
-	 * @return true if the network is shared
-	 */
-	boolean isShared();
+	public boolean isRouterExternal() {
+		return isRouterExternal;
+	}
+
+	public boolean isShared() {
+		return isShared;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
 	enum State {

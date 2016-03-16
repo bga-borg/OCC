@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 
 public class EagerList<E> implements List<E> {
 
-    @Autowired
     InfinispanCacheWrapper cacheWrapper;
 
     private Logger logger = LoggerFactory.getLogger(EagerList.class);

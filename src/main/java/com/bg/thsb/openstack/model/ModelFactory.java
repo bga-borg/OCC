@@ -1,9 +1,7 @@
 package com.bg.thsb.openstack.model;
 
-import com.bg.thsb.openstack.model.ifaces.Flavor;
-import com.bg.thsb.openstack.model.ifaces.Server;
-import com.bg.thsb.openstack.model.impl.FlavorImpl;
-import com.bg.thsb.openstack.model.impl.ServerImpl;
+import com.bg.thsb.openstack.model.entities.Flavor;
+import com.bg.thsb.openstack.model.entities.Server;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Collection;
@@ -11,11 +9,11 @@ import java.util.Collection;
 public class ModelFactory {
 
 	public static Server getSimpleServer() {
-		Server server = new ServerImpl.ServerBuilder()
+		Server server = new Server.ServerBuilder()
 			.setName("MyServer")
 			.build();
 
-		Flavor flavor = new FlavorImpl.FlavorBuilder().createFlavorImpl();
+		Flavor flavor = new Flavor.FlavorBuilder().createFlavorImpl();
 
 		server.getMetadata().put("key1", "value1");
 

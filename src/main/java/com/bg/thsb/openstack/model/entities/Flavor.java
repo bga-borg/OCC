@@ -1,8 +1,6 @@
-package com.bg.thsb.openstack.model.impl;
+package com.bg.thsb.openstack.model.entities;
 
-import com.bg.thsb.openstack.model.ifaces.Flavor;
-
-public class FlavorImpl implements Flavor {
+public class Flavor implements ResourceEntity {
 	private String id;
 	private String name;
 	private int ram;
@@ -11,10 +9,10 @@ public class FlavorImpl implements Flavor {
 	private int swap;
 	private boolean isPublic;
 
-	public FlavorImpl() {
+	public Flavor() {
 	}
 
-	public FlavorImpl(String id, String name, int ram, int vcpus, int disk, int swap, boolean isPublic) {
+	public Flavor(String id, String name, int ram, int vcpus, int disk, int swap, boolean isPublic) {
 		this.id = id;
 		this.name = name;
 		this.ram = ram;
@@ -24,72 +22,58 @@ public class FlavorImpl implements Flavor {
 		this.isPublic = isPublic;
 	}
 
-	@Override
 	public String getId() {
 		return id;
 	}
 
-	@Override
 	public void setId(String id) {
 		this.id = id;
 	}
 
-	@Override
 	public String getName() {
 		return name;
 	}
 
-	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	@Override
 	public int getRam() {
 		return ram;
 	}
 
-	@Override
 	public void setRam(int r) {
 		this.ram = r;
 	}
 
-	@Override
 	public int getVcpus() {
 		return vcpus;
 	}
 
-	@Override
 	public void setVcpus(int vc) {
 		this.vcpus = vc;
 	}
 
-	@Override
 	public int getDisk() {
 		return disk;
 	}
 
-	@Override
 	public void setDisk(int d) {
 		this.disk = d;
 	}
 
-	@Override
 	public int getSwap() {
 		return swap;
 	}
 
-	@Override
 	public void setSwap(int s) {
 		this.swap = s;
 	}
 
-	@Override
 	public boolean isPublic() {
 		return isPublic;
 	}
 
-	@Override
 	public void setIsPublic(boolean pub) {
 		this.isPublic = pub;
 	}
@@ -139,8 +123,8 @@ public class FlavorImpl implements Flavor {
 			return this;
 		}
 
-		public FlavorImpl createFlavorImpl() {
-			return new FlavorImpl(id, name, ram, vcpus, disk, swap, isPublic);
+		public Flavor createFlavorImpl() {
+			return new Flavor(id, name, ram, vcpus, disk, swap, isPublic);
 		}
 	}
 }
