@@ -1,14 +1,13 @@
-package updater;
+package com.bg.thsb.openstack.cache.updaters;
 
 import com.bg.thsb.infinispan.InfinispanCacheWrapper;
-import com.bg.thsb.openstack.cache.updaters.ServerCacheUpdater;
 import org.junit.Test;
 
 /**
  * ServerCacheUpdater
  *
  */
-public class TestServerCacheUpdater {
+public class ServerCacheUpdaterTest {
 
 	@Test
 	public void testBuildWithCloud() throws Exception {

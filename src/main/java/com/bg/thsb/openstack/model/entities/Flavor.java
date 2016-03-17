@@ -38,6 +38,11 @@ public class Flavor implements ResourceEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String getType() {
+		return "flavor";
+	}
+
 	public int getRam() {
 		return ram;
 	}

@@ -15,4 +15,6 @@ public interface ResourceEntity extends Serializable {
 	String getName();
 
 	void setName(String name);
+
+	String getType();
 }

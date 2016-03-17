@@ -39,4 +39,9 @@ public class SecurityGroupRule implements ResourceEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String getType() {
+		return "securitygrouprule";
+	}
 }

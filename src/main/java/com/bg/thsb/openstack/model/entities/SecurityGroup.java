@@ -24,6 +24,11 @@ public class SecurityGroup implements ResourceEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String getType() {
+		return "securityGroup";
+	}
+
 	public String getId() {
 		return id;
 	}

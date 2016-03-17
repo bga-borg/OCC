@@ -22,13 +22,13 @@ public class ServerCacheUpdater extends CacheUpdater {
 	public void run() {
 		final List<? extends Server> list = OSClientWrapper.getOs().compute().servers().list();
 
-		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.addMappings(new ServerMap());
 
-		list.forEach(o -> {
-			com.bg.thsb.openstack.model.entities.Server iServer = modelMapper.map(o, com.bg.thsb.openstack.model.entities.Server.class);
-			cache.put(iServer.getId(), iServer);
+		list.forEach(sourceServer -> {
+			final com.bg.thsb.openstack.model.entities.Server destServer = modelMapper.map(sourceServer, com.bg.thsb.openstack.model.entities.Server.class);
+			cache.put(destServer.getId(), destServer);
 		});
+
 		logger.info(this.getClass().getName() + " refreshed");
 	}
 

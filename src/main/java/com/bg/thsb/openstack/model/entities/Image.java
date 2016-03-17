@@ -32,6 +32,11 @@ public class Image implements ResourceEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String getType() {
+		return "image";
+	}
+
 	public long getSize() {
 		return size;
 	}

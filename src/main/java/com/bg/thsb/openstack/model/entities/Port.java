@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Port {
+public class Port implements ResourceEntity{
 	private Network.State state;
 	private Set<String> fixedIps;
 	private Map<String, String> allowedAddressPairs;
@@ -57,5 +57,10 @@ public class Port {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String getType() {
+		return "port";
 	}
 }

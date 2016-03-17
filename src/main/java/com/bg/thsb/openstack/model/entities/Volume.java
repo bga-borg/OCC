@@ -35,6 +35,11 @@ public class Volume implements ResourceEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String getType() {
+		return "volume";
+	}
+
 	public Status getStatus() {
 		return status;
 	}

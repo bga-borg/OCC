@@ -1,13 +1,9 @@
 package com.bg.thsb.openstack.cache.updaters;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.apache.catalina.Server;
 import org.apache.log4j.Logger;
-import org.openstack4j.core.transport.ObjectMapperSingleton;
-import org.openstack4j.model.identity.Tenant;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
@@ -26,9 +22,9 @@ import java.util.Map;
 public class ExportCacheStatusToFile extends CacheUpdater {
 	private static final Logger logger = Logger.getLogger(ExportCacheStatusToFile.class);
 
-	ObjectMapper getObjectMapper(){
+	ObjectMapper getObjectMapper() {
 		ObjectMapper rootMapper = new ObjectMapper();
-//		rootMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		//		rootMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		rootMapper.enable(SerializationFeature.INDENT_OUTPUT);
 		rootMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
 		rootMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
@@ -42,7 +38,6 @@ public class ExportCacheStatusToFile extends CacheUpdater {
 
 		BufferedWriter writer = null;
 		try {
-
 			//create a temporary file
 			String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 			File logFile = new File(timeLog);

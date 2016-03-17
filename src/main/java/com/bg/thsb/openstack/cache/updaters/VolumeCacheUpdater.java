@@ -22,11 +22,10 @@ public class VolumeCacheUpdater extends CacheUpdater {
 	public void run() {
 		try {
 			final List<? extends Volume> list = OSClientWrapper.getOs().blockStorage().volumes().list();
-			list.forEach(o -> {
-				com.bg.thsb.openstack.model.entities.Volume iVolume = new com.bg.thsb.openstack.model.entities.Volume();
-				iVolume.setId(o.getId());
-				iVolume.setName(o.getName());
-				cache.put(o.getId(), iVolume);
+			list.forEach(sourceVolume -> {
+				final com.bg.thsb.openstack.model.entities.Volume destVolume = new com.bg.thsb.openstack.model.entities.Volume();
+				modelMapper.map(sourceVolume, destVolume);
+				cache.put(destVolume.getId(), destVolume);
 			});
 			logger.info(this.getClass().getName() + " refreshed");
 		} catch (NullPointerException ex){

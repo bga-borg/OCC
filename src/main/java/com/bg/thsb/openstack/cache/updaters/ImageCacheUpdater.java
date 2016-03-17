@@ -19,11 +19,9 @@ public class ImageCacheUpdater extends CacheUpdater {
 	@Override
 	public void run() {
 		final List<? extends org.openstack4j.model.compute.Image> list = OSClientWrapper.getOs().compute().images().list();
-		list.forEach(o -> {
-			Image iImage = new Image();
-			iImage.setId(o.getId());
-			iImage.setName(o.getName());
-			cache.put(o.getId(), iImage);
+		list.forEach(sourceImage -> {
+			final Image destImage = modelMapper.map(sourceImage, Image.class);
+			cache.put(destImage.getId(), destImage);
 		});
 		logger.info(this.getClass().getName() + " refreshed");
 	}

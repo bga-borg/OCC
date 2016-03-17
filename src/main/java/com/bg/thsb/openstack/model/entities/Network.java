@@ -60,6 +60,11 @@ public class Network implements ResourceEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String getType() {
+		return "network";
+	}
+
 
 	enum State {
 		ACTIVE,

@@ -56,6 +56,11 @@ public class Server implements ResourceEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String getType() {
+		return "server";
+	}
+
 	public Port getPort() {
 		return port;
 	}
