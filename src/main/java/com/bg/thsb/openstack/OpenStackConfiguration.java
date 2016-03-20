@@ -50,5 +50,5 @@ public class OpenStackConfiguration {
         return properties.getProperty("cache_import_filename");
     }
 
-
+    public int getExportStatusToJSONInterval() { return Integer.parseInt(properties.getProperty("export_status_to_json_interval")); }
 }
