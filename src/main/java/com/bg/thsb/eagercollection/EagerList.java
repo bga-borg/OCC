@@ -1,15 +1,14 @@
 package com.bg.thsb.eagercollection;
 
 import com.bg.thsb.infinispan.InfinispanCacheWrapper;
-import com.bg.thsb.plainmodel.CachedResource;
-import com.bg.thsb.plainmodel.ResourceEntity;
+import com.bg.thsb.openstack.model.entities.CachedResource;
+import com.bg.thsb.openstack.model.entities.ResourceEntity;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
 import com.google.common.collect.FluentIterable;
 import org.infinispan.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.Nullable;

@@ -22,6 +22,12 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             }
         });
 
+        phrobeApp.controller('mainController', function(){
+            var mC = this;
+
+
+        });
+
         phrobeApp.controller('dbStatus', function ($http, $scope, $interval) {
             var dS = this;
             dS.refreshInterval = 3000;
@@ -119,25 +125,24 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             dC.getConfig();
         });
 
+
+
         phrobeApp.config(['$routeProvider',
             function ($routeProvider) {
-
-                $routeProvider.
-                    when('/main', {
-                        templateUrl: 'js/partials/dbStatus.html'
-                    }).
-                    when('/serverInfo', {
-                        templateUrl: 'js/partials/serverInfo.html'
-                    }).
-                    when('/dbConfig', {
-                        templateUrl: 'js/partials/dbConfig.html'
-                    }).
-                    when('/testGoJS', {
-                        templateUrl: 'js/partials/testGoJS.html'
-                    }).
-                    otherwise({
-                        redirectTo: '/main'
-                    });
+                $routeProvider.when('/main', {
+                    templateUrl: 'js/partials/main.html',
+                    controller: 'mainController'
+                }).when('/dbStatus', {
+                    templateUrl: 'js/partials/dbStatus.html'
+                }).when('/serverInfo', {
+                    templateUrl: 'js/partials/serverInfo.html'
+                }).when('/dbConfig', {
+                    templateUrl: 'js/partials/dbConfig.html'
+                }).when('/testGoJS', {
+                    templateUrl: 'js/partials/testGoJS.html'
+                }).otherwise({
+                    redirectTo: '/main'
+                });
             }]);
 
         return phrobeApp;

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.List;
 
-public class Network implements ResourceEntity {
+public class Network extends CachedResource{
 	private State status;
 	private List<String> subnets;
 	private String providerPhyNet;

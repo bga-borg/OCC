@@ -5,7 +5,7 @@ import org.openstack4j.model.storage.block.Volume;
 import java.util.Date;
 import java.util.Map;
 
-public class VolumeSnapshot implements ResourceEntity {
+public class VolumeSnapshot extends CachedResource {
 
 	private String volumeId;
 	private Volume.Status status;

@@ -2,7 +2,7 @@ package com.bg.thsb.openstack.model.entities;
 
 import java.util.List;
 
-public class SecurityGroup implements ResourceEntity {
+public class SecurityGroup extends CachedResource {
 	private String description;
 	private List<? extends SecurityGroupRule> rules;
 	private String name;

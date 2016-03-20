@@ -1,8 +1,6 @@
 package com.bg.thsb.openstack.cache.updaters;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.bg.thsb.helper.JsonConverter;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +17,10 @@ import java.util.Map;
  *
  */
 @Service
-public class ExportCacheStatusToFile extends CacheUpdater {
-	private static final Logger logger = Logger.getLogger(ExportCacheStatusToFile.class);
+public class ExportCacheStatusToJson extends CacheUpdater {
+	private static final Logger logger = Logger.getLogger(ExportCacheStatusToJson.class);
 
-	ObjectMapper getObjectMapper() {
-		ObjectMapper rootMapper = new ObjectMapper();
-		//		rootMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-		rootMapper.enable(SerializationFeature.INDENT_OUTPUT);
-		rootMapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-		rootMapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
-		rootMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-		rootMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-		return rootMapper;
-	}
+
 
 	@Override
 	public void run() {
@@ -51,7 +40,7 @@ public class ExportCacheStatusToFile extends CacheUpdater {
 			for (String key : cache.keySet()) {
 				stringObjectMap.put(key, cache.get(key));
 			}
-			writer.write(getObjectMapper().writeValueAsString(stringObjectMap));
+			writer.write(JsonConverter.getObjectMapper().writeValueAsString(stringObjectMap));
 			logger.info(this.getClass().getName() + " refreshed");
 		} catch (Exception e) {
 			e.printStackTrace();

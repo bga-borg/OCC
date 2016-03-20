@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.Date;
 import java.util.Map;
 
-public class Image implements ResourceEntity {
+public class Image extends CachedResource{
 	private String id;
 	private String name;
 	private long size;

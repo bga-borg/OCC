@@ -38,6 +38,6 @@ public class CacheUpdaterExecutor implements CommandLineRunner {
 		scheduledThreadPoolExecutor.scheduleWithFixedDelay(
 			tenantCacheUpdater, 5, 10, TimeUnit.SECONDS);
 		scheduledThreadPoolExecutor.scheduleWithFixedDelay(
-			new ExportCacheStatusToFile(), 10, 60, TimeUnit.SECONDS);
+			new ExportCacheStatusSerialized(), 10, 60, TimeUnit.SECONDS);
 	}
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class Server implements ResourceEntity {
+public class Server extends CachedResource {
 	private String id;
 	private String name;
 	private Status status;

@@ -38,8 +38,8 @@ public class TestDriveInfinispanEmbedded implements TestDrive {
 	@Override
 	public List<Callable<TestResult>> getTests() {
 		List<Callable<TestResult>> callableList = new ArrayList<>();
-
-		callableList.add(new LifeSpanTest(cache));
+//
+//		callableList.add(new LifeSpanTest(cache));
 
 		return callableList;
 	}

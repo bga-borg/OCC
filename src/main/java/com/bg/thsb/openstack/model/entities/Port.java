@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Port implements ResourceEntity{
+public class Port extends CachedResource{
 	private Network.State state;
 	private Set<String> fixedIps;
 	private Map<String, String> allowedAddressPairs;

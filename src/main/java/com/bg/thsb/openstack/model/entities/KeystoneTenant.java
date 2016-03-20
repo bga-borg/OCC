@@ -6,7 +6,7 @@ import com.google.common.base.Objects;
 
 @JsonRootName("tenant")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class KeystoneTenant implements ResourceEntity {
+public class KeystoneTenant extends CachedResource {
 
 	private static final long serialVersionUID = 1L;
 	private String id;

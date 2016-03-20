@@ -1,6 +1,6 @@
 package com.bg.thsb.openstack.model.entities;
 
-public class SecurityGroupRule implements ResourceEntity {
+public class SecurityGroupRule extends CachedResource {
 	private Integer portRangeMax;
 	private Integer portRangeMin;
 	private String protocol;

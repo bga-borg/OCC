@@ -2,69 +2,28 @@
 <div ng-controller="dbStatus as dS">
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-
-                    <go-diagram go-model="dS.graphModel"
-                                style="border: solid 1px blue; width:100%; height:400px"></go-diagram>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="btn btn-primary" ng-click="dS.getStatus()">getStatus</div>
-                            <div class="btn btn-primary" ng-click="dS.trialRunner('trial1Server4Volume')">trial1Server4Volume</div>
-                            <div class="btn btn-primary" ng-click="dS.trialRunner('trial2Server8Volume')">trial2Server8Volume</div>
-                            <div class="btn btn-primary" ng-click="dS.trialRunner('trial1Server4VolumeRemoveOne')">trial1Server4VolumeRemoveOne</div>
-                            <div class="btn btn-primary" ng-click="dS.cleanupServers()">cleanupServers</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-xs-2">
-                                <input type="text" ng-model="dS.refreshInterval" class="form-control"/>
-                            </div>
-
-                            <div class="btn btn-primary" ng-click="dS.startRefresh()">startRefresh</div>
-                            <div class="btn btn-primary" ng-click="dS.stopRefresh()">stopRefresh</div>
-                        </div>
-                    </div>
-
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <button ng-click="dS.displayDebug = !dS.displayDebug">Debug</button>
-                            <pre ng-show="dS.displayDebug" class="ng-hide">{{dS.dbStatus | json}}</pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <table class="table table-striped table-hover table-bordered" style="margin-top: 100px">
-                        <thead>
-                        <tr>
-                            <th>Key</th>
-                            <th>Value</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="(key, value) in dS.dbStatus.content">
-                            <td>{{key}}</td>
-                            <td class="api-key">{{value}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="col-md-6">
+                <pre>{{dS.dbStatus | json}}</pre>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="(key, value) in dS.dbStatus.content">
+                        <td>{{key}}</td>
+                        <td class="api-key">{{value}}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-
     </div>
 
-    <!--form role="form">
-        <div class="form-group">
-            <label for="jfq03f">Refresh interval: </label>
-            <input type="text" ng-model="dS.refreshInterval" class="form-control" id="jfq03f"/>
-        </div>
-    </form-->
 
+</div>
 </div>

@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class Volume implements ResourceEntity {
+public class Volume extends CachedResource {
 	private String id;
 	private String name;
 	private Status status;

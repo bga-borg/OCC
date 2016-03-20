@@ -1,6 +1,6 @@
 package com.bg.thsb.openstack.model.entities;
 
-public class Flavor implements ResourceEntity {
+public class Flavor extends CachedResource{
 	private String id;
 	private String name;
 	private int ram;
