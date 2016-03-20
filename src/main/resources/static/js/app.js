@@ -22,96 +22,86 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             }
         });
 
-        phrobeApp.controller('mainController', function(){
+        phrobeApp.controller('mainController', function ($http, $scope, $interval) {
             var mC = this;
 
+            mC.dbStatus = null;
+            mC.refreshInterval = 3000;
 
-        });
-
-        phrobeApp.controller('dbStatus', function ($http, $scope, $interval) {
-            var dS = this;
-            dS.refreshInterval = 3000;
-            dS.displayDebug = false;
-
-            dS.getStatus = function () {
+            mC.refreshDbStatus = function () {
                 $http.get('/dbstatus').success(function (data) {
-                    dS.dbStatus = data;
+                    mC.dbStatus = data;
                     console.log(data);
                 });
             };
 
-            dS.trialRunner = function (trialName) {
-                $http({
-                    url: '/trialRunner',
-                    method: "POST",
-                    params: {testName: trialName}
-                }).success(function (data) {
-                    console.log("Thread started");
-                });
-            };
+            mC.refreshDbStatus();
 
-            dS.cleanupServers = function () {
-                $http.get('/cleanupServers');
-            };
+            mC.graphModel = new go.GraphLinksModel();
+            mC.graphModel.selectedNodeData = null;
+            // redraw graph on status change
+            $scope.$watch('mC.dbStatus', function () {
+                if (mC.dbStatus === undefined || mC.dbStatus === null) return;
 
-            dS.runSimpleTest = function () {
-                $http.get('/runSimpleTest');
-            };
 
-            dS.graphModel = new go.GraphLinksModel();
-            dS.graphModel.selectedNodeData = null;
-            $scope.$watch('dS.dbStatus', function () {
-                if (dS.dbStatus === undefined || dS.dbStatus === null) return;
-
-                var serverList = dS.dbStatus.serverList,
+                var content = mC.dbStatus.content,
                     nodes = [], edges = [];
-                for (var i = 0; i < serverList.length; i++) {
-                    if (serverList[i] === undefined || serverList[i] === null) continue;
+
+                // draw nodes
+                for (var k in content) {
+                    var elem = content[k];
+                    if (elem === undefined || elem === null) continue;
 
                     nodes.push({
-                        key: serverList[i].id,
-                        name: serverList[i].name,
+                        key: elem.id,
+                        name: elem.name + "\n(" + elem.type + ")",
                         color: "lightblue"
                     });
-                    if (serverList[i].volumes === undefined || serverList[i].volumes === null) continue;
-                    var volumes = serverList[i].volumes;
-                    for (var j = 0; j < volumes.length; j++) {
-                        nodes.push({
-                            key: volumes[j].id,
-                            name: volumes[j].name === undefined ? volumes[j].id : volumes[j].name,
-                            color: "yellow"
-                        });
+                }
+
+                // draw edges
+                // TODO check if the other end of the edge is there for each node
+                for (var k in content) {
+                    var elem = content[k];
+                    if (elem === undefined || elem === null) continue;
+
+                    if (elem.type === "server") {
                         edges.push({
-                            from: serverList[i].id,
-                            to: volumes[j].id
+                            from: elem.id,
+                            to: elem.imageId
                         });
                     }
                 }
 
-                dS.graphModel = new go.GraphLinksModel(nodes, edges);
+                mC.graphModel = new go.GraphLinksModel(nodes, edges);
             });
 
-            dS.stopRefresh = function () {
-                if (angular.isDefined(dS.refreshChartDataInterval)) {
-                    $interval.cancel(dS.refreshChartDataInterval);
-                    dS.refreshChartDataInterval = undefined;
+            mC.stopAutoRefresh = function () {
+                if (angular.isDefined(mC.refreshChartDataInterval)) {
+                    $interval.cancel(mC.refreshChartDataInterval);
+                    mC.refreshChartDataInterval = undefined;
                 }
             };
 
-            dS.startRefresh = function () {
-                if (dS.refreshChartDataInterval === undefined) {
-                    dS.refreshChartDataInterval = $interval(dS.getStatus, dS.refreshInterval);
+            mC.startAutoRefresh = function () {
+                if (mC.refreshChartDataInterval === undefined) {
+                    mC.refreshChartDataInterval = $interval(mC.refreshDbStatus, mC.refreshInterval);
                 }
             };
-
-            dS.getStatus();
 
             /**
              * On scope destroy stop refreshing
              */
             $scope.$on('$destroy', function () {
-                dS.stopRefresh();
+                mC.stopAutoRefresh();
             });
+
+        });
+
+        phrobeApp.controller('dbStatus', function ($http, $scope, $interval) {
+            var dS = this;
+            dS.displayDebug = false;
+
         });
 
         phrobeApp.controller('dbConfig', function ($http) {
@@ -126,7 +116,6 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
         });
 
 
-
         phrobeApp.config(['$routeProvider',
             function ($routeProvider) {
                 $routeProvider.when('/main', {
@@ -138,8 +127,6 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                     templateUrl: 'js/partials/serverInfo.html'
                 }).when('/dbConfig', {
                     templateUrl: 'js/partials/dbConfig.html'
-                }).when('/testGoJS', {
-                    templateUrl: 'js/partials/testGoJS.html'
                 }).otherwise({
                     redirectTo: '/main'
                 });

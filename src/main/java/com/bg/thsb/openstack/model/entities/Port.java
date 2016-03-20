@@ -3,9 +3,10 @@ package com.bg.thsb.openstack.model.entities;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.openstack4j.model.network.State;
 
 public class Port extends CachedResource{
-	private Network.State state;
+	private State state;
 	private Set<String> fixedIps;
 	private Map<String, String> allowedAddressPairs;
 	private String macAddress;
@@ -14,8 +15,9 @@ public class Port extends CachedResource{
 	private String id;
 	private Network network;
 	private ResourceEntity device;
+	private String tenantId;
 
-	public Network.State getState() {
+	public State getState() {
 		return state;
 	}
 

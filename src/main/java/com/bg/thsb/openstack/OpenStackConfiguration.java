@@ -51,4 +51,8 @@ public class OpenStackConfiguration {
     }
 
     public int getExportStatusToJSONInterval() { return Integer.parseInt(properties.getProperty("export_status_to_json_interval")); }
+
+    public int getCacheSerializationInterval() {
+        return Integer.parseInt((properties.getProperty("cache_serialization_interval")));
+    }
 }

@@ -55,9 +55,17 @@ public class CacheUpdaterExecutor implements CommandLineRunner {
                     volumeCacheUpdater, 5, 10, TimeUnit.SECONDS);
             scheduledThreadPoolExecutor.scheduleWithFixedDelay(
                     tenantCacheUpdater, 5, 10, TimeUnit.SECONDS);
+
+            if (openStackConfiguration.getCacheSerializationInterval() > 0) {
+                scheduledThreadPoolExecutor.scheduleWithFixedDelay(
+                        new ExportCacheStatusSerialized(),
+                        openStackConfiguration.getCacheSerializationInterval(),
+                        openStackConfiguration.getCacheSerializationInterval(),
+                        TimeUnit.SECONDS);
+            }
         }
 
-        if(openStackConfiguration.getExportStatusToJSONInterval() > 0) {
+        if (openStackConfiguration.getExportStatusToJSONInterval() > 0) {
             scheduledThreadPoolExecutor.scheduleWithFixedDelay(
                     exportCacheStatusToJson,
                     openStackConfiguration.getExportStatusToJSONInterval(),

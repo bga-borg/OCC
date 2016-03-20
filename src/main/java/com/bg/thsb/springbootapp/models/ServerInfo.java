@@ -3,9 +3,6 @@ package com.bg.thsb.springbootapp.models;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-/**
- * Created by bg on 2015. 12. 05..
- */
 public class ServerInfo {
     public String serverIp;
 

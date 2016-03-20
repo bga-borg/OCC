@@ -16,8 +16,6 @@ import java.util.List;
 @Controller
 public class DashboardController {
 
-    Thread testThread = new Thread();
-
     @RequestMapping("/")
     public ModelAndView index() {
         ModelAndView mV = new ModelAndView();
@@ -42,8 +40,6 @@ public class DashboardController {
         dbStatus.listeners = stringObjectCache.getListeners();
         dbStatus.keySet = stringObjectCache.keySet();
         dbStatus.numOfElems = stringObjectCache.size();
-
-        dbStatus.testThreadIsAlive = testThread.isAlive();
 
         for (String key : dbStatus.keySet) {
             dbStatus.content.put(key, stringObjectCache.get(key));
@@ -70,11 +66,5 @@ public class DashboardController {
     @ResponseBody
     ServerInfo getServerAddress() {
         return new ServerInfo();
-    }
-
-    @RequestMapping("/getTrials")
-    @ResponseBody
-    List<String> getTrials() {
-        return Lists.newArrayList();
     }
 }

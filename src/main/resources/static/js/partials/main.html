@@ -1,35 +1,47 @@
-<div> <!-- only needed for the goSamples framework -->
-    <div id="sample">
-        <!-- a go-diagram element referring to the model, originally written as: -->
-        <!-- &lt;go-diagram go-model="model" style="border: solid 1px blue; width:100%; height:400px"&gt;&lt;/go-diagram&gt; -->
-        <go-diagram go-model="model" style="border: solid 1px blue; width:100%; height:400px"></go-diagram>
-        Number of node data: {{model.nodeDataArray.length}}
-        <br/>
-        Alpha node location: {{model.findNodeDataForKey(1).loc}}
-        <br/>
-        Selected node: {{model.selectedNodeData.key}} <input type="text" ng-model="model.selectedNodeData.name"></input>
-        <br/>
-        Number of link data: {{model.linkDataArray.length}}
-        <p>
-            This defines an AngularJS directive for creating a <b>GoJS</b> <a>Diagram</a> with certain properties.
-            It also sets up a controller holding a <a>GraphLinksModel</a> that is passed
-            to the <b>go-diagram</b> element via the <b>go-model</b> attribute.
-        </p>
-        <p>
-            Note that the above bindings are updated automatically as the user moves the "Alpha" node,
-            copies or deletes Parts in the Diagram, reconnects the Link from "Alpha" to "Beta", or performs an undo or
-            redo.
-        </p>
-        <p>
-            You can also replace the <a>Diagram.model</a> just by setting the "model" property on the $scope,
-            since the "goDiagram" directive watches that property for changes.
-        </p>
-        <button ng-click="replaceModel()">Replace Model</button>
-        <p>
-            Please note that the source code shown here for the HTML shows the expanded DIV element produced by
-            AngularJS and other modified elements,
-            not <code>&lt;go-diagram go-model="model" style=...&gt;&lt;/go-diagram&gt;</code> and &#123; &#123; &#125;
-            &#125; bindings as originally written.
-        </p>
+<h3 class="sub-header">Cache main</h3>
+<div ng-controller="mainController as mC">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <go-diagram go-model="mC.graphModel"
+                                style="border: solid 1px blue; width:100%; height:400px"></go-diagram>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn btn-primary" ng-click="mC.refreshDbStatus()">refresh</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <input style="width: 100px; float: left;" type="text" ng-model="mC.refreshInterval" class="form-control"/>
+                            ms&nbsp;
+
+                            <div class="btn btn-primary" ng-click="mC.startAutoRefresh()">start auto refresh</div>
+                            <div class="btn btn-primary" ng-click="mC.stopAutoRefresh()">stop auto refresh</div>
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <pre>{{mC.dbStatus | json}}</pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </div>
+
+    <!--form role="form">
+        <div class="form-group">
+            <label for="jfq03f">Refresh interval: </label>
+            <input type="text" ng-model="mC.refreshInterval" class="form-control" id="jfq03f"/>
+        </div>
+    </form-->
+
 </div>
