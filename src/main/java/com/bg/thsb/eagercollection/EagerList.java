@@ -19,7 +19,7 @@ public class EagerList<E> implements List<E> {
 
     InfinispanCacheWrapper cacheWrapper;
 
-    private Logger logger = LoggerFactory.getLogger(EagerList.class);
+    private static Logger logger = LoggerFactory.getLogger(EagerList.class);
     List<String> storedKeys = new ArrayList<>();
     private Cache<String, Object> infinispanCache = cacheWrapper.getCache();
 
