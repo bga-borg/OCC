@@ -13,7 +13,6 @@ import org.modelmapper.ModelMapper;
 public abstract class CacheUpdater implements Runnable {
 
 	Cache<String, Object> cache;
-	ModelMapper modelMapper = new ModelMapper();
 	CacheUpdater() {
 		this.cache = InfinispanCacheWrapper.getCache();
 	}

@@ -3,6 +3,7 @@ package com.bg.thsb.openstack.cache.updaters;
 
 import com.bg.thsb.openstack.OSClientWrapper;
 import org.apache.log4j.Logger;
+import org.modelmapper.ModelMapper;
 import org.openstack4j.model.storage.block.Volume;
 
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class VolumeCacheUpdater extends CacheUpdater {
 	@Override
 	public void run() {
 		try {
+			ModelMapper modelMapper = new ModelMapper();
 			final List<? extends Volume> list = OSClientWrapper.getOs().blockStorage().volumes().list();
 			list.forEach(sourceVolume -> {
 				final com.bg.thsb.openstack.model.entities.Volume destVolume = new com.bg.thsb.openstack.model.entities.Volume();

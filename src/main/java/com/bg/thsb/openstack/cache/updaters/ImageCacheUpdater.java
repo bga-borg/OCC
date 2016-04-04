@@ -3,6 +3,7 @@ package com.bg.thsb.openstack.cache.updaters;
 import com.bg.thsb.openstack.OSClientWrapper;
 import com.bg.thsb.openstack.model.entities.Image;
 import org.apache.log4j.Logger;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public class ImageCacheUpdater extends CacheUpdater {
 	@Override
 	public void run() {
 		final List<? extends org.openstack4j.model.compute.Image> list = OSClientWrapper.getOs().compute().images().list();
+
+		ModelMapper modelMapper = new ModelMapper();
+
 		list.forEach(sourceImage -> {
 			final Image destImage = modelMapper.map(sourceImage, Image.class);
 			cache.put(destImage.getId(), destImage);

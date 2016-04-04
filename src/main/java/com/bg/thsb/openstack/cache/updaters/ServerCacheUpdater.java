@@ -20,16 +20,22 @@ public class ServerCacheUpdater extends CacheUpdater {
 
 	@Override
 	public void run() {
-		final List<? extends Server> list = OSClientWrapper.getOs().compute().servers().list();
+		try {
+			final List<? extends Server> list = OSClientWrapper.getOs().compute().servers().list();
 
-		modelMapper.addMappings(new ServerMap());
+			ModelMapper modelMapper = new ModelMapper();
+			modelMapper.addMappings(new ServerMap());
 
-		list.forEach(sourceServer -> {
-			final com.bg.thsb.openstack.model.entities.Server destServer = modelMapper.map(sourceServer, com.bg.thsb.openstack.model.entities.Server.class);
-			cache.put(destServer.getId(), destServer);
-		});
+			list.forEach(sourceServer -> {
+				final com.bg.thsb.openstack.model.entities.Server destServer = modelMapper.map(sourceServer, com.bg.thsb.openstack.model.entities.Server.class);
+				cache.put(destServer.getId(), destServer);
+			});
 
-		logger.info(this.getClass().getName() + " refreshed");
+			logger.info(this.getClass().getName() + " refreshed");
+		}catch (Exception e){
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 	public static class ServerMap extends PropertyMap<NovaServer, com.bg.thsb.openstack.model.entities.Server> {

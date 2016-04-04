@@ -3,6 +3,7 @@ package com.bg.thsb.openstack.cache.updaters;
 
 import com.bg.thsb.openstack.OSClientWrapper;
 import org.apache.log4j.Logger;
+import org.modelmapper.ModelMapper;
 import org.openstack4j.model.identity.Tenant;
 import org.openstack4j.model.storage.block.Volume;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class TenantCacheUpdater extends CacheUpdater {
 	@Override
 	public void run() {
 		try {
+			ModelMapper modelMapper = new ModelMapper();
 			final List<? extends Tenant> tenants = OSClientWrapper.getOs().identity().tenants().list();
 			tenants.forEach(source -> {
 				final com.bg.thsb.openstack.model.entities.KeystoneTenant dest = new com.bg.thsb.openstack.model.entities.KeystoneTenant();
