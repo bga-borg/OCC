@@ -18,7 +18,7 @@ public class Server extends CachedResource {
 	private Date launchedAt;
 	private Date terminatedAt;
 	private Port port;
-	private Volume volume;
+	private List<String> attachedVolumeIds;
 	private String imageId;
 
 	private String flavorId;
@@ -79,14 +79,6 @@ public class Server extends CachedResource {
 		this.port = p;
 	}
 
-	public Volume getVolume() {
-		return volume;
-	}
-
-	public void setVolume(Volume v) {
-		this.volume = v;
-	}
-
 	public String getImageId() {
 		return imageId;
 	}
@@ -135,20 +127,29 @@ public class Server extends CachedResource {
 		this.terminatedAt = tA;
 	}
 
+	public List<String> getAttachedVolumeIds() {
+		return attachedVolumeIds;
+	}
+
+	public void setAttachedVolumeIds(List<String> attachedVolumeIds) {
+		this.attachedVolumeIds = attachedVolumeIds;
+	}
+
 	@Override
 	public String toString() {
 		return "Server{" +
-			"id='" + id + '\'' +
-			", name='" + name + '\'' +
-			", status=" + status +
-			", metaData=" + metaData +
-			", securityGroups=" + securityGroups +
-			", launchedAt=" + launchedAt +
-			", terminatedAt=" + terminatedAt +
-			", port=" + port +
-			", volume=" + volume +
-			", imageId='" + imageId + '\'' +
-			", flavorId='" + flavorId + '\'' +
-			'}';
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", status=" + status +
+				", metaData=" + metaData +
+				", securityGroups=" + securityGroups +
+				", tenantId='" + tenantId + '\'' +
+				", launchedAt=" + launchedAt +
+				", terminatedAt=" + terminatedAt +
+				", port=" + port +
+				", attachedVolumeIds=" + attachedVolumeIds +
+				", imageId='" + imageId + '\'' +
+				", flavorId='" + flavorId + '\'' +
+				'}';
 	}
 }

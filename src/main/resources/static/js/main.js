@@ -12,7 +12,7 @@ requirejs.config({
         'async': 'lib/require-plugins/async',
         'goog': 'lib/require-plugins/goog',
         'propertyParser': 'lib/require-plugins/propertyParser',
-        'gojsDirective': 'directives/gojs',
+        'gojsDirective': 'directives/gojs-directive',
         'gojs': 'lib/go'
     },
 

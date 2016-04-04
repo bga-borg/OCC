@@ -1,5 +1,5 @@
-define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
-    function ($, angular) {
+define(["jquery", "angular",  "graphUtil", 'angularjs-nvd3-directives', 'gojsDirective'],
+    function ($, angular, graphUtil) {
         var self = this;
         var phrobeApp = angular.module('phrobe', ['nvd3ChartDirectives', 'ngRoute', 'gojs-directives']);
 
@@ -40,41 +40,13 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
             mC.graphModel = new go.GraphLinksModel();
             mC.graphModel.selectedNodeData = null;
             // redraw graph on status change
+
             $scope.$watch('mC.dbStatus', function () {
                 if (mC.dbStatus === undefined || mC.dbStatus === null) return;
-
-
-                var content = mC.dbStatus.content,
-                    nodes = [], edges = [];
-
-                // draw nodes
-                for (var k in content) {
-                    var elem = content[k];
-                    if (elem === undefined || elem === null) continue;
-
-                    nodes.push({
-                        key: elem.id,
-                        name: elem.name + "\n(" + elem.type + ")",
-                        color: "lightblue"
-                    });
-                }
-
-                // draw edges
-                // TODO check if the other end of the edge is there for each node
-                for (var k in content) {
-                    var elem = content[k];
-                    if (elem === undefined || elem === null) continue;
-
-                    if (elem.type === "server") {
-                        edges.push({
-                            from: elem.id,
-                            to: elem.imageId
-                        });
-                    }
-                }
-
-                mC.graphModel = new go.GraphLinksModel(nodes, edges);
+                mC.graphModel = graphUtil.calcGraphModel(mC.dbStatus.content);
             });
+
+
 
             mC.stopAutoRefresh = function () {
                 if (angular.isDefined(mC.refreshChartDataInterval)) {

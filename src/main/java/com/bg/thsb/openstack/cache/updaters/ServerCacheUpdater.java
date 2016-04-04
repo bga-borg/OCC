@@ -38,6 +38,7 @@ public class ServerCacheUpdater extends CacheUpdater {
 		protected void configure() {
 			map().setImageId(source.getImageId());
 			map().setFlavorId(source.getFlavorId());
+			map().setAttachedVolumeIds(source.getOsExtendedVolumesAttached());
 		}
 	}
 }
