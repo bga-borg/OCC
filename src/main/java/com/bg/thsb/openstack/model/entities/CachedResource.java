@@ -6,7 +6,7 @@ public abstract class CachedResource implements ResourceEntity {
      * True means the resource is only referenced,
      * and can not be deleted or modified by this updater
      */
-    protected boolean onlyReference = true;
+    protected boolean onlyReference = false;
 
     public boolean isOnlyReference() {
         return onlyReference;

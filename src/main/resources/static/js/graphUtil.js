@@ -13,7 +13,8 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                 nodes.push({
                     key: elem.id,
                     name: elem.name + "\n(" + elem.type + ")",
-                    color: "lightblue"
+                    color: elem.onlyReference ? "lightgrey" : "lightblue",
+                    fig:  elem.onlyReference ? "Cloud" : "RoundedRectangle"
                 });
             }
 

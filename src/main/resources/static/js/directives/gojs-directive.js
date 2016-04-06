@@ -14,7 +14,7 @@ angular.module('gojs-directives', [])
                             nodeTemplate: $(go.Node, "Auto",
                                 {locationSpot: go.Spot.Center},
                                 new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
-                                $(go.Shape, "RoundedRectangle", new go.Binding("fill", "color"),
+                                $(go.Shape, new go.Binding("figure", "fig"), new go.Binding("fill", "color"),
                                     {
                                         portId: "", cursor: "pointer",
                                         fromLinkable: true, toLinkable: true,

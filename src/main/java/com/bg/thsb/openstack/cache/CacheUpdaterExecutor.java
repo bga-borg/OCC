@@ -52,7 +52,7 @@ public class CacheUpdaterExecutor implements CommandLineRunner {
             scheduledThreadPoolExecutor.scheduleWithFixedDelay(
                     serverCacheUpdater, 3, 16, TimeUnit.SECONDS);
             scheduledThreadPoolExecutor.scheduleWithFixedDelay(
-                    volumeCacheUpdater, 5, 10, TimeUnit.SECONDS);
+                    volumeCacheUpdater, 120, 120, TimeUnit.SECONDS);
             scheduledThreadPoolExecutor.scheduleWithFixedDelay(
                     tenantCacheUpdater, 5, 10, TimeUnit.SECONDS);
 
