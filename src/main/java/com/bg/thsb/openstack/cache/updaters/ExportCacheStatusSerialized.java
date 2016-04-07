@@ -1,7 +1,9 @@
 package com.bg.thsb.openstack.cache.updaters;
 
 import com.bg.thsb.helper.SerializeHelper;
+import com.bg.thsb.infinispan.InfinispanCacheWrapper;
 import org.apache.log4j.Logger;
+import org.infinispan.Cache;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -19,11 +21,11 @@ public class ExportCacheStatusSerialized extends CacheUpdater {
     public static final String FILENAME_PREFIX = "serialized-cache-status-";
     public static final String FILE_EXTENSION = ".dat";
 
-
     @Override
     public void run() {
 
         try {
+            Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
             Map<String, Object> stringObjectMap = new HashMap<>();
             for (String key : cache.keySet()) {
                 stringObjectMap.put(key, cache.get(key));

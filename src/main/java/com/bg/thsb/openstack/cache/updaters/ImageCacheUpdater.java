@@ -1,5 +1,6 @@
 package com.bg.thsb.openstack.cache.updaters;
 
+import com.bg.thsb.dal.Dao;
 import com.bg.thsb.openstack.OSClientWrapper;
 import com.bg.thsb.openstack.model.entities.Image;
 import org.apache.log4j.Logger;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ImageCacheUpdater extends CacheUpdater {
 	private static final Logger logger = Logger.getLogger(ImageCacheUpdater.class);
 
+	Dao<Image> dao = Dao.of(Image.class);
 
 	@Override
 	public void run() {
@@ -25,7 +27,7 @@ public class ImageCacheUpdater extends CacheUpdater {
 
 		list.forEach(sourceImage -> {
 			final Image destImage = modelMapper.map(sourceImage, Image.class);
-			cache.put(destImage.getId(), destImage);
+			dao.put(destImage);
 		});
 		logger.info(this.getClass().getName() + " refreshed");
 	}

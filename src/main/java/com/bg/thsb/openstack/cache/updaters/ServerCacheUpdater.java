@@ -1,16 +1,17 @@
 package com.bg.thsb.openstack.cache.updaters;
 
+import com.bg.thsb.dal.Dao;
+import com.bg.thsb.dal.DataAccessInterface;
 import com.bg.thsb.openstack.OSClientWrapper;
+import com.bg.thsb.openstack.model.entities.Server;
 import com.bg.thsb.openstack.model.entities.Volume;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
-import org.openstack4j.model.compute.Server;
 import org.openstack4j.openstack.compute.domain.NovaServer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * ServerCacheUpdater
@@ -20,17 +21,20 @@ import java.util.Optional;
 public class ServerCacheUpdater extends CacheUpdater {
 	private static final Logger logger = Logger.getLogger(ServerCacheUpdater.class);
 
+	DataAccessInterface<Server> serverDao = Dao.of(Server.class);
+	DataAccessInterface<Volume> volumeDao = Dao.of(Volume.class);
+
 	@Override
 	public void run() {
 		try {
-			final List<? extends Server> list = OSClientWrapper.getOs().compute().servers().list();
+			final List<? extends org.openstack4j.model.compute.Server> list = OSClientWrapper.getOs().compute().servers().list();
 
 			ModelMapper modelMapper = new ModelMapper();
 			modelMapper.addMappings(new ServerMap());
 
 			list.forEach(sourceServer -> {
-				final com.bg.thsb.openstack.model.entities.Server destServer = modelMapper.map(sourceServer, com.bg.thsb.openstack.model.entities.Server.class);
-				cache.put(destServer.getId(), destServer);
+				final com.bg.thsb.openstack.model.entities.Server destServer = modelMapper.map(sourceServer, Server.class);
+				serverDao.put(destServer);
 
 				// add all volume as reference-only in the list if it's not available already in the db
 
@@ -45,18 +49,7 @@ public class ServerCacheUpdater extends CacheUpdater {
 				*	- getOrNull(id, class)
 				* */
 
-				destServer.getAttachedVolumeIds()
-						.forEach(id -> {
-							Volume cachedVolume = (Volume) cache.get(id);
-							if(cachedVolume == null){
-								// add reference
-								Volume volume = new Volume();
-								volume.setOnlyReference(true);
-								volume.setId(id);
-								volume.setName(id);
-								cache.put(id, volume);
-							}
-						});
+				destServer.getAttachedVolumeIds().forEach(id -> volumeDao.putWeak(id));
 			});
 
 			logger.info(this.getClass().getName() + " refreshed");

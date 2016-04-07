@@ -1,7 +1,9 @@
 package com.bg.thsb.openstack.cache.updaters;
 
 import com.bg.thsb.helper.JsonConverter;
+import com.bg.thsb.infinispan.InfinispanCacheWrapper;
 import org.apache.log4j.Logger;
+import org.infinispan.Cache;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
@@ -27,6 +29,7 @@ public class ExportCacheStatusToJson extends CacheUpdater {
 
 		BufferedWriter writer = null;
 		try {
+			Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
 			//create a temporary file
 			String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 			File logFile = new File(timeLog);

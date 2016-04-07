@@ -12,11 +12,6 @@ import org.modelmapper.ModelMapper;
  */
 public abstract class CacheUpdater implements Runnable {
 
-	Cache<String, Object> cache;
-	CacheUpdater() {
-		this.cache = InfinispanCacheWrapper.getCache();
-	}
-
 	@Override
 	public abstract void run();
 }
