@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.openstack4j.model.identity.Tenant;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,11 +27,8 @@ public class TenantCacheUpdater extends CacheUpdater {
         try {
             ModelMapper modelMapper = new ModelMapper();
             final List<? extends Tenant> tenants = OSClientWrapper.getOs().identity().tenants().list();
-            tenants.forEach(source -> {
-                final KeystoneTenant dest = new KeystoneTenant();
-                modelMapper.map(source, dest);
-                tenantDao.put(dest);
-            });
+            Set<KeystoneTenant> tenantSet = tenants.parallelStream().map(o -> modelMapper.map(o, KeystoneTenant.class)).collect(Collectors.toSet());
+            tenantDao.put(tenantSet, null);
             logger.info(this.getClass().getName() + " refreshed");
         } catch (NullPointerException ex) {
             ex.printStackTrace();

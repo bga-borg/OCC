@@ -64,4 +64,8 @@ public class OpenCloudCacheConfiguration {
     public String getActiveCacheUpdatersPackage(){
         return properties.getProperty("occ.active_cache_updaters_package");
     }
+
+    public Boolean isInstanceSynchronizerEnabled(){
+        return Boolean.parseBoolean(properties.getProperty("occ.enable_instance_synchronizer"));
+    }
 }

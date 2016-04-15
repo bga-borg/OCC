@@ -1,15 +1,24 @@
 package com.occ.dal;
 
 import com.occ.infinispan.InfinispanCacheWrapper;
+import com.occ.openstack.OpenCloudCacheConfiguration;
 import com.occ.openstack.model.entities.CachedResource;
 import com.occ.openstack.model.entities.ResourceEntity;
+import org.apache.log4j.Logger;
 import org.infinispan.Cache;
 
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Dao<T> implements DataAccessInterface<T> {
 
+    private static final Logger logger = Logger.getLogger(Dao.class);
+
     Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
+    OpenCloudCacheConfiguration occConfig = new OpenCloudCacheConfiguration();
+    InstanceSynchronizer iSync = new InstanceSynchronizer();
     private Class<T> clazz;
 
     @Override
@@ -23,8 +32,27 @@ public class Dao<T> implements DataAccessInterface<T> {
     }
 
     @Override
+    public void put(Set<T> listOfCachedResources, Function<T, Void> relatedWeakPuts) {
+        try {
+            if (occConfig.isInstanceSynchronizerEnabled()) {
+                iSync.removeIfMissing(
+                        listOfCachedResources.stream().map(t -> ((CachedResource) t).getId()).collect(Collectors.toSet()),
+                        clazz);
+            }
+
+            if(relatedWeakPuts!= null)
+                listOfCachedResources.forEach(relatedWeakPuts::apply);
+
+            listOfCachedResources.forEach(this::put);
+        }catch (Exception e){
+            logger.error(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public T putIfAbsent(T t) {
-        return (T) cache.putIfAbsent(((ResourceEntity) t).getId(), t);
+        return (T) cache.putIfAbsent(((CachedResource) t).getId(), t);
     }
 
     @Override

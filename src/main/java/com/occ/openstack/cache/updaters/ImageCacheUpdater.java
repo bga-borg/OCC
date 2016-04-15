@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * ImageCacheUpdater
@@ -22,13 +25,9 @@ public class ImageCacheUpdater extends CacheUpdater {
 	@Override
 	public void run() {
 		final List<? extends org.openstack4j.model.compute.Image> list = OSClientWrapper.getOs().compute().images().list();
-
 		ModelMapper modelMapper = new ModelMapper();
-
-		list.forEach(sourceImage -> {
-			final Image destImage = modelMapper.map(sourceImage, Image.class);
-			dao.put(destImage);
-		});
+		Set<Image> imageSet = list.parallelStream().map(o -> modelMapper.map(o, Image.class)).collect(Collectors.toSet());
+		dao.put(imageSet, null);
 		logger.info(this.getClass().getName() + " refreshed");
 	}
 }
