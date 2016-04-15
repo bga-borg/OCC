@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class OpenStackConfiguration {
+public class OpenCloudCacheConfiguration {
 
     InputStream inputStream = null;
     Properties properties = new Properties();
 
-    public OpenStackConfiguration() {
+    public OpenCloudCacheConfiguration() {
         try {
-            inputStream = this.getClass().getClassLoader().getResourceAsStream("openstack.properties");
+            inputStream = this.getClass().getClassLoader().getResourceAsStream("occ.properties");
             properties.load(inputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

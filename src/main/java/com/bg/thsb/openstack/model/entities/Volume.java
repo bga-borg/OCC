@@ -61,4 +61,35 @@ public class Volume extends CachedResource {
         return metaData;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public void setImageRef(String imageRef) {
+        this.imageRef = imageRef;
+    }
+
+    public void setMetaData(Map<String, String> metaData) {
+        this.metaData = metaData;
+    }
+
+    public void setSourceVolid(String sourceVolid) {
+        this.sourceVolid = sourceVolid;
+    }
+
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
+    }
 }

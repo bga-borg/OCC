@@ -15,7 +15,6 @@ import java.util.Map;
 /**
  * ConsoleUpdater
  */
-@Service
 public class ExportCacheStatusSerialized extends CacheUpdater {
     private static final Logger logger = Logger.getLogger(ExportCacheStatusSerialized.class);
     public static final String FILENAME_PREFIX = "serialized-cache-status-";

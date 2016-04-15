@@ -10,7 +10,11 @@ public interface DataAccessInterface<T> {
 
     void put(T t);
 
-    void putIfAbsent(T t);
+    T putIfAbsent(T t);
 
-    void putWeak(String id);
+    T putWeak(String id);
+
+    void delete(String id);
+
+    void update(T t);
 }

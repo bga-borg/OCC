@@ -17,7 +17,6 @@ import java.util.List;
  * ServerCacheUpdater
  *
  */
-@Service
 public class ServerCacheUpdater extends CacheUpdater {
 	private static final Logger logger = Logger.getLogger(ServerCacheUpdater.class);
 

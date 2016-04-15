@@ -2,10 +2,11 @@ package com.bg.thsb.infinispan;
 
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-
+@Service
 public class InfinispanCacheWrapper {
 	public static final String OBJECT_IN_MEM_CACHE = "objectInMem";
 	private static DefaultCacheManager infinispanDefaultCacheManager = null;

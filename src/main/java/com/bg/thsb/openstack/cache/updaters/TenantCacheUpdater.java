@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * VolumeCacheUpdater
  */
-@Service
 public class TenantCacheUpdater extends CacheUpdater {
     private static final Logger logger = Logger.getLogger(TenantCacheUpdater.class);
 

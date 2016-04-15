@@ -41,7 +41,13 @@ define(["jquery", "angular", 'angularjs-nvd3-directives', 'gojsDirective'],
                             to: attachedVolumeId
                         })
                     });
+                }
 
+                if (elem.type === "volume") {
+                    angular.isString(elem.tenantId) ?  edges.push({
+                        from: elem.tenantId,
+                        to: elem.id
+                    }) : null;
                 }
             }
             return new go.GraphLinksModel(nodes, edges);

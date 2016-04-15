@@ -12,7 +12,7 @@ public class SerializedServerListLoader {
 	//		List<? extends Server> servers = os.compute().servers().list();
 	//		System.out.println(servers);
 		/*try {
-			FileOutputStream fileOutputStream = new FileOutputStream(OpenStackConfiguration.SERVERS_FILE);
+			FileOutputStream fileOutputStream = new FileOutputStream(OpenCloudCacheConfiguration.SERVERS_FILE);
 			ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
 			oos.writeObject(servers);
 		} catch (IOException e) {
@@ -21,7 +21,7 @@ public class SerializedServerListLoader {
 
 
 	public static void main(String[] args) throws Exception {
-		/*FileInputStream fileInputStream = new FileInputStream(OpenStackConfiguration.SERVERS_FILE);
+		/*FileInputStream fileInputStream = new FileInputStream(OpenCloudCacheConfiguration.SERVERS_FILE);
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		List<? extends Server> servers = (List<? extends Server>) objectInputStream.readObject();
 

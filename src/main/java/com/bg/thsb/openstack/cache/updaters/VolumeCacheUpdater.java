@@ -16,7 +16,6 @@ import java.util.List;
  * VolumeCacheUpdater
  *
  */
-@Service
 public class VolumeCacheUpdater extends CacheUpdater {
 	private static final Logger logger = Logger.getLogger(VolumeCacheUpdater.class);
 
@@ -24,18 +23,19 @@ public class VolumeCacheUpdater extends CacheUpdater {
 
 	@Override
 	public void run() {
-
-		try {
-			ModelMapper modelMapper = new ModelMapper();
-			final List<? extends Volume> list = OSClientWrapper.getOs().blockStorage().volumes().list();
-			list.forEach(sourceVolume -> {
-				final com.bg.thsb.openstack.model.entities.Volume destVolume = new com.bg.thsb.openstack.model.entities.Volume();
-				modelMapper.map(sourceVolume, destVolume);
-				volumeDao.put(destVolume);
-			});
-			logger.info(this.getClass().getName() + " refreshed");
-		} catch (NullPointerException ex){
-			ex.printStackTrace();
+		if(false) {
+			try {
+				ModelMapper modelMapper = new ModelMapper();
+				final List<? extends Volume> list = OSClientWrapper.getOs().blockStorage().volumes().list();
+				list.forEach(sourceVolume -> {
+					final com.bg.thsb.openstack.model.entities.Volume destVolume = new com.bg.thsb.openstack.model.entities.Volume();
+					modelMapper.map(sourceVolume, destVolume);
+					volumeDao.put(destVolume);
+				});
+				logger.info(this.getClass().getName() + " refreshed");
+			} catch (NullPointerException ex) {
+				ex.printStackTrace();
+			}
 		}
 
 	}
