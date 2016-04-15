@@ -1,5 +1,5 @@
-import com.bg.thsb.openstack.OSClientWrapper;
-import com.bg.thsb.openstack.model.entities.Server;
+import com.occ.openstack.OSClientWrapper;
+import com.occ.openstack.model.entities.Server;
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
