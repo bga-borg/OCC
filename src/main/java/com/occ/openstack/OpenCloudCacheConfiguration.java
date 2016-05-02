@@ -4,7 +4,6 @@ package com.occ.openstack;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Properties;
 
 public class OpenCloudCacheConfiguration {
@@ -44,28 +43,38 @@ public class OpenCloudCacheConfiguration {
     }
 
     public boolean isOffline() {
-        return Boolean.parseBoolean(properties.getProperty("occ.work_offline"));
+        return Boolean.parseBoolean(properties.getProperty("occ.cu.work_offline"));
     }
 
-    public String getCacheImportFilename(){
-        return properties.getProperty("occ.cache_import_filename");
+    public String getCacheImportFilename() {
+        return properties.getProperty("occ.cu.cache_import_filename");
     }
 
-    public int getExportStatusToJSONInterval() { return Integer.parseInt(properties.getProperty("occ.export_status_to_json_interval")); }
+    public int getExportStatusToJSONInterval() {
+        return Integer.parseInt(properties.getProperty("occ.cu.export_status_to_json_interval"));
+    }
 
     public int getCacheSerializationInterval() {
-        return Integer.parseInt((properties.getProperty("occ.cache_serialization_interval")));
+        return Integer.parseInt((properties.getProperty("occ.cu.cache_serialization_interval")));
     }
 
-    public String[] getListOfActiveCacheUpdaters(){
-        return properties.getProperty("occ.active_cache_updaters").split(",");
+    public String[] getListOfActiveCacheUpdaters() {
+        return properties.getProperty("occ.cu.active_cache_updaters").split(",");
     }
 
-    public String getActiveCacheUpdatersPackage(){
-        return properties.getProperty("occ.active_cache_updaters_package");
+    public String getActiveCacheUpdatersPackage() {
+        return properties.getProperty("occ.cu.active_cache_updaters_package");
     }
 
-    public Boolean isInstanceSynchronizerEnabled(){
-        return Boolean.parseBoolean(properties.getProperty("occ.enable_instance_synchronizer"));
+    public Boolean isInstanceSynchronizerEnabled() {
+        return Boolean.parseBoolean(properties.getProperty("occ.dal.enable_instance_synchronizer"));
+    }
+
+    public Boolean isDalStreamParallel() {
+        return Boolean.parseBoolean(properties.getProperty("occ.dal.STREAM_PARALLEL"));
+    }
+
+    public int getDalWeakPutLifetimeSec() {
+        return Integer.parseInt(properties.getProperty("occ.dal.weak_put_lifetime_sec"));
     }
 }

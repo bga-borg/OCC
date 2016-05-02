@@ -2,7 +2,7 @@ package com.occ.openstack.cache.updaters;
 
 
 import com.occ.dal.Dao;
-import com.occ.dal.DataAccessInterface;
+import com.occ.dal.DataAccess;
 import com.occ.openstack.OSClientWrapper;
 import com.occ.openstack.model.entities.KeystoneTenant;
 import org.apache.log4j.Logger;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class TenantCacheUpdater extends CacheUpdater {
     private static final Logger logger = Logger.getLogger(TenantCacheUpdater.class);
 
-    DataAccessInterface<KeystoneTenant> tenantDao = Dao.of(KeystoneTenant.class);
+    DataAccess<KeystoneTenant> tenantDao = Dao.of(KeystoneTenant.class);
 
     @Override
     public void run() {

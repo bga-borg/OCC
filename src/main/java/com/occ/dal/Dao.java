@@ -6,20 +6,29 @@ import com.occ.openstack.model.entities.CachedResource;
 import com.occ.openstack.model.entities.ResourceEntity;
 import org.apache.log4j.Logger;
 import org.infinispan.Cache;
+import org.infinispan.CacheStream;
 
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Dao<T> implements DataAccessInterface<T> {
+public class Dao<T> implements DataAccess<T> {
 
-    private static final Logger logger = Logger.getLogger(Dao.class);
-
-    Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
     OpenCloudCacheConfiguration occConfig = new OpenCloudCacheConfiguration();
+    public static Boolean INSTANCE_SYNCHRONIZE_ENABLED = true;
+
+    protected static final Logger logger = Logger.getLogger(Dao.class);
+    Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
+
     InstanceSynchronizer iSync = new InstanceSynchronizer();
-    private Class<T> clazz;
+
+
+    protected Class<T> clazz;
 
     @Override
     public Optional<T> get(String id) {
@@ -32,23 +41,24 @@ public class Dao<T> implements DataAccessInterface<T> {
     }
 
     @Override
-    public void put(Set<T> listOfCachedResources, Function<T, Void> relatedWeakPuts) {
+    public void put(Set<T> setOfCacheables, Function<T, Void> relatedWeakPuts) {
         try {
-            if (occConfig.isInstanceSynchronizerEnabled()) {
+            if (INSTANCE_SYNCHRONIZE_ENABLED) {
                 iSync.removeIfMissing(
-                        listOfCachedResources.stream().map(t -> ((CachedResource) t).getId()).collect(Collectors.toSet()),
+                        setOfCacheables.stream().map(t -> ((CachedResource) t).getId()).collect(Collectors.toSet()),
                         clazz);
             }
 
-            if(relatedWeakPuts!= null)
-                listOfCachedResources.forEach(relatedWeakPuts::apply);
+            if (relatedWeakPuts != null)
+                setOfCacheables.forEach(relatedWeakPuts::apply);
 
-            listOfCachedResources.forEach(this::put);
-        }catch (Exception e){
+            setOfCacheables.forEach(this::put);
+        } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
         }
     }
+
 
     @Override
     public T putIfAbsent(T t) {
@@ -57,11 +67,13 @@ public class Dao<T> implements DataAccessInterface<T> {
 
     @Override
     public T putWeak(String id) {
+        int dalWeakPutLifetimeSec = occConfig.getDalWeakPutLifetimeSec();
+
         T t = getInstanceOfT();
         ((CachedResource) t).setOnlyReference(true);
         ((CachedResource) t).setId(id);
         ((CachedResource) t).setName(id);
-        return putIfAbsent(t);
+        return (T) cache.putIfAbsent(((CachedResource) t).getId(), t, dalWeakPutLifetimeSec, TimeUnit.SECONDS);
     }
 
     @Override
@@ -72,6 +84,45 @@ public class Dao<T> implements DataAccessInterface<T> {
     @Override
     public void update(T t) {
         put(t);
+    }
+
+    /**
+     * Providing linear search
+     *
+     * @param attributeName
+     * @param searchValue
+     * @return
+     */
+    @Override
+    public List<T> searchByAttribute(String attributeName, String searchValue) {
+        final boolean STREAM_PARALLEL = occConfig.isDalStreamParallel();
+
+        CacheStream<Map.Entry<String, Object>> cacheStream =
+                STREAM_PARALLEL ? cache.entrySet().parallelStream() : cache.entrySet().stream();
+
+        return cacheStream
+                .map(stringObjectEntry -> stringObjectEntry.getValue())
+                .filter(value -> value.getClass().equals(clazz))
+                .filter(value -> isMatch(attributeName, searchValue, value))
+                .map(value -> (T) value)
+                .collect(Collectors.toList());
+    }
+
+    private boolean isMatch(String attributeName, String searchValue, Object value) {
+        try {
+            Field field = value.getClass().getDeclaredField(attributeName);
+            field.setAccessible(true);
+            Object valueOfField = field.get(value);
+            if (valueOfField != null && valueOfField.toString().equals(searchValue)) {
+                return true;
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+
+        } catch (NoSuchFieldException e) {
+            logger.error(e.getMessage());
+        }
+        return false;
     }
 
     public static <T> Dao<T> of(Class<T> clazz) {

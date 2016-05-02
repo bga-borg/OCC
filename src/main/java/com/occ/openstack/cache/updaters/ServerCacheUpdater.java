@@ -1,20 +1,16 @@
 package com.occ.openstack.cache.updaters;
 
-import com.google.common.collect.Sets;
 import com.occ.dal.Dao;
-import com.occ.dal.DataAccessInterface;
-import com.occ.dal.InstanceSynchronizer;
+import com.occ.dal.DataAccess;
 import com.occ.openstack.OSClientWrapper;
 import com.occ.openstack.model.entities.Image;
 import com.occ.openstack.model.entities.Server;
 import com.occ.openstack.model.entities.Volume;
-import org.apache.coyote.http11.filters.VoidInputFilter;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.openstack4j.openstack.compute.domain.NovaServer;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,9 +21,9 @@ import java.util.stream.Collectors;
 public class ServerCacheUpdater extends CacheUpdater {
     private static final Logger logger = Logger.getLogger(ServerCacheUpdater.class);
 
-    final DataAccessInterface<Server> serverDao = Dao.of(Server.class);
-    final DataAccessInterface<Volume> volumeDao = Dao.of(Volume.class);
-    final DataAccessInterface<Image> imageDao = Dao.of(Image.class);
+    final DataAccess<Server> serverDao = Dao.of(Server.class);
+    final DataAccess<Volume> volumeDao = Dao.of(Volume.class);
+    final DataAccess<Image> imageDao = Dao.of(Image.class);
 
     @Override
     public void run() {

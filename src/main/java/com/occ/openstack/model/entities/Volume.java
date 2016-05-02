@@ -1,19 +1,30 @@
 package com.occ.openstack.model.entities;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 import org.openstack4j.model.storage.block.Volume.Status;
 
 import java.util.Date;
 import java.util.Map;
 
+@Indexed
 public class Volume extends CachedResource {
+    @Field
     private String id;
+    @Field
     private String name;
+    @Field
     private Status status;
+    @Field
     private int size;
+    @Field
     private Date created;
+    @Field
     private String imageRef;
     private Map<String, String> metaData;
+    @Field
     private String sourceVolid;
+    @Field
     private String tenantId;
 
     public String getId() {

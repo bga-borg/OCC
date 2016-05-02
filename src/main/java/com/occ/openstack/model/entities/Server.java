@@ -2,23 +2,33 @@ package com.occ.openstack.model.entities;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
 import org.openstack4j.model.compute.Server.Status;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Indexed
 public class Server extends CachedResource {
+	@Field
 	private String id;
+	@Field
 	private String name;
+	@Field
 	private Status status;
 	private Map<String, String> metaData = Maps.newHashMap();
 	private List<SecurityGroup> securityGroups = Lists.newArrayList();
+	@Field
 	public String tenantId;
+	@Field
 	private Date launchedAt;
+	@Field
 	private Date terminatedAt;
 	private Port port;
 	private List<String> attachedVolumeIds;
+	@Field
 	private String imageId;
 
 	private String flavorId;

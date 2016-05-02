@@ -31,7 +31,6 @@ public class VolumeCacheUpdater extends CacheUpdater {
             logger.info(this.getClass().getName() + " refreshed");
         } catch (NullPointerException ex) {
             ex.printStackTrace();
-
         }
 
     }
