@@ -8,23 +8,21 @@ import com.occ.openstack.model.entities.Image;
 import com.occ.openstack.model.entities.Server;
 import com.occ.openstack.model.entities.Volume;
 import org.apache.log4j.Logger;
-import org.apache.lucene.search.Query;
 import org.junit.Test;
 
 import java.util.HashSet;
-import java.util.List;
 
-public class CuInsertWithWeak {
+public class CuInsert {
     final DataAccess<Server> serverDao = Dao.of(Server.class);
     final DataAccess<Volume> volumeDao = Dao.of(Volume.class);
     final DataAccess<Image> imageDao = Dao.of(Image.class);
 
-    final String OUTPUT_FILE = "insert_without_weak.txt";
-    final String NEWLINE = "\n";
+    final static String NEWLINE = "\n";
+    final static String SPACE = " ";
 
     final Util util = new Util();
 
-    protected static final Logger logger = Logger.getLogger(CuInsertWithWeak.class);
+    protected static final Logger logger = Logger.getLogger(CuInsert.class);
 
     /**
      * Creates output
@@ -33,7 +31,7 @@ public class CuInsertWithWeak {
     @Test
     public void test() {
         StringBuffer outBuf = new StringBuffer();
-        outBuf.append("no_of_records time_nosync time_isync" + NEWLINE);
+        outBuf.append("no_of_records time_simple time_weakrefs time_weak_isync" + NEWLINE);
 
         int step = 1;
         for (int i = 0; i < 50; i++) {
@@ -43,25 +41,32 @@ public class CuInsertWithWeak {
             long endTime = System.nanoTime();
             long modelCreationTime = (endTime - startTime);
 
+            outBuf.append((step == 1 ? 1 : (step - 1)) + SPACE);
+
             util.clearCache();
             util.threadSleep(500);
             Dao.INSTANCE_SYNCHRONIZE_ENABLED = false;
-            double timeNosync = (double) (util.measure(storeModel(modelContainer)) + modelCreationTime) / 1000000000.0;
+            Dao.WEAK_RELATIONS_REFERENCE_CREATION_ENABLED = false;
+            double timeSimple = (double) (util.measure(storeModel(modelContainer)) + modelCreationTime) / 1000000000.0;
+            outBuf.append(timeSimple + SPACE);
 
             util.clearCache();
             util.threadSleep(500);
-            Dao.INSTANCE_SYNCHRONIZE_ENABLED = true;
-            double timeSync = (double) (util.measure(storeModel(modelContainer)) + modelCreationTime) / 1000000000.0;
+            Dao.WEAK_RELATIONS_REFERENCE_CREATION_ENABLED = true;
+            Dao.INSTANCE_SYNCHRONIZE_ENABLED = false;
+            double timeWeak = (double) (util.measure(storeModel(modelContainer)) + modelCreationTime) / 1000000000.0;
+            outBuf.append(timeWeak + SPACE);
 
-            outBuf.append((step == 1 ? 1 : (step - 1)) + " " + timeNosync + " " + timeSync + NEWLINE);
+            util.clearCache();
+            util.threadSleep(500);
+            Dao.WEAK_RELATIONS_REFERENCE_CREATION_ENABLED = true;
+            Dao.INSTANCE_SYNCHRONIZE_ENABLED = true;
+            double timeWeakSync = (double) (util.measure(storeModel(modelContainer)) + modelCreationTime) / 1000000000.0;
+            outBuf.append(timeWeakSync + SPACE);
+
+            outBuf.append(NEWLINE);
             step += 1000;
         }
-        System.out.println(outBuf);
-        QueryableDao<Server> qServerDao = QueryableDao.qOf(Server.class);
-
-//        Query query = qServerDao.getQueryBuilder().keyword().onField("name").matching("server-1").createQuery();
-//        List<Server> servers = qServerDao.searchByQuery(query);
-//        System.out.println(servers);
     }
 
 

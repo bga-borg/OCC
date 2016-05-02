@@ -21,6 +21,7 @@ public class Dao<T> implements DataAccess<T> {
 
     OpenCloudCacheConfiguration occConfig = new OpenCloudCacheConfiguration();
     public static Boolean INSTANCE_SYNCHRONIZE_ENABLED = true;
+    public static Boolean WEAK_RELATIONS_REFERENCE_CREATION_ENABLED = true;
 
     protected static final Logger logger = Logger.getLogger(Dao.class);
     Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
@@ -49,7 +50,7 @@ public class Dao<T> implements DataAccess<T> {
                         clazz);
             }
 
-            if (relatedWeakPuts != null)
+            if (WEAK_RELATIONS_REFERENCE_CREATION_ENABLED && relatedWeakPuts != null)
                 setOfCacheables.forEach(relatedWeakPuts::apply);
 
             setOfCacheables.forEach(this::put);

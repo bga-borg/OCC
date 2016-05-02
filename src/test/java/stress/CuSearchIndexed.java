@@ -19,7 +19,6 @@ public class CuSearchIndexed {
     final QueryableDao<Volume> volumeDao = QueryableDao.qOf(Volume.class);
     final QueryableDao<Image> imageDao = QueryableDao.qOf(Image.class);
 
-    final String OUTPUT_FILE = "insert_without_weak.txt";
     final String NEWLINE = "\n";
 
     final Util util = new Util();
@@ -33,16 +32,12 @@ public class CuSearchIndexed {
 
         int step = 1;
         for (int i = 0; i < 50; i++) {
-            logger.info("Iteration: " + i);
-            long startTime = System.nanoTime();
             Util.ModelContainer modelContainer = util.composeModel(step);
-            long endTime = System.nanoTime();
-            long modelCreationTime = (endTime - startTime);
 
             util.clearCache();
             util.threadSleep(500);
             storeModel(modelContainer).run();
-            double timeSingle = (double) (util.measure(searchForAttributeIndexed(serverDao, "name", "server-1")) + modelCreationTime) / 1000000000.0;
+            double timeSingle = (double) (util.measure(searchForAttributeIndexed(serverDao, "name", "server-1"))) / 1000000000.0;
 
             outBuf.append((step == 1 ? 1 : (step - 1)) + " " + timeSingle + NEWLINE);
             step += 1000;
