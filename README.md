@@ -1,2 +1,2 @@
-# msc-thesis-sandbox
-BUTE MSc Thesis application sandbox
+# OCC - Open Cloud Cache
+BUTE MSc Thesis application for Persisting Weakly Relational Data in NoSQL Stores
