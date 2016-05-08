@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 
 public class Util {
 
+    protected static final Logger logger = Logger.getLogger(Dao.class);
+    Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
+
     List<Image> getRandomImages(int n, String prefix) {
         List<Image> imageList = Lists.newArrayList();
         for (int i = 0; i < n; i++) {
@@ -58,9 +61,6 @@ public class Util {
         return server;
     }
 
-    protected static final Logger logger = Logger.getLogger(Dao.class);
-    Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
-
     void clearCache() {
         cache.clear();
     }
@@ -70,14 +70,6 @@ public class Util {
         runnable.run();
         long endTime = System.nanoTime();
         return (endTime - startTime);
-    }
-
-
-
-    public static class ModelContainer {
-        List<Image> images = Lists.newArrayList();
-        List<Volume> volumes = Lists.newArrayList();
-        List<Server> servers = Lists.newArrayList();
     }
 
     void threadSleep(int forTime) {
@@ -101,7 +93,7 @@ public class Util {
         int numberOfVolumesPerServer = ((elemsMax - numServs) / numServs);
 
         for (int j = 0; j < numServs; j++) {
-            modelContainer.volumes = getRandomVolumes(numberOfVolumesPerServer, "volume-");
+            modelContainer.volumes = getRandomVolumes(numberOfVolumesPerServer, "volume");
             modelContainer.servers.add(getServerConnected(modelContainer.volumes, modelContainer.images, "server-" + j));
         }
 
@@ -109,5 +101,11 @@ public class Util {
         logger.info("Total # " + (modelContainer.servers.size() + modelContainer.volumes.size() + modelContainer.images.size()));
 
         return modelContainer;
+    }
+
+    public static class ModelContainer {
+        List<Image> images = Lists.newArrayList();
+        List<Volume> volumes = Lists.newArrayList();
+        List<Server> servers = Lists.newArrayList();
     }
 }

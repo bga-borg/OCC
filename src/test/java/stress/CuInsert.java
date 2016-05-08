@@ -3,7 +3,6 @@ package stress;
 
 import com.occ.dal.Dao;
 import com.occ.dal.DataAccess;
-import com.occ.dal.QueryableDao;
 import com.occ.openstack.model.entities.Image;
 import com.occ.openstack.model.entities.Server;
 import com.occ.openstack.model.entities.Volume;
@@ -13,16 +12,13 @@ import org.junit.Test;
 import java.util.HashSet;
 
 public class CuInsert {
+    protected static final Logger logger = Logger.getLogger(CuInsert.class);
+    final static String NEWLINE = "\n";
+    final static String SPACE = " ";
     final DataAccess<Server> serverDao = Dao.of(Server.class);
     final DataAccess<Volume> volumeDao = Dao.of(Volume.class);
     final DataAccess<Image> imageDao = Dao.of(Image.class);
-
-    final static String NEWLINE = "\n";
-    final static String SPACE = " ";
-
     final Util util = new Util();
-
-    protected static final Logger logger = Logger.getLogger(CuInsert.class);
 
     /**
      * Creates output
@@ -67,6 +63,7 @@ public class CuInsert {
             outBuf.append(NEWLINE);
             step += 1000;
         }
+        System.out.println(outBuf);
     }
 
 

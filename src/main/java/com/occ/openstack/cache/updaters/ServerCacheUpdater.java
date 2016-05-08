@@ -32,6 +32,8 @@ public class ServerCacheUpdater extends CacheUpdater {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.addMappings(new ServerMap());
 
+        list.parallelStream();
+
         Set<Server> serverSet = list.stream().map(o -> modelMapper.map(o, Server.class)).collect(Collectors.toSet());
 
         serverDao.put(serverSet,

@@ -19,17 +19,20 @@ import java.util.stream.Collectors;
 
 public class Dao<T> implements DataAccess<T> {
 
-    OpenCloudCacheConfiguration occConfig = new OpenCloudCacheConfiguration();
+    protected static final Logger logger = Logger.getLogger(Dao.class);
     public static Boolean INSTANCE_SYNCHRONIZE_ENABLED = true;
     public static Boolean WEAK_RELATIONS_REFERENCE_CREATION_ENABLED = true;
-
-    protected static final Logger logger = Logger.getLogger(Dao.class);
+    public static Boolean STREAM_PARALLEL = true;
+    protected Class<T> clazz;
+    OpenCloudCacheConfiguration occConfig = new OpenCloudCacheConfiguration();
     Cache<String, Object> cache = InfinispanCacheWrapper.getCache();
-
     InstanceSynchronizer iSync = new InstanceSynchronizer();
 
-
-    protected Class<T> clazz;
+    public static <T> Dao<T> of(Class<T> clazz) {
+        Dao<T> dao = new Dao<>();
+        dao.clazz = clazz;
+        return dao;
+    }
 
     @Override
     public Optional<T> get(String id) {
@@ -59,7 +62,6 @@ public class Dao<T> implements DataAccess<T> {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public T putIfAbsent(T t) {
@@ -96,7 +98,6 @@ public class Dao<T> implements DataAccess<T> {
      */
     @Override
     public List<T> searchByAttribute(String attributeName, String searchValue) {
-        final boolean STREAM_PARALLEL = occConfig.isDalStreamParallel();
 
         CacheStream<Map.Entry<String, Object>> cacheStream =
                 STREAM_PARALLEL ? cache.entrySet().parallelStream() : cache.entrySet().stream();
@@ -125,13 +126,6 @@ public class Dao<T> implements DataAccess<T> {
         }
         return false;
     }
-
-    public static <T> Dao<T> of(Class<T> clazz) {
-        Dao<T> dao = new Dao<>();
-        dao.clazz = clazz;
-        return dao;
-    }
-
 
     private T getInstanceOfT() {
         try {

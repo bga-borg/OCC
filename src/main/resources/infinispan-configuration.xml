@@ -10,7 +10,7 @@
 
         <local-cache name="objectInMem">
             <!--expiration lifespan="8000" max-idle="8000" interval="100000"/ -->
-            <indexing index="LOCAL" auto-config="true" />
+            <!--<indexing index="LOCAL" auto-config="true" />-->
         </local-cache>
 
         <local-cache name="objectOnDisk">
