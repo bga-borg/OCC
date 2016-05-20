@@ -19,7 +19,7 @@ public class CommandLineApp {
 		app.setWebEnvironment(false); // CONSOLE ME
 
 		//		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		//		context.scan("com.bg.thsb");
+		//		context.scan("com.occ");
 		//		context.refresh();
 		//		System.out.println("Context: " + Lists.newArrayList(context.getBeanDefinitionNames()));
 

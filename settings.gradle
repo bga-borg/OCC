@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'msc-thesis-sandbox'
+rootProject.name = 'Open Cloud Cache'

@@ -33,27 +33,6 @@ public class LazyListSerializer extends JsonSerializer<LazyList> {
         jgen.writeEndArray();
     }
 
-    /**
-     * Ha rosszul kezeled a writeStartEntity/writeEndEntity implement�ci�kat
-     * akkor igen egzotikus hib�kat dob�l ez a cuccos
-     *
-     * @throws IOException
-     * <p>
-     * public void eagerEntitySerializer(LazyList lazyList, JsonGenerator jgen, SerializerProvider provider) throws IOException {
-     * jgen.writeStartArray();
-     * for (int i = 0; i < lazyList.size(); i++) {
-     * ResourceEntity resourceEntity = (ResourceEntity) lazyList.get(i);
-     * if(resourceEntity == null){
-     * continue;
-     * }
-     * jgen.writeStartObject();
-     * jgen.writeStringField("id", resourceEntity.getId());
-     * jgen.writeStringField("name", resourceEntity.getName());
-     * jgen.writeEndObject();
-     * }
-     * jgen.writeEndArray();
-     * }
-     */
     public enum SerializerType {
         LAZY,
         EAGER

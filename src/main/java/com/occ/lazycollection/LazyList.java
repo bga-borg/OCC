@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Lazy Serializer Concept
+ *
+ * @param <E>
+ */
 public class LazyList<E> implements List<E> {
 
     InfinispanCacheWrapper cacheWrapper;
